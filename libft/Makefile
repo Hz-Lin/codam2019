@@ -12,7 +12,8 @@
 
 NAME = libft.a
 
-SRC = ft_memset.c main.c
+SRC = ft_strlen.c ft_strlcpy.c \
+ft_memset.c main.c
 
 OBJ = $(SRC:.c=.o)
 
