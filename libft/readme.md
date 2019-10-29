@@ -22,5 +22,5 @@ printf("%s", str);
 ```
 
 output:
-> $$$$ is string.h library function
-> $$$$xxx string.h library function
+`$$$$ is string.h library function`
+`$$$$xxx string.h library function`
