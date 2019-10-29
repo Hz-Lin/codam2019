@@ -1,13 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memset.c                                        :+:    :+:            */
+/*   libft.h                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 11:23:00 by hlin          #+#    #+#                 */
-/*   Updated: 2019/10/29 11:23:07 by hlin          ########   odam.nl         */
+/*   Created: 2019/10/29 11:54:26 by hlin          #+#    #+#                 */
+/*   Updated: 2019/10/29 11:54:28 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    *ft_memset(void *b, int c, size_t len)
+#ifndef LIBFT_H
+#define LIBFT_H
+
+void    *ft_memset(void *)
+
+#endif

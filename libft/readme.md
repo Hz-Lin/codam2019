@@ -1,7 +1,7 @@
 # libft explain
 
 Write a C library, containing a extract of important functions for the cursus
-A Makefile is included. If other project allows to use *libft*, copy its sources and ites associated *Makefile* in a *libft* folder. The project's *Makefile*must compile the library by using its *Makefile, then compile the project.
+A Makefile is included. If other project allows to use *libft*, copy its sources and ites associated *Makefile* in a *libft* folder. The project's *Makefile*must compile the library by using its *Makefile*, then compile the project.
 
 ## Mandatory part
 
@@ -11,7 +11,7 @@ re-code a set of the *libc* functions, as defined in their man.
 
 #### ft_memset
 
-The C library function **void \*memset(void \*str, int c, size_t n)** copies the character **c** (an unsigned char) to the first **n** characters of the string pointed to, by the argument **str**.
+The C library function **void \*memset(void \*b, int c, size_t len)** copies the character **c** (an unsigned char) to the first **nlen** characters of the string pointed to, by the argument **b**.
 
 ```C
 char str[50] = "This is string.h library function")"
