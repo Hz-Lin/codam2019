@@ -12,3 +12,15 @@ re-code a set of the *libc* functions, as defined in their man.
 #### ft_memset
 
 The C library function **void \*memset(void \*str, int c, size_t n)** copies the character **c** (an unsigned char) to the first **n** characters of the string pointed to, by the argument **str**.
+
+```C
+char str[50] = "This is string.h library function")"
+ft_memset(4, '$', 7)
+printf("%s", str);
+ft_memset(str + 4, 'x', 3*sizeof(char));
+printf("%s", str);
+```
+
+output:
+> $$$$ is string.h library function
+> $$$$xxx string.h library function
