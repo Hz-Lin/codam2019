@@ -21,6 +21,6 @@ ft_memset(str + 4, 'x', 3*sizeof(char));
 printf("%s", str);
 ```
 
-output:
+output:  
 `$$$$ is string.h library function`  
 `$$$$xxx string.h library function`
