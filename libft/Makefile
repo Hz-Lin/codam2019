@@ -12,15 +12,23 @@
 
 NAME = libft.a
 
-SRC =
+SRC = ft_memset.c main.c
 
 OBJ = $(SRC:.c=.o)
 
-INCLUDES = includes/
+INCLUDES = includes/ 
 
-$(NAME) 
+all: $(NAME)
 
-all:
+$(NAME): $(SRCS) libft.h
+	gcc -Wall -Wextra -Werror -c $(SRCS)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
+
 clean:
+	/bin/rm -f $(OBJ)
+
 fclean:
-re:
+	/bin/rm -f $(NAME)
+
+re: fclean all
