@@ -16,11 +16,18 @@
 
 int main(void)
 {
-    char str[50] = "This is string.h library function";
+    char    str[50] = "This is string.h library function";
+    char    dst[10];
+    int     src_len;
 
     printf("result of ft_strlen: %lu\n", ft_strlen(str));
     printf("result of strlen: %lu\n", strlen(str));
-    
+
+    src_len = ft_strlcpy(dst, str, 10);
+    printf("result of ft_strlcpy: %d %s\n", src_len, dst);
+    src_len = strlcpy(dst, str, 10);
+    printf("result of strlcpy: %d %s\n", src_len, dst);
+
     // ft_memset(4, '$', 7);
     // printf("%s", str);
     // ft_memset(str + 4, 'x', 3*sizeof(char));

@@ -15,8 +15,11 @@ The function **size_t  ft_strlen(const char \*s)** computes the length of the st
 
 #### ft_strlcpy
 
-The function **strlcpy(char \*dst, const char \*src, size_t dstsize)** takes the destination's size **dstsize** as a parameter and will not write more than that many bytes, to prevent buffer overflow (assuming size is correct). But, unlike *strncpy*, ft_strlcpy always writes a single NUL byte to the **dst** (if size is not zero). The resulting string is guaranteed to be NUL-terminated even if truncated. Also it does not waste time writing multiple NUL bytes to fill the rest of the buffer, unlike *strncpy*. In addition, strlcpy counts and returns the length of the entire source string. This length can be compared to the destination buffer's size to check if it was truncated, and to work around truncation.
+The function **ft_strlcpy(char \*dst, const char \*src, size_t dstsize)** takes the destination's size **dstsize** as a parameter and will not write more than that many bytes, to prevent buffer overflow (assuming size is correct). But, unlike *strncpy*, ft_strlcpy always writes a single NUL byte to the **dst** (if size is not zero). The resulting string is guaranteed to be NUL-terminated even if truncated. Also it does not waste time writing multiple NUL bytes to fill the rest of the buffer, unlike *strncpy*. In addition, strlcpy counts and returns the length of the entire source string. This length can be compared to the destination buffer's size to check if it was truncated, and to work around truncation.
 
+#### ft_strlcat
+
+The function **ft_strlcat(char \*dst, const char \*src, size_t dstsize)** appends the NUL-terminated string **src** to the end of **dst**. It will append at most **size - strlen(dst) - 1 bytes**, NUL-terminating the result. Returns **length of src + min(dstsize,length of orgin dst);
 
 #### ft_memset
 
