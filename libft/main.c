@@ -28,8 +28,8 @@ int	main(void)
 	// printf("result of ft_strlcpy: %d %s\n", src_len, dst);
 	// src_len = strlcpy(dst, str, 10);
 	// printf("result of strlcpy: %d %s\n", src_len, dst);
-	src_len = ft_strlcat(dst1, src1, 2);
+	src_len = ft_strlcat(dst1, src1, 10);
 	printf("result of ft_strlcat: %d %s\n", src_len, dst1);
-	src_len = strlcat(dst1, src1, 2);
+	src_len = strlcat(dst1, src1, 10);
 	printf("result of strlcat: %d %s\n", src_len, dst1);
 }
