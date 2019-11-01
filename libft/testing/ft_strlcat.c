@@ -10,37 +10,59 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
+#include <stdio.h>
+
+size_t	ft_strlen(const char *s)
+{
+	int len;
+
+	len = 0;
+	while (s[len] != '\0')
+	{
+		len++;
+	}
+	return (len);
+}
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	unsigned int	len_dst;
-	unsigned int	len_src;
 	unsigned int	i;
-	const char		*org_dst;
+	unsigned int	len_orgdst;
+	unsigned int	len_src;
 
-	len_dst = ft_strlen(dst);
-	len_src = ft_strlen(src);
-	org_dst = dst;
 	i = 0;
-	if (size < len_dst)
+	len_orgdst = ft_strlen(dst);
+	len_src = ft_strlen(src);
+	if (size < len_orgdst)
 	{
-		while (i < size - 1)
-		{
-			dst[i] = org_dst[i];
-			i++;
-		}
-		dst[i] = '\0';
-		return (size + len_src - 1);
+		return (size + len_src);
 	}
 	else
 	{
-		while (i + len_dst < size - 1)
+		while (i < size - 1 && i < (len_orgdst + len_src))
 		{
-			dst[i + len_dst] = src[i];
+			if (i >= len_orgdst)
+			{
+				dst[i] = src[i - len_orgdst];
+			}
 			i++;
 		}
-		dst[i + len_dst] = '\0';
-		return (len_dst + len_src);
+		dst[i] = '\0';
+		return (len_orgdst + len_src);
 	}
+}
+
+int		main(void)
+{
+	char	dst1[50] = "I am ";
+	char	src1[10] = "Jan";
+	char	dst2[50] = "I am ";
+	char	src2[10] = "Jan";
+	int		src_len;
+
+	src_len = ft_strlcat(dst1, src1, 10);
+	printf("result of ft_strlcat: %d %s\n", src_len, dst1);
+	src_len = strlcat(dst2, src2, 10);
+	printf("result of strlcat: %d %s\n", src_len, dst2);
 }
