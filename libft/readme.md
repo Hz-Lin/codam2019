@@ -21,7 +21,13 @@ The function **ft_strlcpy(char \*dst, const char \*src, size_t dstsize)** takes 
 
 The function **ft_strlcat(char \*dst, const char \*src, size_t dstsize)** appends the NUL-terminated string **src** to the end of **dst**. It will append at most **dsize - strlen(dst) - 1 bytes**, NUL-terminating the result. Returns **length of src + min(dstsize,length of orgin dst)**;
 
+#### ft_strchr
 
+The function **char \*ft_strchr(const char \*str, int c)** searches for the first occurrence of the character **c** (an unsigned char) in the string pointed to by the argument **str**. This returns a pointer to the first occurrence of the character c in the string str, or NULL if the character is not found.
+
+#### ft_strrchr
+
+The **ft_strrchr()** function is identical to **ft_strchr()**, except it locates the last occurrence of **c**. It return a pointer to the located character, or NULL if the character does not appear in the string.
 
 #### ft_memset
 

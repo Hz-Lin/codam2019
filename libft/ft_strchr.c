@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   libft.h                                            :+:    :+:            */
+/*   ft_strchr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 11:54:26 by hlin          #+#    #+#                 */
-/*   Updated: 2019/10/29 11:54:28 by hlin          ########   odam.nl         */
+/*   Created: 2019/11/01 16:21:34 by hlin          #+#    #+#                 */
+/*   Updated: 2019/11/01 16:21:41 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <string.h>
+char	*ft_strchr(const char *str, int c)
+{
+	char	ch;
 
-size_t	ft_strlen(const char *s);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-size_t	ft_strlcat(char *dst, const char *src, size_t size);
-char	*ft_strchr(const char *str, int c);
-
-void	*ft_memset(void *b, int c, size_t len);
-
-#endif
+	ch = c;
+	while (*str != c)
+	{
+		if (*str == '\0')
+		{
+			return (NULL);
+		}
+		str++;
+	}
+	return ((char*)str);
+}
