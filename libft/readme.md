@@ -29,6 +29,10 @@ The function **char \*ft_strchr(const char \*str, int c)** searches for the firs
 
 The **ft_strrchr()** function is identical to **ft_strchr()**, except it locates the last occurrence of **c**. It return a pointer to the located character, or NULL if the character does not appear in the string.
 
+#### ft_strnstr
+
+The function **char \*strnstr(const char \*str, const char \*needle, size_t len)** locates the first occurrence of the null-terminated string **needle** in the string **str**, where not more than **len** characters are searched. Characters thar appeat after a '\0' character are not searched. It returns a pointer to the first character of the first occurrence of **needle**. If **needle** is an empty string, **str** is returned. If **needle** occurs nowhere in **str**, NULL is returnede.
+
 #### ft_memset
 
 The function **void \*memset(void \*b, int c, size_t len)** copies the character **c** (an unsigned char) to the first **len** characters of the string pointed to, by the argument **b**.
