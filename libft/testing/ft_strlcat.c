@@ -13,7 +13,7 @@
 #include <string.h>
 #include <stdio.h>
 
-size_t	ft_strlen(const char *s)
+size_t	cal_len(const char *s)
 {
 	int len;
 
@@ -32,8 +32,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	unsigned int	len_src;
 
 	i = 0;
-	len_orgdst = ft_strlen(dst);
-	len_src = ft_strlen(src);
+	len_orgdst = cal_len(dst);
+	len_src = cal_len(src);
 	if (size < len_orgdst)
 	{
 		return (size + len_src);
