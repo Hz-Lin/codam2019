@@ -41,6 +41,22 @@ The function **int	ft_strncmp(const char \*s1, const char \*s2, size_t n)** comp
 
 The function **int ft_atoi(const char \*str)** converts the string argument **str** to an integer. This function returns the converted integral number as an int value. If no valid conversion could be performed, it returns zero.
 
+#### ft_isalpha
+
+The function **int ft_isalpha(int c)** returns zero if the character tests false and returns non-zero if the character tests true.
+
+#### ft_isdigit
+
+The function **int	ft_isdigit(int c)** tests for a decimal digit character. It returns zero if the character tests false and return non-zero if the character tests true.
+
+#### ft_isalnum
+
+The function **int ft_isalnum(int c)** tests for any character for which *isalpha(3)* or *isdigit(3)* is true. It returns zero if the character tests false and returns non-zero if the character tests true.
+
+
+
+
+
 #### ft_memset
 
 The function **void \*memset(void \*b, int c, size_t len)** copies the character **c** (an unsigned char) to the first **len** characters of the string pointed to, by the argument **b**.
