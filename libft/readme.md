@@ -53,9 +53,21 @@ The function **int	ft_isdigit(int c)** tests for a decimal digit character. It r
 
 The function **int ft_isalnum(int c)** tests for any character for which *isalpha(3)* or *isdigit(3)* is true. It returns zero if the character tests false and returns non-zero if the character tests true.
 
+#### ft_isascii
 
+The function **int	ft_isascii(int c)** tests for an ASCII character, which is any character between 0 and octal 0177 inclusive.
 
+#### ft_isprint
 
+The function **int ft_isprint(int c)** tests for any printing character, including space. It returns zero if the character tests false and returns non-zero if the character tests true.
+
+#### ft_toupper
+
+The function **int ft_toupper(int c)** converts a lower-case letter to the corresponding upper-case letter. If the argument is a lower-case letter, the returns the corresponding upper-case letter if there is one; otherwise, the argument is returned unchanged.
+
+#### ft_tolower
+
+The function **int ft_tolower(int c)** converts an upper-case letter to the corresponding lower-case letter. If the argument is an upper-case letter, the function returns the corresponding lower-case letter if there is one; otherwise, the argument is returned unchanged.
 
 #### ft_memset
 
