@@ -37,6 +37,10 @@ The function **char \*strnstr(const char \*str, const char \*needle, size_t len)
 
 The function **int	ft_strncmp(const char \*s1, const char \*s2, size_t n)** compares not more than **n** characters, characters that appear after a '\0' character are not compared. It returns an integer greater than, equal to, or less than 0, according as the string **s1** is greater than, equal to, or less than the string **s2**.  The comparison is done using unsigned characters, so that '\200'is greater than '\0'.
 
+#### ft_atoi
+
+The function **int ft_atoi(const char \*str)** converts the string argument **str** to an integer. This function returns the converted integral number as an int value. If no valid conversion could be performed, it returns zero.
+
 #### ft_memset
 
 The function **void \*memset(void \*b, int c, size_t len)** copies the character **c** (an unsigned char) to the first **len** characters of the string pointed to, by the argument **b**.
