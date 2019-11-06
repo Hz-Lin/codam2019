@@ -27,11 +27,11 @@ output:
 
 #### ft_bzero
 
-The fuction **void	ft_bzero(void *s, size_t n)** writes **n** zeroed bytes to the string **s**.  If n is zero, ft_bzero() does nothing.
+The fuction **void	ft_bzero(void \*s, size_t n)** writes **n** zeroed bytes to the string **s**.  If n is zero, ft_bzero() does nothing.
 
 #### ft_memcpy
 
-The function **void	*ft_memcpy(void \*dst, const void \*src, size_t n)** copies n bytes from memory area src to memory area dst.  If dst and src overlap, behavior is undefined. It returns the original value of dst.
+The function **void	\*ft_memcpy(void \*dst, const void \*src, size_t n)** copies n bytes from memory area src to memory area dst.  If dst and src overlap, behavior is undefined. It returns the original value of dst.
 
 #### ft_memccpy
 
@@ -39,11 +39,11 @@ The function **void \*ft_memccpy(void \*dst, const void \*src, int c, size_t n)*
 
 #### ft_memmove
 
-The function **void *ft_memmove(void *dst, const void *src, size_t len)** opies len bytes from string **src** to string **dst**.  The two strings may overlap; the copy is always done in a non-destructive manner.It returns the original value of **dst**.
+The function **void \*ft_memmove(void *dst, const void \*src, size_t len)** opies len bytes from string **src** to string **dst**.  The two strings may overlap; the copy is always done in a non-destructive manner.It returns the original value of **dst**.
 
 #### ft_memchr
 
-The function **void *ft_memchr(const void \*s, int c, size_t n)** locates the first occurrence of **c** (converted to an unsigned char) in string **s**. It returns a pointer to the byte located, or NULL if no such byte exists within n bytes.
+The function **void \*ft_memchr(const void \*s, int c, size_t n)** locates the first occurrence of **c** (converted to an unsigned char) in string **s**. It returns a pointer to the byte located, or NULL if no such byte exists within n bytes.
 
 #### ft_memcmp
 
