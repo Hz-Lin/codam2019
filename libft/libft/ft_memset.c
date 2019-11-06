@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_tolower.c                                       :+:    :+:            */
+/*   ft_memset.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/05 15:55:14 by hlin          #+#    #+#                 */
-/*   Updated: 2019/11/05 15:55:16 by hlin          ########   odam.nl         */
+/*   Created: 2019/11/06 11:29:52 by hlin          #+#    #+#                 */
+/*   Updated: 2019/11/06 11:29:54 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int c)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	if (c >= 'A' && c <= 'Z')
+	unsigned char	*temp;
+	unsigned int	i;
+
+	temp = (unsigned char*)b;
+	i = 0;
+	if (len == 0)
 	{
-		return (c - 'A' + 'a');
+		return (b);
 	}
-	return (c);
+	while (i < len)
+	{
+		temp[i] = c;
+		i++;
+	}
+	return (b);
 }

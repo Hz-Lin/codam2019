@@ -9,6 +9,46 @@ A Makefile is included. If other project allows to use *libft*, copy its sources
 
 re-code a set of the *libc* functions, as defined in their man.
 
+#### ft_memset
+
+The function **void \*memset(void \*b, int c, size_t len)** copies the character **c** (an unsigned char) to the first **len** characters of the string pointed to, by the argument **b**.
+
+```C
+char str[50] = "This is string.h library function";
+ft_memset(str, '$', 7);
+printf("%s\n", str);
+ft_memset(str + 4, 'x', 3*sizeof(char));
+printf("%s\n", str);
+```
+
+output:  
+`$$$$ is string.h library function`  
+`$$$$xxx string.h library function`
+
+#### ft_bzero
+
+The fuction **void	ft_bzero(void *s, size_t n)** writes **n** zeroed bytes to the string **s**.  If n is zero, ft_bzero() does nothing.
+
+#### ft_memcpy
+
+The function **void	*ft_memcpy(void \*dst, const void \*src, size_t n)** copies n bytes from memory area src to memory area dst.  If dst and src overlap, behavior is undefined. It returns the original value of dst.
+
+#### ft_memccpy
+
+The function **void \*ft_memccpy(void \*dst, const void \*src, int c, size_t n)** copies bytes from string **src** to string **dst**.  If the character **c** (as converted to an unsigned char) occurs in the string **src**, the copy stops and a pointer to the byte after the copy of **c** in the string **dst** is returned.  Otherwise, n bytes are copied, and a NULL pointer is returned. The source and destination strings should not overlap, as the behavior is undefined.
+
+#### ft_memmove
+
+The function **void *ft_memmove(void *dst, const void *src, size_t len)** opies len bytes from string **src** to string **dst**.  The two strings may overlap; the copy is always done in a non-destructive manner.It returns the original value of **dst**.
+
+#### ft_memchr
+
+The function **void *ft_memchr(const void \*s, int c, size_t n)** locates the first occurrence of **c** (converted to an unsigned char) in string **s**. It returns a pointer to the byte located, or NULL if no such byte exists within n bytes.
+
+#### ft_memcmp
+
+The fuction **int ft_memcmp(const void \*s1, const void \*s2, size_t n)** compares byte string **s1** against byte string **s2**.  Both strings are assumed to be **n** bytes long. It returns zero if the two strings are identical, otherwise returns the difference between the first two differing bytes (treated as unsigned char values). Zero-length strings are always identical.
+
 #### ft_strlen
 
 The function **size_t  ft_strlen(const char \*s)** computes the length of the string **s** up to, but not including the terminating null character.
@@ -68,19 +108,3 @@ The function **int ft_toupper(int c)** converts a lower-case letter to the corre
 #### ft_tolower
 
 The function **int ft_tolower(int c)** converts an upper-case letter to the corresponding lower-case letter. If the argument is an upper-case letter, the function returns the corresponding lower-case letter if there is one; otherwise, the argument is returned unchanged.
-
-#### ft_memset
-
-The function **void \*memset(void \*b, int c, size_t len)** copies the character **c** (an unsigned char) to the first **len** characters of the string pointed to, by the argument **b**.
-
-```C
-char str[50] = "This is string.h library function";
-ft_memset(4, '$', 7);
-printf("%s", str);
-ft_memset(str + 4, 'x', 3*sizeof(char));
-printf("%s", str);
-```
-
-output:  
-`$$$$ is string.h library function`  
-`$$$$xxx string.h library function`

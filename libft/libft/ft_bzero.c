@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_tolower.c                                       :+:    :+:            */
+/*   ft_bzero.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/05 15:55:14 by hlin          #+#    #+#                 */
-/*   Updated: 2019/11/05 15:55:16 by hlin          ########   odam.nl         */
+/*   Created: 2019/11/06 13:56:55 by hlin          #+#    #+#                 */
+/*   Updated: 2019/11/06 13:56:58 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int c)
+void	ft_bzero(void *s, size_t n)
 {
-	if (c >= 'A' && c <= 'Z')
+	unsigned char	*temp;
+	unsigned int	i;
+
+	temp = (unsigned char*)s;
+	i = 0;
+	while (i < n)
 	{
-		return (c - 'A' + 'a');
+		temp[i] = 0;
+		i++;
 	}
-	return (c);
 }

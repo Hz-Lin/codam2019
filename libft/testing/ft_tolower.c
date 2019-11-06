@@ -13,7 +13,7 @@
 #include <ctype.h>
 #include <stdio.h>
 
-int	ft_toupper(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 	{
@@ -27,6 +27,6 @@ int	main(void)
 	char ch;
 
 	ch = 'G';
-	printf("%c in lowercase is represented as  %c", ch, toupper(ch));
+	printf("%c in lowercase is represented as  %c", ch, ft_tolower(ch));
 	return (0);
 }
