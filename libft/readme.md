@@ -108,3 +108,13 @@ The function **int ft_toupper(int c)** converts a lower-case letter to the corre
 #### ft_tolower
 
 The function **int ft_tolower(int c)** converts an upper-case letter to the corresponding lower-case letter. If the argument is an upper-case letter, the function returns the corresponding lower-case letter if there is one; otherwise, the argument is returned unchanged.
+
+#### ft_calloc
+
+The function **void \*ft_calloc(size_t count, size_t size)** contiguously allocates enough space for **count** objects that are **size** bytes of memory each and returns a pointer to the allocated memory.  The allocated memory is filled with bytes of value *zero*. It returns a pointer to allocated memory. If there is an error, it qreturn a NULL pointer.
+
+#### ft_strdup
+
+The function **char \*ft_strdup(const char \*str)** allocates sufficient memory for a copy of the string **str**, does the copy, and returns a pointer to it.
+
+### Part 2 - Additional functions
