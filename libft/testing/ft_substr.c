@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
+#include "libft.h"
 #include <stdio.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -37,12 +36,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (res);
 }
 
-int		main(void)
-{
-	char const	*str;
-	char		*res;
+// int		main(void)
+// {
+// 	char const	*str;
+// 	char		*res;
 
-	str = "Precious! My precious! Where is my precious?";
-	res = ft_substr(str, 10, 12);
-	printf("%s\n", res);
-}
+// 	str = "Precious! My precious! Where is my precious?";
+// 	res = ft_substr(str, 10, 12);
+// 	printf("%s\n", res);
+// }

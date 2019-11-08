@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 #include <stdio.h>
 
 void	*ft_memchr(const void *s, int c, size_t n)
@@ -34,16 +34,16 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	return (NULL);
 }
 
-int		main(void)
-{
-	const char	str[] = "this is just a test";
-	const char	ch = 'j';
-	const char	str0[] = "this is just a test";
-	char		*ret;
+// int		main(void)
+// {
+// 	const char	str[] = "this is just a test";
+// 	const char	ch = 'j';
+// 	const char	str0[] = "this is just a test";
+// 	char		*ret;
 
-	ret = memchr(str, ch, strlen(str));
-	printf("%s\n", ret);
-	ret = ft_memchr(str0, ch, strlen(str0));
-	printf("%s\n", ret);
-	return (0);
-}
+// 	ret = memchr(str, ch, strlen(str));
+// 	printf("%s\n", ret);
+// 	ret = ft_memchr(str0, ch, strlen(str0));
+// 	printf("%s\n", ret);
+// 	return (0);
+// }

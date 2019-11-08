@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 #include <stdio.h>
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
@@ -34,19 +34,19 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	return (NULL);
 }
 
-int		main(void)
-{
-	char	string1[60] = "Taj Mahal is a historic monument in India.";
-	char	dst1[61];
-	char	string2[60] = "Taj Mahal is a historic monument in India.";
-	char	dst2[61];
-	char	*res;
+// int		main(void)
+// {
+// 	char	string1[60] = "Taj Mahal is a historic monument in India.";
+// 	char	dst1[61];
+// 	char	string2[60] = "Taj Mahal is a historic monument in India.";
+// 	char	dst2[61];
+// 	char	*res;
 
-	res = memccpy(dst1, string1, 'c', 42);
-	printf("res: %s\n", res);
-	printf("dst: %s\n", dst1);
-	res = memccpy(dst2, string2, 'c', 42);
-	printf("res: %s\n", res);
-	printf("dst: %s\n", dst2);
-	return (0);
-}
+// 	res = memccpy(dst1, string1, 'c', 42);
+// 	printf("res: %s\n", res);
+// 	printf("dst: %s\n", dst1);
+// 	res = memccpy(dst2, string2, 'c', 42);
+// 	printf("res: %s\n", res);
+// 	printf("dst: %s\n", dst2);
+// 	return (0);
+// }

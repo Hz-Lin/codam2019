@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 #include <stdio.h>
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
@@ -25,7 +25,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 		src_len++;
 	}
 	i = 0;
-	while (src[i] != '\0' && i < (src_len - 1) && i < dstsize - 1)
+	while (src[i] != '\0' && i < src_len && i < dstsize)
 	{
 		dst[i] = src[i];
 		i++;
@@ -34,14 +34,14 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	return (src_len);
 }
 
-int		main(void)
-{
-	char	str[50] = "This is string.h library function";
-	char	dst[10];
-	int		src_len;
+// int		main(void)
+// {
+// 	char	str[50] = "This is string.h library function";
+// 	char	dst[10];
+// 	int		src_len;
 
-	src_len = ft_strlcpy(dst, str, 10);
-	printf("result of ft_strlcpy: %d %s\n", src_len, dst);
-	src_len = strlcpy(dst, str, 10);
-	printf("result of strlcpy: %d %s\n", src_len, dst);
-}
+// 	src_len = ft_strlcpy(dst, str, 10);
+// 	printf("result of ft_strlcpy: %d %s\n", src_len, dst);
+// 	src_len = strlcpy(dst, str, 10);
+// 	printf("result of strlcpy: %d %s\n", src_len, dst);
+// }

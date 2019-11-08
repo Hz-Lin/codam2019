@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 #include <stdio.h>
 
 void	*memcopy(void *dst, const void *src, size_t n)
@@ -61,18 +61,18 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	return (dst);
 }
 
-int		main (void)
-{
-	char dest[] = "strdest";
-	const char src[]  = "strsrc";
-	char dest0[] = "strdest";
-	const char src0[]  = "strsrc";
+// int		main (void)
+// {
+// 	char dest[] = "strdest";
+// 	const char src[]  = "strsrc";
+// 	char dest0[] = "strdest";
+// 	const char src0[]  = "strsrc";
 
-	printf("Before memmove dest = %s, src = %s\n", dest, src);
-	memmove(dest, src, 8);
-	printf("After memmove dest = %s, src = %s\n", dest, src);
-	printf("Before ft_memmove dest = %s, src = %s\n", dest0, src0);
-	ft_memmove(dest0, src0, 8);
-	printf("After ft_memmove dest = %s, src = %s\n", dest0, src0);
-	return (0);
-}
+// 	printf("Before memmove dest = %s, src = %s\n", dest, src);
+// 	memmove(dest, src, 8);
+// 	printf("After memmove dest = %s, src = %s\n", dest, src);
+// 	printf("Before ft_memmove dest = %s, src = %s\n", dest0, src0);
+// 	ft_memmove(dest0, src0, 8);
+// 	printf("After ft_memmove dest = %s, src = %s\n", dest0, src0);
+// 	return (0);
+// }

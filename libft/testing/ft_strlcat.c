@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 #include <stdio.h>
 
 size_t	cal_len(const char *s)
@@ -53,16 +53,16 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	}
 }
 
-int		main(void)
-{
-	char	dst1[50] = "I am ";
-	char	src1[10] = "Jan";
-	char	dst2[50] = "I am ";
-	char	src2[10] = "Jan";
-	int		src_len;
+// int		main(void)
+// {
+// 	char	dst1[50] = "I am ";
+// 	char	src1[10] = "Jan";
+// 	char	dst2[50] = "I am ";
+// 	char	src2[10] = "Jan";
+// 	int		src_len;
 
-	src_len = ft_strlcat(dst1, src1, 10);
-	printf("result of ft_strlcat: %d %s\n", src_len, dst1);
-	src_len = strlcat(dst2, src2, 10);
-	printf("result of strlcat: %d %s\n", src_len, dst2);
-}
+// 	src_len = ft_strlcat(dst1, src1, 10);
+// 	printf("result of ft_strlcat: %d %s\n", src_len, dst1);
+// 	src_len = strlcat(dst2, src2, 10);
+// 	printf("result of strlcat: %d %s\n", src_len, dst2);
+// }

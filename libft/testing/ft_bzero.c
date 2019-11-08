@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 #include <stdio.h>
 
 void	ft_bzero(void *s, size_t n)
@@ -27,17 +27,17 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-int		main(void)
-{
-	char str0[50] = "This is string.h library function";
-	char str1[50] = "This is string.h library function";
+// int		main(void)
+// {
+// 	char str0[50] = "This is string.h library function";
+// 	char str1[50] = "This is string.h library function";
 
-	bzero(str0, 7);
-	printf("%s\n", str0);
-	ft_bzero(str0 + 4, 3*sizeof(char));
-	printf("%s\n", str0);
-	bzero(str1, 7);
-	printf("%s\n", str1);
-	ft_bzero(str1 + 4, 3*sizeof(char));
-	printf("%s\n", str1);
-}
+// 	bzero(str0, 7);
+// 	printf("%s\n", str0);
+// 	ft_bzero(str0 + 4, 3*sizeof(char));
+// 	printf("%s\n", str0);
+// 	bzero(str1, 7);
+// 	printf("%s\n", str1);
+// 	ft_bzero(str1 + 4, 3*sizeof(char));
+// 	printf("%s\n", str1);
+// }

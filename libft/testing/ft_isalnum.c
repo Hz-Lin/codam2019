@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <ctype.h>
 #include <stdio.h>
 
@@ -29,11 +30,11 @@ int	ft_isalnum(int c)
 	return (res);
 }
 
-int	main(void)
-{
-	char	c;
+// int	main(void)
+// {
+// 	char	c;
 
-	c = 'Z';
-	printf("%d\n", isalnum(c));
-	printf("%d\n", isalnum(c));
-}
+// 	c = 'Z';
+// 	printf("%d\n", isalnum(c));
+// 	printf("%d\n", isalnum(c));
+// }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 #include <stdio.h>
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
@@ -25,14 +25,14 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (s1[i] - s2[i]);
 }
 
-int	main(void)
-{
-	const char	*str1;
-	const char	*str2;
+// int	main(void)
+// {
+// 	const char	*str1;
+// 	const char	*str2;
 
-	str1 = "function";
-	str2 = "functioN";
-	printf("%d\n", strncmp(str1, str2, 5));
-	printf("%d\n", ft_strncmp(str1, str2, 5));
-	return (0);
-}
+// 	str1 = "function";
+// 	str2 = "functioN";
+// 	printf("%d\n", strncmp(str1, str2, 5));
+// 	printf("%d\n", ft_strncmp(str1, str2, 5));
+// 	return (0);
+// }

@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
+#include "libft.h"
 #include <stdio.h>
 
 size_t	ft_strlen(const char *s)
@@ -53,11 +52,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (res);
 }
 
-int		main(void)
-{
-	char const	s1[] = "Bilbo Bagins is a theft!";
-	char const	s2[] = "What shoud we do?";
+// int		main(void)
+// {
+// 	char const	s1[] = "Bilbo Bagins is a theft!";
+// 	char const	s2[] = "What shoud we do?";
 
-	printf("%s\n", ft_strjoin(s1, s2));
-	return (0);
-}
+// 	printf("%s\n", ft_strjoin(s1, s2));
+// 	return (0);
+// }

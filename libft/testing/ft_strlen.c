@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 #include <stdio.h>
 
 size_t	ft_strlen(const char *s)
@@ -25,10 +25,10 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-int		main(void)
-{
-	char	str[50] = "This is string.h library function";
+// int		main(void)
+// {
+// 	char	str[50] = "This is string.h library function";
 
-	printf("result of ft_strlen: %lu\n", ft_strlen(str));
-	printf("result of strlen: %lu\n", strlen(str));
-}
+// 	printf("result of ft_strlen: %lu\n", ft_strlen(str));
+// 	printf("result of strlen: %lu\n", strlen(str));
+// }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 #include <stdio.h>
 
 size_t	cal_strlen(const char *s)
@@ -73,16 +73,16 @@ char	*ft_strnstr(const char *str, const char *needle, size_t len)
 	return (res);
 }
 
-int		main(void)
-{
-	const char	*src;
-	const char	*needle;
-	char		*res;
+// int		main(void)
+// {
+// 	const char	*src;
+// 	const char	*needle;
+// 	char		*res;
 
-	src = "The one ring to rule them all or kill them all, end";
-	needle = "them";
-	res = strnstr(src, needle, 24);
-	printf("%s\n", res);
-	res = ft_strnstr(src, needle, 24);
-	printf("%s\n", res);
-}
+// 	src = "The one ring to rule them all or kill them all, end";
+// 	needle = "them";
+// 	res = strnstr(src, needle, 24);
+// 	printf("%s\n", res);
+// 	res = ft_strnstr(src, needle, 24);
+// 	printf("%s\n", res);
+// }

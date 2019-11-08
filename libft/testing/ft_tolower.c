@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <ctype.h>
 #include <stdio.h>
 
@@ -22,11 +23,11 @@ int	ft_tolower(int c)
 	return (c);
 }
 
-int	main(void)
-{
-	char ch;
+// int	main(void)
+// {
+// 	char ch;
 
-	ch = 'G';
-	printf("%c in lowercase is represented as  %c", ch, ft_tolower(ch));
-	return (0);
-}
+// 	ch = 'G';
+// 	printf("%c in lowercase is represented as  %c", ch, ft_tolower(ch));
+// 	return (0);
+// }

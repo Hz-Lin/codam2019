@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <ctype.h>
 #include <stdio.h>
 
@@ -25,11 +26,11 @@ int	ft_isdigit(int c)
 	return (res);
 }
 
-int	main(void)
-{
-	char	c;
+// int	main(void)
+// {
+// 	char	c;
 
-	c = '\n';
-	printf("%d\n", isdigit(c));
-	printf("%d\n", ft_isdigit(c));
-}
+// 	c = '\n';
+// 	printf("%d\n", isdigit(c));
+// 	printf("%d\n", ft_isdigit(c));
+// }

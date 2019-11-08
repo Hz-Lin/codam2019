@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 #include <stdio.h>
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
@@ -30,18 +30,18 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (dst);
 }
 
-int		main(void)
-{
-	const char src[50] = "This is a function from libft";
-	char dest[50] = "Hello world";
-	const char src0[50] = "This is a function from libft";
-	char dest0[50] = "Hello world";
+// int		main(void)
+// {
+// 	const char src[50] = "This is a function from libft";
+// 	char dest[50] = "Hello world";
+// 	const char src0[50] = "This is a function from libft";
+// 	char dest0[50] = "Hello world";
 
-	printf("Before memcpy dest = %s\n", dest);
-	memcpy(dest, src, strlen(src)+1);
-	printf("After memcpy dest = %s\n", dest);
-	printf("Before ft_memcpy dest = %s\n", dest0);
-	ft_memcpy(dest0, src0, strlen(src0)+1);
-	printf("After ft_memcpy dest = %s\n", dest0);
-	return(0);
-}
+// 	printf("Before memcpy dest = %s\n", dest);
+// 	memcpy(dest, src, strlen(src)+1);
+// 	printf("After memcpy dest = %s\n", dest);
+// 	printf("Before ft_memcpy dest = %s\n", dest0);
+// 	ft_memcpy(dest0, src0, strlen(src0)+1);
+// 	printf("After ft_memcpy dest = %s\n", dest0);
+// 	return(0);
+// }

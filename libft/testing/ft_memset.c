@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 #include <stdio.h>
 
 void	*ft_memset(void *b, int c, size_t len)
@@ -32,17 +32,17 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
-int		main(void)
-{
-	char str0[50] = "This is string.h library function";
-	char str1[50] = "This is string.h library function";
+// int		main(void)
+// {
+// 	char str0[50] = "This is string.h library function";
+// 	char str1[50] = "This is string.h library function";
 
-	memset(str0, '$', 7);
-	printf("%s\n", str0);
-	ft_memset(str0 + 4, 'x', 3*sizeof(char));
-	printf("%s\n", str0);
-	memset(str1, '$', 7);
-	printf("%s\n", str1);
-	ft_memset(str1 + 4, 'x', 3*sizeof(char));
-	printf("%s\n", str1);
-}
+// 	memset(str0, '$', 7);
+// 	printf("%s\n", str0);
+// 	ft_memset(str0 + 4, 'x', 3*sizeof(char));
+// 	printf("%s\n", str0);
+// 	memset(str1, '$', 7);
+// 	printf("%s\n", str1);
+// 	ft_memset(str1 + 4, 'x', 3*sizeof(char));
+// 	printf("%s\n", str1);
+// }

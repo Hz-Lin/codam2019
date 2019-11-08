@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_toupper.c                                       :+:    :+:            */
+/*   ft_strmapi.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/05 15:47:42 by hlin          #+#    #+#                 */
-/*   Updated: 2019/11/05 15:47:44 by hlin          ########   odam.nl         */
+/*   Created: 2019/11/08 17:47:26 by hlin          #+#    #+#                 */
+/*   Updated: 2019/11/08 17:47:28 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <ctype.h>
 #include <stdio.h>
 
-int	ft_toupper(int c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if (c >= 'a' && c <= 'z')
-	{
-		return (c - 'a' + 'A');
-	}
-	return (c);
+	
 }
-
-// int	main(void)
-// {
-// 	char ch;
-
-// 	ch = 'g';
-// 	printf("%c in uppercase is represented as  %c", ch, ft_toupper(ch));
-// 	return (0);
-// }

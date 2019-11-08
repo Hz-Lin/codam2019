@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <ctype.h>
 #include <stdio.h>
 
@@ -22,25 +23,25 @@ int	ft_isascii(int c)
 	return (0);
 }
 
-int	main(void)
-{
-	int ch;
+// int	main(void)
+// {
+// 	int ch;
 
-	for (ch = 0x7c; ch <= 0x82; ch++)
-	{
-		printf("%#04x    ", ch);
-		if (isascii(ch))
-			printf("The character is %c\n", ch);
-		else
-			printf("Cannot be represented by an ASCII character\n");
-	}
-	for (ch = 0x7c; ch <= 0x82; ch++)
-	{
-		printf("%#04x    ", ch);
-		if (ft_isascii(ch))
-			printf("The character is %c\n", ch);
-		else
-			printf("Cannot be represented by an ASCII character\n");
-	}
-	return 0;
-}
+// 	for (ch = 0x7c; ch <= 0x82; ch++)
+// 	{
+// 		printf("%#04x    ", ch);
+// 		if (isascii(ch))
+// 			printf("The character is %c\n", ch);
+// 		else
+// 			printf("Cannot be represented by an ASCII character\n");
+// 	}
+// 	for (ch = 0x7c; ch <= 0x82; ch++)
+// 	{
+// 		printf("%#04x    ", ch);
+// 		if (ft_isascii(ch))
+// 			printf("The character is %c\n", ch);
+// 		else
+// 			printf("Cannot be represented by an ASCII character\n");
+// 	}
+// 	return 0;
+// }
