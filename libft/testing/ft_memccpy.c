@@ -45,7 +45,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 // 	res = memccpy(dst1, string1, 'c', 42);
 // 	printf("res: %s\n", res);
 // 	printf("dst: %s\n", dst1);
-// 	res = memccpy(dst2, string2, 'c', 42);
+// 	res = ft_memccpy(dst2, string2, 'c', 42);
 // 	printf("res: %s\n", res);
 // 	printf("dst: %s\n", dst2);
 // 	return (0);

@@ -13,24 +13,12 @@
 #include "libft.h"
 #include <stdio.h>
 
-size_t	ft_strlen(const char *s)
-{
-	int len;
-
-	len = 0;
-	while (s[len] != '\0')
-	{
-		len++;
-	}
-	return (len);
-}
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t		i;
 	char		*res;
 
-	if (ft_strlen(s1) == 0 || ft_strlen(s2) == 0)
+	if (!s1 || !s2)
 	{
 		return (NULL);
 	}
