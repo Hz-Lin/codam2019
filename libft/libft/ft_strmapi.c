@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strdup.c                                        :+:    :+:            */
+/*   ft_strmapi.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/07 12:01:53 by hlin          #+#    #+#                 */
-/*   Updated: 2019/11/07 12:01:54 by hlin          ########   odam.nl         */
+/*   Created: 2019/11/08 17:47:26 by hlin          #+#    #+#                 */
+/*   Updated: 2019/11/08 17:47:28 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-char	*ft_strdup(const char *str)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		str_len;
-	int		i;
-	char	*dup;
+	unsigned int	i;
+	char			*res;
 
-	str_len = 0;
 	i = 0;
-	while (str[str_len] != '\0')
+	if (!s)
 	{
-		str_len++;
-	}
-	dup = (char*)malloc(sizeof(*dup) * (str_len + 1));
-	if (dup == NULL)
 		return (NULL);
-	while (i < str_len)
+	}
+	res = (char*)malloc((sizeof(*res) * (ft_strlen(s) + 1)));
+	if (!res)
 	{
-		dup[i] = str[i];
+		return (NULL);
+	}
+	while (s[i] != '\0')
+	{
+		res[i] = f(i, s[i]);
 		i++;
 	}
-	dup[i] = '\0';
-	return (dup);
+	res[i] = '\0';
+	return (res);
 }

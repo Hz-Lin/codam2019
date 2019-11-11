@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strdup.c                                        :+:    :+:            */
+/*   ft_putchar_fd.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/07 12:01:53 by hlin          #+#    #+#                 */
-/*   Updated: 2019/11/07 12:01:54 by hlin          ########   odam.nl         */
+/*   Created: 2019/11/11 13:20:59 by hlin          #+#    #+#                 */
+/*   Updated: 2019/11/11 13:21:02 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *str)
+void	ft_putchar_fd(char c, int fd)
 {
-	int		str_len;
-	int		i;
-	char	*dup;
+	write(fd, &c, 1);
+}
 
-	str_len = 0;
-	i = 0;
-	while (str[str_len] != '\0')
-	{
-		str_len++;
-	}
-	dup = (char*)malloc(sizeof(*dup) * (str_len + 1));
-	if (dup == NULL)
-		return (NULL);
-	while (i < str_len)
-	{
-		dup[i] = str[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
+int		main(void)
+{
+	char	c;
+
+	c = 'x';
+	ft_putchar_fd(c, 1);
+	return (0);
 }

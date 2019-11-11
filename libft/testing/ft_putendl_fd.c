@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strdup.c                                        :+:    :+:            */
+/*   ft_putendl_fd.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/07 12:01:53 by hlin          #+#    #+#                 */
-/*   Updated: 2019/11/07 12:01:54 by hlin          ########   odam.nl         */
+/*   Created: 2019/11/11 14:56:54 by hlin          #+#    #+#                 */
+/*   Updated: 2019/11/11 14:56:57 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *str)
+void	ft_putendl_fd(char *s, int fd)
 {
-	int		str_len;
-	int		i;
-	char	*dup;
+	unsigned int	i;
 
-	str_len = 0;
 	i = 0;
-	while (str[str_len] != '\0')
-	{
-		str_len++;
-	}
-	dup = (char*)malloc(sizeof(*dup) * (str_len + 1));
-	if (dup == NULL)
-		return (NULL);
-	while (i < str_len)
-	{
-		dup[i] = str[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }
+
+// int		main(void)
+// {
+// 	char	*s;
+
+// 	s = "one ring to rule them all";
+// 	ft_putendl_fd(s, 1);
+// 	return (0);
+// }

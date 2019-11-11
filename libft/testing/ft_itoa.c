@@ -72,11 +72,11 @@ char	*ft_itoa(int n)
 	return (res);
 }
 
-int		main(void)
-{
-	int		x;
+// int		main(void)
+// {
+// 	int		x;
 
-	x = -2147483647;
-	printf("%s\n", ft_itoa(x));
-	return (0);
-}
+// 	x = -2147483647;
+// 	printf("%s\n", ft_itoa(x));
+// 	return (0);
+// }
