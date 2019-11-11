@@ -14,10 +14,8 @@
 
 char	*ft_strrchr(const char *str, int c)
 {
-	char	ch;
 	char	*pos;
 
-	ch = c;
 	pos = NULL;
 	while (*str != '\0')
 	{

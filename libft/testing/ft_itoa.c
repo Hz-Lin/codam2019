@@ -32,19 +32,20 @@ int		int_len(int n)
 	return (len);
 }
 
-void	fill_str(char *str, int n, int neg, int len)
+void	pos_itoa(char *str, int n, int neg, int len)
 {
 	int		i;
 	int		nbr;
 
-	i = len;
+	i = 0;
 	nbr = n;
-	while (len > 0)
+	while ((i + neg) < len)
 	{
-		str[len + neg - 1] = nbr % 10 + '0';
+		str[len - i - 1] = (nbr % 10) + '0';
+		i++;
 		nbr = nbr / 10;
-		len--;
 	}
+	str[len] = '\0';
 }
 
 char	*ft_itoa(int n)
@@ -53,12 +54,10 @@ char	*ft_itoa(int n)
 	int		neg;
 	int		nbr;
 	char	*res;
-	int		i;
 
 	len = int_len(n);
 	neg = 0;
 	nbr = n;
-	i = 0;
 	res = (char*)malloc((sizeof(*res)) * (len + 1));
 	if (res == NULL)
 		return (NULL);
@@ -74,23 +73,15 @@ char	*ft_itoa(int n)
 		}
 		nbr = -1 * n;
 	}
-	while ((i + neg) < len)
-	{
-		// printf("%d\n", (i + neg));
-		res[i + neg] = (nbr / 10) + '0';
-		printf("%d\n", (nbr % 10));
-		i++;
-		nbr = nbr / 10;
-	}
-	res[len] = '\0';
+	pos_itoa(res, nbr, neg, len);
 	return (res);
 }
 
-int		main(void)
-{
-	int		x;
+// int		main(void)
+// {
+// 	int		x;
 
-	x = -2147483647;
-	printf("%s\n", ft_itoa(x));
-	return (0);
-}
+// 	x = -2147483647;
+// 	printf("%s\n", ft_itoa(x));
+// 	return (0);
+// }
