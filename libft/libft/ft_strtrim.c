@@ -28,28 +28,47 @@ int		check_c(char const *set, char c)
 	return (0);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+int		cal_start(char const *s1, char const *set)
 {
-	char	*res;
-	int		len;
 	int		start;
 
-	if (!s1 || !set || s1[0] == '\0' || set[0] == '\0')
-		return (NULL);
 	start = 0;
-	len = ft_strlen(s1);
-	while (check_c(set, s1[len - 1]) == 1)
-	{
-		len--;
-	}
 	while (check_c(set, s1[start]) == 1)
 	{
 		start++;
-		len--;
 	}
-	res = (char*)malloc(sizeof(*res) * (len + 1));
+	return (start);
+}
+
+int		cal_end(char const *s1, char const *set)
+{
+	int		end;
+
+	end = ft_strlen(s1) - 1;
+	while (check_c(set, s1[end]) == 1)
+	{
+		end--;
+	}
+	return (end);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	char	*res;
+	int		end;
+	int		start;
+
+	if (!s1 || !set)
+		return (NULL);
+	if (s1[0] == '\0' || set[0] == '\0')
+		return ((char*)s1);
+	start = cal_start(s1, set);
+	end = cal_end(s1, set);
+	if ((end - start) < 0)
+		return ("");
+	res = (char*)malloc(sizeof(*res) * (end - start + 2));
 	if (res == NULL)
 		return (NULL);
-	res = ft_substr(s1, start, len);
+	res = ft_substr(s1, start, (end - start + 1));
 	return (res);
 }

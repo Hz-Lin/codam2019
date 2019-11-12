@@ -46,6 +46,8 @@ void	pos_itoa(char *str, int n, int neg, int len)
 		nbr = nbr / 10;
 	}
 	str[len] = '\0';
+	printf("%d\n", len);
+	printf("%d\n", i);
 }
 
 char	*ft_itoa(int n)
@@ -56,6 +58,7 @@ char	*ft_itoa(int n)
 	char	*res;
 
 	len = int_len(n);
+	printf("%d\n", len);
 	neg = 0;
 	nbr = n;
 	res = (char*)malloc((sizeof(*res)) * (len + 1));

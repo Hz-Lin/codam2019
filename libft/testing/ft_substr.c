@@ -33,6 +33,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		res[i] = s[start + i];
 		i++;
 	}
+	res[i] = '\0';
 	return (res);
 }
 
@@ -40,8 +41,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 // {
 // 	char const	*str;
 // 	char		*res;
-
+// 	char const *s;
+	
 // 	str = "Precious! My precious! Where is my precious?";
 // 	res = ft_substr(str, 10, 12);
 // 	printf("%s\n", res);
+// 	s = "split  ||this|for|me|||||!|";
+// 	printf("%s\n", ft_substr(s, 0, 6));
+// 	return (0);
 // }

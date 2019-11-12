@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-char	*str_trim(char const *s, char c)
+char	*trim_sides(char const *s, char c)
 {
 	char	*res;
 	int		len;
@@ -81,7 +81,7 @@ char	**ft_split(char const *s, char c)
 
 	j = 0;
 	i = 0;
-	src = str_trim(s, c);
+	src = trim_sides(s, c);
 	if (src == NULL)
 		return (NULL);
 	res = (char**)malloc((sizeof(*res) * (count_words(src, c) + 1)));
@@ -100,21 +100,29 @@ char	**ft_split(char const *s, char c)
 	return (res);
 }
 
-// int		main(void)
-// {
-// 	char const *s;
-// 	char		c;
-// 	char		**res;
-// 	size_t		i;
+int		main(void)
+{
+	char const *s;
+	char		c;
+	char		**res;
+	size_t		i;
 
-// 	s = "      split       this for   me  !       ";
-// 	c = ' ';
-// 	i = 0;
-// 	res = ft_split(s, c);
-// 	while (i < count_words(s, c))
-// 	{
-// 		printf("%s\n", res[i]);
-// 		i++;
-// 	}
-// 	return (0);
-// }
+	i = 0;
+	s = "      split       this for   me  !       ";
+	c = ' ';
+	res = ft_split(s, c);
+	while (i < count_words(s, c))
+	{
+		printf("%s\n", res[i]);
+		i++;
+	}
+	// s = "split  ||this|for|me|||||!|";
+	// c = '|';
+	// res = ft_split(s, c);
+	// while (i < count_words(s, c))
+	// {
+	// 	printf("%s\n", res[i]);
+	// 	i++;
+	// }
+	return (0);
+}

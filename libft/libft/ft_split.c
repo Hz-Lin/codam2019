@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char	*str_trim(char const *s, char c)
+char	*trim_sides(char const *s, char c)
 {
 	char	*res;
 	int		len;
@@ -80,7 +80,7 @@ char	**ft_split(char const *s, char c)
 
 	j = 0;
 	i = 0;
-	src = str_trim(s, c);
+	src = trim_sides(s, c);
 	if (src == NULL)
 		return (NULL);
 	res = (char**)malloc((sizeof(*res) * (count_words(src, c) + 1)));
