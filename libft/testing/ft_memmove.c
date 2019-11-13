@@ -13,51 +13,29 @@
 #include "libft.h"
 #include <stdio.h>
 
-void	*memcopy(void *dst, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	unsigned char	*ptr_dst;
-	unsigned char	*ptr_src;
-
-	ptr_dst = (unsigned char*)dst;
-	ptr_src = (unsigned char*)src;
-	while (n > 0)
-	{
-		*ptr_dst = *ptr_src;
-		ptr_dst++;
-		ptr_src++;
-		n--;
-	}
-	return (dst);
-}
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
-{
-	unsigned char	*ptr_dst;
-	unsigned char	*ptr_src;
-	size_t			i;
+	size_t				i;
+	unsigned char		*ptr_dst;
+	const unsigned char	*ptr_src;
 
 	ptr_dst = (unsigned char*)dst;
 	ptr_src = (unsigned char*)src;
 	i = 0;
+	if (ptr_src == NULL && ptr_src == ptr_dst)
+		return (dst);
 	if (ptr_src < ptr_dst)
-	{
-		while (i < len)
+		while (i < n)
 		{
-			ptr_dst[len - i] = ptr_src[len - i];
 			i++;
+			ptr_dst[n - i] = ptr_src[n - i];
 		}
-	}
 	else
-	{
-		memcopy(dst, src, len);
-		// while (len > 0)
-		// {
-		// 	*ptr_dst = *ptr_src;
-		// 	len--;
-		// 	ptr_dst++;
-		// 	ptr_src++;
-		// }
-	}
+		while (n > 0)
+		{
+			*(ptr_dst++) = *(ptr_src++);
+			n--;
+		}
 	return (dst);
 }
 

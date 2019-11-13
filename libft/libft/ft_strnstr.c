@@ -12,18 +12,6 @@
 
 #include "libft.h"
 
-size_t	cal_strlen(const char *s)
-{
-	int		len;
-
-	len = 0;
-	while (s[len] != '\0')
-	{
-		len++;
-	}
-	return (len);
-}
-
 int		str_compare(const char *str, const char *needle, int pos)
 {
 	int		res;
@@ -32,7 +20,7 @@ int		str_compare(const char *str, const char *needle, int pos)
 
 	res = 1;
 	i = 0;
-	needle_len = cal_strlen(needle);
+	needle_len = ft_strlen(needle);
 	while (i < needle_len)
 	{
 		if (str[pos + i] != needle[i])
@@ -51,7 +39,7 @@ char	*ft_strnstr(const char *str, const char *needle, size_t len)
 	unsigned int	pos;
 	unsigned int	needle_len;
 
-	needle_len = cal_strlen(needle);
+	needle_len = ft_strlen(needle);
 	res = NULL;
 	ptr = (char*)str;
 	if (needle_len == 0)
@@ -59,7 +47,7 @@ char	*ft_strnstr(const char *str, const char *needle, size_t len)
 		return (ptr);
 	}
 	pos = 0;
-	while (pos < len - needle_len && pos < cal_strlen(str) - needle_len)
+	while (pos < len - needle_len && pos < ft_strlen(str) - needle_len)
 	{
 		if (str_compare(str, needle, pos))
 		{

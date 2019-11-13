@@ -32,8 +32,8 @@ char	*ft_strchr(const char *str, int c)
 // 	char		c;
 // 	char		*res;
 
-// 	c = 'a';
-// 	str3 = "hello every! Mr.x is here";
+// 	c = '\0';
+// 	str3 = "there is so \0ma\0ny \0 \\0 in t\0his stri\0ng !\0\0\0\0";
 // 	res = ft_strchr(str3, c);
 // 	printf("%s\n", res);
 // 	res = strchr(str3, c);

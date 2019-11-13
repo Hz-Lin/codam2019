@@ -20,12 +20,15 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 
 	src_len = 0;
 	i = 0;
+	if (!dst || !src)
+		return (0);
 	while (src[src_len] != '\0')
 	{
 		src_len++;
 	}
-	i = 0;
-	while (src[i] != '\0' && i < src_len && i < dstsize)
+	if (dstsize == 0)
+		return (src_len);
+	while (src[i] != '\0' && i < src_len && i < (dstsize - 1))
 	{
 		dst[i] = src[i];
 		i++;
@@ -36,12 +39,14 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 
 // int		main(void)
 // {
-// 	char	str[50] = "This is string.h library function";
-// 	char	dst[10];
+// 	char	str1[50] = "This is string.h library function";
+// 	char	dst1[10];
+// 	char	str2[50] = "This is string.h library function";
+// 	char	dst2[10];
 // 	int		src_len;
 
-// 	src_len = ft_strlcpy(dst, str, 10);
-// 	printf("result of ft_strlcpy: %d %s\n", src_len, dst);
-// 	src_len = strlcpy(dst, str, 10);
-// 	printf("result of strlcpy: %d %s\n", src_len, dst);
+// 	src_len = ft_strlcpy(dst1, str1, 0);
+// 	printf("result of ft_strlcpy: %d %s\n", src_len, dst1);
+// 	src_len = strlcpy(dst2, str2, 0);
+// 	printf("result of strlcpy: %d %s\n", src_len, dst2);
 // }
