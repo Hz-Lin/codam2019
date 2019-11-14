@@ -13,36 +13,70 @@
 #include "libft.h"
 #include <stdio.h>
 
-int	ft_atoi(const char *str)
+int	check_white_space(char c)
 {
-	int	res;
-	int	i;
-	int	sign;
-	int	neg;
-
-	res = 0;
-	i = 0;
-	sign = 1;
-	neg = 0;
-	if (str[0] == '-')
+	if (c == ' ' || c == '\t' || c == '\n')
 	{
-		sign = -1;
-		neg = 1;
+		return (1);
 	}
-	while (str[i + neg] != '\0' && str[i + neg] <= '9' && str[i + neg] >= '0')
+	else if (c == '\r' || c == '\v' || c == '\f')
 	{
-		res = res * 10 + (str[i + neg] - '0');
-		i++;
+		return (1);
 	}
-	return (res * sign);
+	else
+	{
+		return (0);
+	}
 }
 
-// int	main(void)
-// {
-// 	char	*str;
+int	check_negtive(char c)
+{
+	if (c == '-')
+	{
+		return (-1);
+	}
+	return (1);
+}
 
-// 	str = "-2147483649";
-// 	printf("%d\n", atoi(str));
-// 	printf("%d\n", ft_atoi(str));
-// 	return (0);
-// }
+int	res_verylong(int neg)
+{
+	if (neg == 1)
+	{
+		return (-1);
+	}
+	return (0);
+}
+
+int	ft_atoi(const char *str)
+{
+	unsigned long long	res;
+	int					neg;
+
+	res = 0;
+	neg = 1;
+	while (check_white_space(*str) == 1)
+		str++;
+	if (*str == '+' || *str == '-')
+	{
+		neg = check_negtive(*str);
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		res = res * 10 + (*str - '0');
+		str++;
+	}
+	if (res > 9223372036854775807)
+		res = res_verylong(neg);
+	return (res * neg);
+}
+
+int	main(void)
+{
+	char	*str;
+
+	str = "945";
+	printf("%d\n", atoi(str));
+	printf("%d\n", ft_atoi(str));
+	return (0);
+}

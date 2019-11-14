@@ -31,47 +31,40 @@ int		int_len(int n)
 	return (len);
 }
 
-void	pos_itoa(char *str, int n, int neg, int len)
+char	*ft_strcpy(char *dest, const char *src)
 {
-	int		i;
-	int		nbr;
+	int i;
 
 	i = 0;
-	nbr = n;
-	while ((i + neg) < len)
+	while (src[i] != '\0')
 	{
-		str[len - i - 1] = (nbr % 10) + '0';
+		dest[i] = src[i];
 		i++;
-		nbr = nbr / 10;
 	}
-	str[len] = '\0';
+	dest[i] = '\0';
+	return (dest);
 }
 
 char	*ft_itoa(int n)
 {
-	int		len;
-	int		neg;
-	int		nbr;
-	char	*res;
+	char *str;
 
-	len = int_len(n);
-	neg = 0;
-	nbr = n;
-	res = (char*)malloc((sizeof(*res)) * (len + 1));
-	if (res == NULL)
+	if (!(str = (char *)malloc(sizeof(char) * 2)))
 		return (NULL);
+	if (n == -2147483648)
+		return (ft_strcpy(str, "-2147483648"));
 	if (n < 0)
 	{
-		neg = 1;
-		res[0] = '-';
-		if (n == -2147483647)
-		{
-			neg = 2;
-			res[1] = '2';
-			nbr = -147483647;
-		}
-		nbr = -1 * n;
+		str[0] = '-';
+		str[1] = '\0';
+		str = ft_strjoin(str, ft_itoa(-n));
 	}
-	pos_itoa(res, nbr, neg, len);
-	return (res);
+	else if (n >= 10)
+		str = ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));
+	else if (n < 10 && n >= 0)
+	{
+		str[0] = n + '0';
+		str[1] = '\0';
+	}
+	return (str);
 }

@@ -32,6 +32,20 @@ int		int_len(int n)
 	return (len);
 }
 
+char	*ft_strcpy(char *dest, const char *src)
+{
+	int i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
 void	pos_itoa(char *str, int n, int neg, int len)
 {
 	int		i;
@@ -46,45 +60,36 @@ void	pos_itoa(char *str, int n, int neg, int len)
 		nbr = nbr / 10;
 	}
 	str[len] = '\0';
-	printf("%d\n", len);
-	printf("%d\n", i);
 }
 
 char	*ft_itoa(int n)
 {
-	int		len;
-	int		neg;
-	int		nbr;
 	char	*res;
 
 	len = int_len(n);
-	printf("%d\n", len);
 	neg = 0;
 	nbr = n;
 	res = (char*)malloc((sizeof(*res)) * (len + 1));
 	if (res == NULL)
 		return (NULL);
+	if (nbr == -2147483647)
+		return (ft_strcpy(res, "-2147483648"));
 	if (n < 0)
 	{
 		neg = 1;
 		res[0] = '-';
-		if (n == -2147483647)
-		{
-			neg = 2;
-			res[1] = '2';
-			nbr = -147483647;
-		}
 		nbr = -1 * n;
 	}
 	pos_itoa(res, nbr, neg, len);
 	return (res);
 }
 
-// int		main(void)
-// {
-// 	int		x;
+int		main(void)
+{
+	int		x;
 
-// 	x = -2147483647;
-// 	printf("%s\n", ft_itoa(x));
-// 	return (0);
-// }
+	x = -2147483647;
+	printf("%s\n", itoa(x));
+	printf("%s\n", ft_itoa(x));
+	return (0);
+}

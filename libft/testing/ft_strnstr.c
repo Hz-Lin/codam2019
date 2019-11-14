@@ -13,64 +13,47 @@
 #include "libft.h"
 #include <stdio.h>
 
-int		str_compare(const char *str, const char *needle, int pos)
-{
-	unsigned int	i;
-	unsigned int	needle_len;
-
-	i = 0;
-	needle_len = ft_strlen(needle);
-	if (needle_len > (ft_strlen(str) - pos))
-		return (0);
-	while (i < needle_len)
-	{
-		if (str[pos + i] != needle[i])
-		{
-			return (0);
-		}
-		i++;
-	}
-	return (1);
-}
-
 char	*ft_strnstr(const char *str, const char *needle, size_t len)
 {
-	char			*res;
-	char			*ptr;
-	unsigned int	pos;
-	unsigned int	needle_len;
+	char	*s;
+	int		pos;
+	int		nlen;
+	int		slen;
 
-	needle_len = ft_strlen(needle);
-	res = NULL;
-	ptr = (char*)str;
-	if (needle_len == 0)
-	{
-		return (ptr);
-	}
+	s = (char*)str;
 	pos = 0;
-	while (pos < len - needle_len && pos < ft_strlen(str) - needle_len)
+	nlen = (int)ft_strlen(needle);
+	slen = (int)ft_strlen(str);
+	printf("nlen: %d  slen: %d \n", nlen, slen);
+	if (*needle == '\0')
+		return (s);
+	if (*str == '\0')
+		return (NULL);
+	printf("(slen - nlen): %d  (len - nlen): %d \n", (slen - nlen), ((int)len - nlen));
+	while (pos <= (slen - nlen) && pos <= ((int)len - nlen))
 	{
-		if (str_compare(str, needle, pos))
+		// printf("s: %s", (s + pos));
+		// printf("pos: %d  cmp: %d \n", pos, ft_strncmp((s + pos), needle, nlen));
+		if (ft_strncmp((s + pos), needle, nlen) == 0)
 		{
-			res = ptr;
-			return (res);
+			printf("pos: %d\n", pos);
+			return (s + pos);
 		}
 		pos++;
-		ptr++;
 	}
-	return (res);
+	return (NULL);
 }
 
-int		main(void)
-{
-	const char	*src;
-	const char	*needle;
-	char		*res;
+// int		main(void)
+// {
+// 	const char	*src;
+// 	const char	*needle;
+// 	char		*res;
 
-	src = "abcdef";
-	needle = "abcdefghijklmnop";
-	res = strnstr(src, needle, 24);
-	printf("%s\n", res);
-	res = ft_strnstr(src, needle, 24);
-	printf("%s\n", res);
-}
+// 	src = "AAAAAAAAAAAAA";
+// 	needle = "AAAAAAAAAAAAA";
+// 	res = strnstr(src, needle, ft_strlen(src));
+// 	printf("%s\n", res);
+// 	res = ft_strnstr(src, needle, ft_strlen(src));
+// 	printf("%s\n", res);
+// }

@@ -12,26 +12,60 @@
 
 #include "libft.h"
 
+int	check_white_space(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\n')
+	{
+		return (1);
+	}
+	else if (c == '\r' || c == '\v' || c == '\f')
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
+}
+
+int	check_negtive(char c)
+{
+	if (c == '-')
+	{
+		return (-1);
+	}
+	return (1);
+}
+
+int	res_verylong(int neg)
+{
+	if (neg == 1)
+	{
+		return (-1);
+	}
+	return (0);
+}
+
 int	ft_atoi(const char *str)
 {
-	int	res;
-	int	i;
-	int	sign;
-	int	neg;
+	unsigned long long	res;
+	int					neg;
 
 	res = 0;
-	i = 0;
-	sign = 1;
-	neg = 0;
-	if (str[0] == '-')
+	neg = 1;
+	while (check_white_space(*str) == 1)
+		str++;
+	if (*str == '+' || *str == '-')
 	{
-		sign = -1;
-		neg = 1;
+		neg = check_negtive(*str);
+		str++;
 	}
-	while (str[i + neg] != '\0' && str[i + neg] <= '9' && str[i + neg] >= '0')
+	while (*str >= '0' && *str <= '9')
 	{
-		res = res * 10 + (str[i + neg] - '0');
-		i++;
+		res = res * 10 + (*str - '0');
+		str++;
 	}
-	return (res * sign);
+	if (res > 9223372036854775807)
+		res = res_verylong(neg);
+	return (res * neg);
 }
