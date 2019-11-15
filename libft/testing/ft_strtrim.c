@@ -13,64 +13,46 @@
 #include "libft.h"
 #include <stdio.h>
 
-int		check_c(char const *set, char c)
+char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (set[i] != '\0')
+	while (src[i] && i < n)
 	{
-		if (c == set[i])
-		{
-			return (1);
-		}
+		dest[i] = src[i];
 		i++;
 	}
-	return (0);
-}
-
-int		cal_start(char const *s1, char const *set)
-{
-	int		start;
-
-	start = 0;
-	while (check_c(set, s1[start]) == 1)
+	while (i < n)
 	{
-		start++;
+		dest[i] = '\0';
+		i++;
 	}
-	return (start);
-}
-
-int		cal_end(char const *s1, char const *set)
-{
-	int		end;
-
-	end = ft_strlen(s1) - 1;
-	while (check_c(set, s1[end]) == 1)
-	{
-		end--;
-	}
-	return (end);
+	return (dest);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
+	size_t	i;
+	size_t	len;
 	char	*res;
-	int		end;
-	int		start;
 
+	i = 0;
 	if (!s1 || !set)
 		return (NULL);
-	if (s1[0] == '\0' || set[0] == '\0')
-		return ((char*)s1);
-	start = cal_start(s1, set);
-	end = cal_end(s1, set);
-	if ((end - start) < 0)
-		return ("");
-	res = (char*)malloc(sizeof(*res) * (end - start + 2));
+	while (s1[i] != '\0' && ft_strchr(set, s1[i]) != NULL)
+		i++;
+	len = ft_strlen(s1 + i);
+	if (len != 0)
+	{
+		while (s1[len + i - 1] && ft_strchr(set, s1[len + i - 1]) != NULL)
+			len--;
+	}
+	res = (char*)malloc(sizeof(*res) * (len + 1));
 	if (res == NULL)
 		return (NULL);
-	res = ft_substr(s1, start, (end - start + 1));
+	res = ft_strncpy(res, (s1 + i), len);
+	res[len] = '\0';
 	return (res);
 }
 
@@ -82,5 +64,31 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 // 	printf("%s\n", ft_strtrim(s1, set));
 // 	printf("%s\n", ft_strtrim(s2, set));
+// 	return (0);
+// }
+
+/* war test */
+// void	ft_print_result(char const *s)
+// {
+// 	int		len;
+
+// 	len = 0;
+// 	while (s[len])
+// 		len++;
+// 	write(1, s, len);
+// }
+
+// int		main(void)
+// {
+// 	char	*strtrim;
+// 	char 	s1[] = "          ";
+
+// 	printf("%s\n", ft_strtrim(s1, " "));
+// 	if (!(strtrim = ft_strtrim(s1, " ")))
+// 		ft_print_result("NULL");
+// 	else
+// 		ft_print_result(strtrim);
+// 	if (strtrim == s1)
+// 		ft_print_result("\nA new string was not returned");
 // 	return (0);
 // }

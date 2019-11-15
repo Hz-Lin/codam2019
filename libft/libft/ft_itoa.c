@@ -12,23 +12,31 @@
 
 #include "libft.h"
 
-int		int_len(int n)
+int		int_len(long nbr)
 {
-	int		nbr;
-	int		len;
+	int			len;
 
-	nbr = n;
-	len = 1;
-	while (nbr / 10 != 0)
+	len = 0;
+	if (nbr < 0)
+	{
+		len++;
+		nbr = -1 * nbr;
+	}
+	while (nbr != 0)
 	{
 		nbr = nbr / 10;
 		len++;
 	}
-	if (n < 0)
-	{
+	if (len == 0)
 		len++;
-	}
 	return (len);
+}
+
+int		if_negtive(int n)
+{
+	if (n < 0)
+		return (1);
+	return (0);
 }
 
 char	*ft_strcpy(char *dest, const char *src)
@@ -47,24 +55,26 @@ char	*ft_strcpy(char *dest, const char *src)
 
 char	*ft_itoa(int n)
 {
-	char *str;
+	long	nbr;
+	long	len;
+	char	*res;
 
-	if (!(str = (char *)malloc(sizeof(char) * 2)))
+	nbr = (long)n;
+	len = int_len(nbr);
+	res = (char*)malloc(sizeof(*res) * (len + 1));
+	if (res == NULL)
 		return (NULL);
-	if (n == -2147483648)
-		return (ft_strcpy(str, "-2147483648"));
-	if (n < 0)
+	res[len] = '\0';
+	len--;
+	if (nbr < 0)
+		nbr = -1 * nbr;
+	while (len >= 0)
 	{
-		str[0] = '-';
-		str[1] = '\0';
-		str = ft_strjoin(str, ft_itoa(-n));
+		res[len] = (nbr % 10) + '0';
+		len--;
+		nbr = nbr / 10;
 	}
-	else if (n >= 10)
-		str = ft_strjoin(ft_itoa(n / 10), ft_itoa(n % 10));
-	else if (n < 10 && n >= 0)
-	{
-		str[0] = n + '0';
-		str[1] = '\0';
-	}
-	return (str);
+	if (if_negtive(n) == 1)
+		res[0] = '-';
+	return (res);
 }

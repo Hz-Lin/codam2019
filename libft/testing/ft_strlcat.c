@@ -27,42 +27,51 @@ size_t	cal_len(const char *s)
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	unsigned int	i;
-	unsigned int	len_orgdst;
-	unsigned int	len_src;
+	size_t	i;
+	size_t	len_dst;
 
 	i = 0;
-	len_orgdst = cal_len(dst);
-	len_src = cal_len(src);
-	if (size < len_orgdst)
+	if (dst == NULL && size == 0)
+		return (ft_strlen(src));
+	while (*(dst + i) != '\0' && i < size)
+		i++;
+	len_dst = i;
+	if (size != 0)
 	{
-		return (size + len_src);
-	}
-	else
-	{
-		while (i < size - 1 && i < (len_orgdst + len_src))
+		while (*(src + i - len_dst) && i < (size - 1))
 		{
-			if (i >= len_orgdst)
-			{
-				dst[i] = src[i - len_orgdst];
-			}
+			*(dst + i) = *(src + i - len_dst);
 			i++;
 		}
-		dst[i] = '\0';
-		return (len_orgdst + len_src);
 	}
+	if (len_dst < size)
+		*(dst + i) = '\0';
+	return (len_dst + ft_strlen(src));
 }
 
-// int		main(void)
-// {
-// 	char	dst1[50] = "I am ";
-// 	char	src1[10] = "Jan";
-// 	char	dst2[50] = "I am ";
-// 	char	src2[10] = "Jan";
-// 	int		src_len;
+/* war test */
+void	ft_print_result(int n)
+{
+	char c;
 
-// 	src_len = ft_strlcat(dst1, src1, 10);
-// 	printf("result of ft_strlcat: %d %s\n", src_len, dst1);
-// 	src_len = strlcat(dst2, src2, 10);
-// 	printf("result of strlcat: %d %s\n", src_len, dst2);
-// }
+	if (n >= 10)
+		ft_print_result(n / 10);
+	c = n % 10 + '0';
+	write(1, &c, 1);
+}
+
+int		main(void)
+{
+	char	*dest;
+
+	if (!(dest = (char *)malloc(sizeof(*dest) * 15)))
+		return (0);
+	memset(dest, 0, 15);
+	memset(dest, 'r', 6);
+
+	/* test08 */
+	dest[10] = 'a';
+	ft_print_result(ft_strlcat(dest, "lorem ipsum dolor sit amet", 6));
+	write(1, "\n", 1);
+	write(1, dest, 15);
+}

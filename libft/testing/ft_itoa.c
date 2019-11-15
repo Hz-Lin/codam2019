@@ -13,83 +13,66 @@
 #include "libft.h"
 #include <stdio.h>
 
-int		int_len(int n)
+int			ft_digitlen(long nombre)
 {
-	int		nbr;
-	int		len;
+	size_t	size;
 
-	nbr = n;
-	len = 1;
-	while (nbr / 10 != 0)
+	if (nombre == 0)
+		return (nombre + 1);
+	size = 0;
+	if (nombre < 0)
 	{
-		nbr = nbr / 10;
-		len++;
+		nombre = -nombre;
+		size++;
 	}
+	while (nombre != 0)
+	{
+		nombre /= 10;
+		size++;
+	}
+	return (size);
+}
+
+static int	ft_sign(int n)
+{
 	if (n < 0)
-	{
-		len++;
-	}
-	return (len);
+		return (1);
+	return (0);
 }
 
-char	*ft_strcpy(char *dest, const char *src)
+char		*ft_itoa(int n)
 {
-	int i;
+	long	long_n;
+	long	longueur;
+	char	*fresh;
 
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
-void	pos_itoa(char *str, int n, int neg, int len)
-{
-	int		i;
-	int		nbr;
-
-	i = 0;
-	nbr = n;
-	while ((i + neg) < len)
-	{
-		str[len - i - 1] = (nbr % 10) + '0';
-		i++;
-		nbr = nbr / 10;
-	}
-	str[len] = '\0';
-}
-
-char	*ft_itoa(int n)
-{
-	char	*res;
-
-	len = int_len(n);
-	neg = 0;
-	nbr = n;
-	res = (char*)malloc((sizeof(*res)) * (len + 1));
-	if (res == NULL)
+	long_n = n;
+	longueur = ft_digitlen(long_n);
+	if (longueur == 0)
+		longueur = 1;
+	fresh = (char *)malloc((longueur + 1) * sizeof(char));
+	if (!fresh)
 		return (NULL);
-	if (nbr == -2147483647)
-		return (ft_strcpy(res, "-2147483648"));
-	if (n < 0)
+	fresh[longueur] = '\0';
+	longueur--;
+	if (long_n < 0)
+		long_n = -long_n;
+	while (longueur >= 0)
 	{
-		neg = 1;
-		res[0] = '-';
-		nbr = -1 * n;
+		fresh[longueur] = (long_n % 10) + '0';
+		longueur--;
+		long_n /= 10;
 	}
-	pos_itoa(res, nbr, neg, len);
-	return (res);
+	if (ft_sign(n))
+		fresh[0] = '-';
+	return (fresh);
 }
 
-int		main(void)
+int			main(void)
 {
 	int		x;
 
-	x = -2147483647;
-	printf("%s\n", itoa(x));
+	x = -2147483648LL;
 	printf("%s\n", ft_itoa(x));
 	return (0);
 }

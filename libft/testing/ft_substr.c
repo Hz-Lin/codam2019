@@ -19,10 +19,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*res;
 
 	i = 0;
-	if (len == 0 || !s)
-	{
+	if (!s)
 		return (NULL);
-	}
 	res = (char*)malloc(sizeof(*res) * (len + 1));
 	if (res == NULL)
 	{
@@ -50,3 +48,45 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 // 	printf("%s\n", ft_substr(s, 0, 6));
 // 	return (0);
 // }
+
+/* war test */
+void	ft_print_result(char const *s)
+{
+	int		len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	write(1, s, len);
+}
+
+int		main()
+{
+	char	str[] = "lorem ipsum dolor sit amet";
+	char	*strsub;
+	char	*bullshit;
+
+	/* test3 */
+	// if (!(strsub = ft_substr(str, 7, 0)))
+	// 	ft_print_result("NULL");
+	// else
+	// 	ft_print_result(strsub);
+	// if (str == strsub)
+	// 	ft_print_result("\nA new string was not returned");
+	
+	/* test5 */
+	if (!(strsub = ft_substr(str, 400, 20)))
+		ft_print_result("NULL");
+	else
+	{
+		bullshit = (char *)&strsub[30];
+		bullshit = "FULL BULLSHIT";
+		if (strsub)
+			ft_print_result(strsub);
+		else
+			ft_print_result("rip");
+	}
+	if (str == strsub)
+		ft_print_result("\nA new string was not returned");
+	return (0);
+}
