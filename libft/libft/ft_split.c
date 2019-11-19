@@ -12,89 +12,80 @@
 
 #include "libft.h"
 
-char	*trim_sides(char const *s, char c)
+static size_t	count_segment(char const *s, char c)
 {
-	char	*res;
-	int		len;
-	int		start;
+	size_t	counter;
+	int		i;
 
-	if (!s)
-		return (NULL);
-	start = 0;
-	len = ft_strlen(s);
-	while (s[len - 1] == c)
+	counter = 0;
+	i = 0;
+	while (s[i])
 	{
-		len--;
+		if (s[i] == c)
+		{
+			i++;
+			continue ;
+		}
+		counter++;
+		while (s[i] && s[i] != c)
+			i++;
 	}
-	while (s[start] == c)
-	{
-		start++;
-		len--;
-	}
-	if (len < 0)
-		len = 0;
-	res = (char*)malloc(sizeof(*res) * (len + 1));
-	if (res == NULL)
-		return (NULL);
-	res = ft_substr(s, start, len);
-	return (res);
+	return (counter);
 }
 
-size_t	count_words(char const *s, char c)
+static char		*ft_strndup(const char *s1, size_t n)
 {
-	size_t	count;
+	char	*clone;
 	size_t	i;
 
-	count = 0;
+	if ((clone = (char*)malloc(sizeof(char) * (n + 1))) == NULL)
+		return (NULL);
 	i = 0;
-	while (s[i] != '\0')
+	while (i < n)
 	{
-		if (s[i] == c && (i > 0 && s[i - 1] != c))
-		{
-			count++;
-		}
+		clone[i] = s1[i];
 		i++;
 	}
-	return (count);
+	clone[i] = '\0';
+	return (clone);
 }
 
-size_t	word_len(char const *s, char c, size_t start)
+static void		*destroy_strs(char **strs)
 {
-	size_t	len;
+	int i;
 
-	len = 0;
-	while (s[start] != '\0' && s[start] != c)
-	{
-		len++;
-		start++;
-	}
-	return (len);
+	i = 0;
+	while (strs[i] != NULL)
+		free(strs[i++]);
+	free(strs);
+	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
+	char	**strs;
+	size_t	tab_counter;
+	size_t	i;
 	size_t	j;
-	size_t	i;
-	char	*src;
-	char	**res;
 
-	j = 0;
-	i = 0;
-	src = trim_sides(s, c);
-	if (src == NULL)
+	if (s == NULL)
 		return (NULL);
-	res = (char**)malloc((sizeof(*res) * (count_words(src, c) + 1)));
-	if (res == NULL)
+	tab_counter = count_segment(s, c);
+	if ((strs = (char**)malloc(sizeof(char*) * (tab_counter + 1))) == NULL)
 		return (NULL);
-	res[j] = ft_substr(src, 0, word_len(src, c, 0));
-	while (i < (ft_strlen(src) - 1))
+	tab_counter = 0;
+	j = -1;
+	while (s[++j])
 	{
-		if (src[i] == c && src[i + 1] != c)
-		{
-			j++;
-			res[j] = ft_substr(src, (i + 1), word_len(src, c, (i + 1)));
-		}
-		i++;
+		if (s[j] == c)
+			continue ;
+		i = 0;
+		while (s[j + i] && s[j + i] != c)
+			i++;
+		if ((strs[tab_counter++] = ft_strndup(&s[j], i)) == NULL)
+			return (destroy_strs(strs));
+		j += i - 1;
 	}
-	return (res);
+	strs[tab_counter] = NULL;
+	return (strs);
 }

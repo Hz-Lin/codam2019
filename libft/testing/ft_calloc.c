@@ -42,7 +42,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 // 	printf("Number of elements to be entered:");
 // 	scanf("%d", &n);
-// 	a = (int*)calloc(n, sizeof(int));
+// 	a = (int*)ft_calloc(n, sizeof(int));
 // 	printf("Enter %d numbers:\n", n);
 // 	for( i=0 ; i < n ; i++ )
 // 	{
