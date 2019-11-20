@@ -12,80 +12,90 @@
 
 #include "libft.h"
 
-static size_t	count_segment(char const *s, char c)
+void	*free_str(char **str)
 {
-	size_t	counter;
 	int		i;
 
-	counter = 0;
 	i = 0;
-	while (s[i])
+	while (str[i] != NULL)
 	{
-		if (s[i] == c)
-		{
-			i++;
-			continue ;
-		}
-		counter++;
-		while (s[i] && s[i] != c)
-			i++;
-	}
-	return (counter);
-}
-
-static char		*ft_strndup(const char *s1, size_t n)
-{
-	char	*clone;
-	size_t	i;
-
-	if ((clone = (char*)malloc(sizeof(char) * (n + 1))) == NULL)
-		return (NULL);
-	i = 0;
-	while (i < n)
-	{
-		clone[i] = s1[i];
+		free(str[i]);
 		i++;
 	}
-	clone[i] = '\0';
-	return (clone);
-}
-
-static void		*destroy_strs(char **strs)
-{
-	int i;
-
-	i = 0;
-	while (strs[i] != NULL)
-		free(strs[i++]);
-	free(strs);
+	free(str);
 	return (NULL);
 }
 
-char			**ft_split(char const *s, char c)
+size_t	count_words(char const *s, char c)
 {
-	char	**strs;
-	size_t	tab_counter;
+	size_t	count;
+	size_t	i;
+
+	count = 0;
+	i = 0;
+	while (s[i] == c)
+		i++;
+	while (s[i])
+	{
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+		{
+			count++;
+		}
+		i++;
+	}
+	return (count);
+}
+
+char	*copy_word(const char *str, char c)
+{
+	char	*word;
 	size_t	i;
 	size_t	j;
+	size_t	len;
 
+	i = 0;
+	j = 0;
+	len = 0;
+	while (str[i] == c)
+		i++;
+	while (str[i + len] != c && str[i + len] != '\0')
+		len++;
+	word = (char*)malloc(sizeof(*word) * (len + 1));
+	if (word == NULL)
+		return (NULL);
+	while (j < len)
+	{
+		word[j] = str[i + j];
+		j++;
+	}
+	word[len] = '\0';
+	return (word);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	size_t	i;
+	size_t	j;
+	char	**res;
+
+	i = 0;
+	j = 0;
 	if (s == NULL)
 		return (NULL);
-	tab_counter = count_segment(s, c);
-	if ((strs = (char**)malloc(sizeof(char*) * (tab_counter + 1))) == NULL)
+	res = (char**)malloc(sizeof(char*) * (count_words(s, c) + 1));
+	if (res == NULL)
 		return (NULL);
-	tab_counter = 0;
-	j = -1;
-	while (s[++j])
+	while (s[i] != '\0')
 	{
-		if (s[j] == c)
-			continue ;
-		i = 0;
-		while (s[j + i] && s[j + i] != c)
-			i++;
-		if ((strs[tab_counter++] = ft_strndup(&s[j], i)) == NULL)
-			return (destroy_strs(strs));
-		j += i - 1;
+		if ((i == 0 && s[0] != c) || (i > 0 && s[i] != c && s[i - 1] == c))
+		{
+			res[j] = copy_word(&s[i], c);
+			if (res[j] == NULL)
+				return (free_str(res));
+			j++;
+		}
+		i++;
 	}
-	strs[tab_counter] = NULL;
-	return (strs);
+	res[count_words(s, c)] = NULL;
+	return (res);
 }

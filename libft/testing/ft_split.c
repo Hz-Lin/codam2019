@@ -34,11 +34,11 @@ size_t	count_words(char const *s, char c)
 
 	count = 0;
 	i = 0;
-	while (s[i] && s[i] == c)
+	while (s[i] == c)
 		i++;
 	while (s[i])
 	{
-		if (s[i] == c && (i > 0 && s[i - 1] != c))
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
 		{
 			count++;
 		}
@@ -47,71 +47,57 @@ size_t	count_words(char const *s, char c)
 	return (count);
 }
 
-char	*copy_word(const char *str, size_t n)
+char	*copy_word(const char *str, char c)
 {
-	char	*res;
+	char	*word;
 	size_t	i;
+	size_t	j;
+	size_t	len;
 
 	i = 0;
-	res = (char*)malloc(sizeof(*res) * (n + 1));
-	if (res == NULL)
-		return (NULL);
-	while (i < n)
-	{
-		res[i] = str[i];
+	j = 0;
+	len = 0;
+	while (str[i] == c)
 		i++;
+	while (str[i + len] != c && str[i + len] != '\0')
+		len++;
+	word = (char*)malloc(sizeof(*word) * (len + 1));
+	if (word == NULL)
+		return (NULL);
+	while (j < len)
+	{
+		word[j] = str[i + j];
+		j++;
 	}
-	res[i] = '\0';
-	return (res);
+	word[len] = '\0';
+	return (word);
 }
-
-// size_t	word_len(char const *s, char c, size_t start)
-// {
-// 	size_t	len;
-
-// 	len = 0;
-// 	while (s[start] != '\0' && s[start] != c)
-// 	{
-// 		len++;
-// 		start++;
-// 	}
-// 	return (len);
-// }
 
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
-	size_t	words;
 	char	**res;
 
 	i = 0;
+	j = 0;
 	if (s == NULL)
 		return (NULL);
-	words = count_words(s, c);
-	res = (char**)malloc(sizeof(char*) * (words + 1));
+	res = (char**)malloc(sizeof(char*) * (count_words(s, c) + 1));
 	if (res == NULL)
 		return (NULL);
-	words = 0;
-	while (s[i] && s[i] == c)
-		i++;
-	while (s[i])
+	while (s[i] != '\0')
 	{
-		printf("%zu\n", i);
-		if (s[i] == c)
-			continue ;
-		j = 0;
-		while (s[i + j] && s[i + j] != c)
+		if ((i == 0 && s[0] != c) || (i > 0 && s[i] != c && s[i - 1] == c))
 		{
+			res[j] = copy_word(&s[i], c);
+			if (res[j] == NULL)
+				return (free_str(res));
 			j++;
 		}
-		res[words] = copy_word(&s[i], j);
-		words++;
-		if (res == NULL)
-			return (free_str(res));
-		i = i + j - 1;
 		i++;
 	}
+	res[count_words(s, c)] = NULL;
 	return (res);
 }
 
@@ -127,27 +113,27 @@ void	ft_print_result(char const *s)
 }
 
 int		main(void)
-{
-	// char const *s;
-	// char		c;
-	// char		**res;
-	// size_t		i;
+{	
+	char const *s;
+	char		c;
+	char		**res;
+	size_t		i;
 
-	// i = 0;
-	// s = "      split       this for   me  !       ";
-	// c = ' ';
-	// res = ft_split(s, c);
-	// while (i < count_words(s, c))
-	// {
-	// 	printf("%s\n", res[i]);
-	// 	i++;
-	// }
+	i = 0;
+	s = "                  olol";
+	c = ' ';
+	res = ft_split(s, c);
+	while (i < count_words(s, c))
+	{
+		printf("%s\n", res[i]);
+		i++;
+	}
 
 	// char	**tabstr;
 	// int		i;
 
 	// i = 0;
-	// if (!(tabstr = ft_split("  t    y  ", ' ')))
+	// if (!(tabstr = ft_split("          ", ' ')))
 	// 	ft_print_result("NULL");
 	// else
 	// {
@@ -157,23 +143,6 @@ int		main(void)
 	// 		write(1, "\n", 1);
 	// 		i++;
 	// 	}
-	// }
-
-	char const *s;
-	char		c;
-	char		*res;
-	size_t		i;
-
-	i = 0;
-	s = "      split       this for   me  !       ";
-	c = ' ';
-	printf("%zu\n", count_words(s, c));
-	res = copy_word(&s[6], 5);
-	printf("%s\n", res);
-	// while (i < count_words(s, c))
-	// {
-	// 	printf("%s\n", res[i]);
-	// 	i++;
 	// }
 	return (0);
 }

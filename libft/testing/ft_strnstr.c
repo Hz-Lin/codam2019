@@ -13,21 +13,21 @@
 #include "libft.h"
 #include <stdio.h>
 
-char	*ft_strnstr(const char *str, const char *needle, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	char	*s;
 	int		pos;
 	int		nlen;
 	int		slen;
 
-	s = (char*)str;
+	s = (char*)haystack;
 	pos = 0;
 	nlen = (int)ft_strlen(needle);
-	slen = (int)ft_strlen(str);
+	slen = (int)ft_strlen(haystack);
 	printf("nlen: %d  slen: %d \n", nlen, slen);
 	if (*needle == '\0')
 		return (s);
-	if (*str == '\0')
+	if (*haystack == '\0')
 		return (NULL);
 	printf("(slen - nlen): %d  (len - nlen): %d \n", (slen - nlen), ((int)len - nlen));
 	while (pos <= (slen - nlen) && pos <= ((int)len - nlen))

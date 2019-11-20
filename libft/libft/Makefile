@@ -27,7 +27,7 @@ OBJ = $(SRC:.c=.o)
 
 OBJBONUS = $(SRCBONUS:.c=.o)
 
-INCLUDES = libft.h 
+INCLUDES = libft.h
 
 all: $(NAME)
 
