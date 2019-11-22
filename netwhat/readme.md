@@ -1,5 +1,5 @@
 # Netwhat notes
-*This is the notes I made for the Netwhat project. If you find any mistakes I make please be free to correct me.
+*This is the notes I made for the **Netwhat** project. If you find any mistakes please be free to correct me.
 
 ## IP address
 
