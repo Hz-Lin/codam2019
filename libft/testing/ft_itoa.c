@@ -13,66 +13,78 @@
 #include "libft.h"
 #include <stdio.h>
 
-int			ft_digitlen(long nombre)
+int		int_len(long nbr)
 {
-	size_t	size;
+	int			len;
 
-	if (nombre == 0)
-		return (nombre + 1);
-	size = 0;
-	if (nombre < 0)
+	len = 0;
+	if (nbr < 0)
 	{
-		nombre = -nombre;
-		size++;
+		len++;
+		nbr = -1 * nbr;
 	}
-	while (nombre != 0)
+	while (nbr != 0)
 	{
-		nombre /= 10;
-		size++;
+		nbr = nbr / 10;
+		len++;
 	}
-	return (size);
+	if (len == 0)
+		len++;
+	return (len);
 }
 
-static int	ft_sign(int n)
+int		if_negative(int n)
 {
 	if (n < 0)
 		return (1);
 	return (0);
 }
 
-char		*ft_itoa(int n)
+char	*ft_strcpy(char *dest, const char *src)
 {
-	long	long_n;
-	long	longueur;
-	char	*fresh;
+	int i;
 
-	long_n = n;
-	longueur = ft_digitlen(long_n);
-	if (longueur == 0)
-		longueur = 1;
-	fresh = (char *)malloc((longueur + 1) * sizeof(char));
-	if (!fresh)
-		return (NULL);
-	fresh[longueur] = '\0';
-	longueur--;
-	if (long_n < 0)
-		long_n = -long_n;
-	while (longueur >= 0)
+	i = 0;
+	while (src[i] != '\0')
 	{
-		fresh[longueur] = (long_n % 10) + '0';
-		longueur--;
-		long_n /= 10;
+		dest[i] = src[i];
+		i++;
 	}
-	if (ft_sign(n))
-		fresh[0] = '-';
-	return (fresh);
+	dest[i] = '\0';
+	return (dest);
 }
 
-int			main(void)
+char	*ft_itoa(int n)
 {
-	int		x;
+	long	nbr;
+	long	len;
+	char	*res;
 
-	x = -2147483648LL;
-	printf("%s\n", ft_itoa(x));
-	return (0);
+	nbr = (long)n;
+	len = int_len(nbr);
+	res = (char*)malloc(sizeof(*res) * (len + 1));
+	if (res == NULL)
+		return (NULL);
+	res[len] = '\0';
+	len--;
+	if (nbr < 0)
+		nbr = -1 * nbr;
+	while (len >= 0)
+	{
+		res[len] = (nbr % 10) + '0';
+		len--;
+		nbr = nbr / 10;
+	}
+	if (if_negative(n) == 1)
+		res[0] = '-';
+	return (res);
 }
+
+// int		main(void)
+// {
+// 	int		x;
+
+// 	x = -2147483648LL;
+// 	printf("%s\n", ft_itoa(x));
+// 	return (0);
+// }

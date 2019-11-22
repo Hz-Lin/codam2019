@@ -28,7 +28,7 @@ int	check_white_space(char c)
 	}
 }
 
-int	check_negtive(char c)
+int	check_negative(char c)
 {
 	if (c == '-')
 	{
@@ -57,7 +57,7 @@ int	ft_atoi(const char *str)
 		str++;
 	if (*str == '+' || *str == '-')
 	{
-		neg = check_negtive(*str);
+		neg = check_negative(*str);
 		str++;
 	}
 	while (*str >= '0' && *str <= '9')

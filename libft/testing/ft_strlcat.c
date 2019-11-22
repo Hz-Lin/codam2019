@@ -48,18 +48,18 @@ void	ft_print_result(int n)
 	write(1, &c, 1);
 }
 
-int		main(void)
-{
-	char	*dest;
+// int		main(void)
+// {
+// 	char	*dest;
 
-	if (!(dest = (char *)malloc(sizeof(*dest) * 15)))
-		return (0);
-	memset(dest, 0, 15);
-	memset(dest, 'r', 6);
+// 	if (!(dest = (char *)malloc(sizeof(*dest) * 15)))
+// 		return (0);
+// 	memset(dest, 0, 15);
+// 	memset(dest, 'r', 6);
 
-	/* test08 */
-	dest[10] = 'a';
-	ft_print_result(ft_strlcat(dest, "lorem ipsum dolor sit amet", 6));
-	write(1, "\n", 1);
-	write(1, dest, 15);
-}
+// 	/* test08 */
+// 	dest[10] = 'a';
+// 	ft_print_result(ft_strlcat(dest, "lorem ipsum dolor sit amet", 6));
+// 	write(1, "\n", 1);
+// 	write(1, dest, 15);
+// }

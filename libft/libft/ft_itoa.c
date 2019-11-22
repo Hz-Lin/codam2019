@@ -32,7 +32,7 @@ int		int_len(long nbr)
 	return (len);
 }
 
-int		if_negtive(int n)
+int		if_negative(int n)
 {
 	if (n < 0)
 		return (1);
@@ -74,7 +74,7 @@ char	*ft_itoa(int n)
 		len--;
 		nbr = nbr / 10;
 	}
-	if (if_negtive(n) == 1)
+	if (if_negative(n) == 1)
 		res[0] = '-';
 	return (res);
 }
