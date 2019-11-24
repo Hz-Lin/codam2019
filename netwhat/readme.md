@@ -17,7 +17,7 @@
 
 ## class of IP address
 
-**TABLE** IPv4 network classes and private net work ranges
+**TABLE** IPv4 network classes and private net work ranges  
 | Class | Address range                 | Reserved private addresses       |
 |-------|-------------------------------|----------------------------------|
 | A     | 1.0.0.0    -  127.255.255.255 | 10.0.0.0      -  10.255.255.255  |
