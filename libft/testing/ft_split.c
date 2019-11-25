@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-void	*free_str(char **str)
+static void		*free_str(char **str)
 {
 	size_t	i;
 
@@ -27,7 +27,7 @@ void	*free_str(char **str)
 	return (NULL);
 }
 
-size_t	count_words(char const *s, char c)
+static size_t	count_words(char const *s, char c)
 {
 	size_t	count;
 	size_t	i;
@@ -47,7 +47,7 @@ size_t	count_words(char const *s, char c)
 	return (count);
 }
 
-char	*copy_word(const char *str, char c)
+static char		*copy_word(const char *str, char c)
 {
 	char	*word;
 	size_t	i;
@@ -73,7 +73,7 @@ char	*copy_word(const char *str, char c)
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
@@ -101,48 +101,37 @@ char	**ft_split(char const *s, char c)
 	return (res);
 }
 
-/* war machine test */
-void	ft_print_result(char const *s)
-{
-	int		len;
+// int		main(void)
+// {	
+// 	char const *s;
+// 	char		c;
+// 	char		**res;
+// 	size_t		i;
 
-	len = 0;
-	while (s[len])
-		len++;
-	write(1, s, len);
-}
+// 	i = 0;
+// 	s = "                  olol";
+// 	c = ' ';
+// 	res = ft_split(s, c);
+// 	while (i < count_words(s, c))
+// 	{
+// 		printf("%s\n", res[i]);
+// 		i++;
+// 	}
 
-int		main(void)
-{	
-	char const *s;
-	char		c;
-	char		**res;
-	size_t		i;
+// 	// char	**tabstr;
+// 	// int		i;
 
-	i = 0;
-	s = "                  olol";
-	c = ' ';
-	res = ft_split(s, c);
-	while (i < count_words(s, c))
-	{
-		printf("%s\n", res[i]);
-		i++;
-	}
-
-	// char	**tabstr;
-	// int		i;
-
-	// i = 0;
-	// if (!(tabstr = ft_split("          ", ' ')))
-	// 	ft_print_result("NULL");
-	// else
-	// {
-	// 	while (tabstr[i] != '\0')
-	// 	{
-	// 		ft_print_result(tabstr[i]);
-	// 		write(1, "\n", 1);
-	// 		i++;
-	// 	}
-	// }
-	return (0);
-}
+// 	// i = 0;
+// 	// if (!(tabstr = ft_split("          ", ' ')))
+// 	// 	ft_print_result("NULL");
+// 	// else
+// 	// {
+// 	// 	while (tabstr[i] != '\0')
+// 	// 	{
+// 	// 		ft_print_result(tabstr[i]);
+// 	// 		write(1, "\n", 1);
+// 	// 		i++;
+// 	// 	}
+// 	// }
+// 	return (0);
+// }

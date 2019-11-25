@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-int	check_white_space(char c)
+static int	check_white_space(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\n')
 	{
@@ -29,7 +29,7 @@ int	check_white_space(char c)
 	}
 }
 
-int	check_negative(char c)
+static int	check_negative(char c)
 {
 	if (c == '-')
 	{
@@ -38,7 +38,7 @@ int	check_negative(char c)
 	return (1);
 }
 
-int	res_verylong(int neg)
+static int	res_verylong(int neg)
 {
 	if (neg == 1)
 	{
@@ -47,7 +47,7 @@ int	res_verylong(int neg)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
 	unsigned long long	res;
 	int					neg;
@@ -71,12 +71,12 @@ int	ft_atoi(const char *str)
 	return (res * neg);
 }
 
-int	main(void)
-{
-	char	*str;
+// int	main(void)
+// {
+// 	char	*str;
 
-	str = "945";
-	printf("%d\n", atoi(str));
-	printf("%d\n", ft_atoi(str));
-	return (0);
-}
+// 	str = "945";
+// 	printf("%d\n", atoi(str));
+// 	printf("%d\n", ft_atoi(str));
+// 	return (0);
+// }
