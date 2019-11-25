@@ -3,6 +3,8 @@
 
 ## IP address
 
+
+
 ## Netmask
 
 ## subnet of an IP with Netmask
@@ -14,6 +16,16 @@
 ## difference between public and private IPs
 
 ## class of IP address
+
+**TABLE** IPv4 network classes and private net work ranges  
+
+| Class | Address range                 | Reserved private addresses       |
+|-------|:-----------------------------:|:--------------------------------:|
+| A     | 1.0.0.0    -  127.255.255.255 | 10.0.0.0      -  10.255.255.255  |
+| B     | 128.0.0.0  -  191.255.255.255 | 172.16.0.0    -  172.31.255.255  |
+| C     | 192.0.0.0  -  233.255.255.255 | 192.168.0.0   -  192.168.255.255 |
+| D     | 224.0.0.0  -  239.255.255.255 | none                             |
+| E     | 240.0.0.0  -  255.255.255.255 | none                             |
 
 ## TCP && UDP
 
