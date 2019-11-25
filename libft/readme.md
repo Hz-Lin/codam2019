@@ -35,7 +35,7 @@ The function **void \*ft_memccpy(void \*dst, const void \*src, int c, size_t n)*
 
 ### ft_memmove
 
-The function **void \*ft_memmove(void *dst, const void \*src, size_t len)** opies len bytes from string **src** to string **dst**.  The two strings may overlap; the copy is always done in a non-destructive manner.It returns the original value of **dst**.
+The function **void \*ft_memmove(void \*dst, const void \*src, size_t len)** opies len bytes from string **src** to string **dst**.  The two strings may overlap; the copy is always done in a non-destructive manner.It returns the original value of **dst**.
 
 ### ft_memchr
 
