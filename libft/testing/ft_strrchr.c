@@ -13,17 +13,19 @@
 #include "libft.h"
 #include <stdio.h>
 
-char	*ft_strrchr(const char *s, int c)
+char		*ft_strrchr(const char *s, int c)
 {
 	char	*res;
 	char	*str;
 	size_t	i;
 	size_t	count;
+	size_t	len;
 
 	count = 0;
 	i = 0;
+	len = ft_strlen(s);
 	str = (char*)s;
-	while (i <= ft_strlen(s))
+	while (i <= len)
 	{
 		if (str[i] == (char)c)
 		{

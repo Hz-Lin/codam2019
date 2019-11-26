@@ -35,19 +35,20 @@ INCLUDE = libft.h
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(INCLUDE)
+$(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
-bonus: $(OBJBONUS) $(INCLUDE)
+bonus: $(OBJBONUS)
 	ar rcs $(NAME) $(OBJBONUS)
 	ranlib $(NAME)
 
 %.o: %.c
-	gcc $(FLAGS) -c -o $@ $<
+	gcc $(FLAGS) -c $< -o $@ -I.
 
 clean:
-	/bin/rm -f $(OBJ) $(OBJBONUS)
+	/bin/rm -f $(OBJ)
+	/bin/rm -f $(OBJBONUS)
 
 fclean: clean
 	/bin/rm -f $(NAME)

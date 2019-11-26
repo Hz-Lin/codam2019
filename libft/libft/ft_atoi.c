@@ -12,31 +12,6 @@
 
 #include "libft.h"
 
-static int	check_white_space(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\n')
-	{
-		return (1);
-	}
-	else if (c == '\r' || c == '\v' || c == '\f')
-	{
-		return (1);
-	}
-	else
-	{
-		return (0);
-	}
-}
-
-static int	check_negative(char c)
-{
-	if (c == '-')
-	{
-		return (-1);
-	}
-	return (1);
-}
-
 static int	res_verylong(int neg)
 {
 	if (neg == 1)
@@ -53,13 +28,12 @@ int			ft_atoi(const char *str)
 
 	res = 0;
 	neg = 1;
-	while (check_white_space(*str) == 1)
+	while (*str == 32 || (*str >= 9 && *str <= 13))
 		str++;
+	if (*str == '-')
+		neg = -1;
 	if (*str == '+' || *str == '-')
-	{
-		neg = check_negative(*str);
 		str++;
-	}
 	while (*str >= '0' && *str <= '9')
 	{
 		res = res * 10 + (*str - '0');

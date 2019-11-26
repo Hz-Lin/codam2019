@@ -33,8 +33,8 @@ static size_t	count_words(char const *s, char c)
 
 	count = 0;
 	i = 0;
-	while (s[i] == c)
-		i++;
+	if (c == '\0' && s[i] != '\0')
+		return (1);
 	while (s[i])
 	{
 		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
@@ -72,20 +72,14 @@ static char		*copy_word(const char *str, char c)
 	return (word);
 }
 
-char			**ft_split(char const *s, char c)
+static char		**split_array(char const *s, char c, char **res, size_t word_n)
 {
 	size_t	i;
 	size_t	j;
-	char	**res;
 
 	i = 0;
 	j = 0;
-	if (s == NULL)
-		return (NULL);
-	res = (char**)malloc(sizeof(char*) * (count_words(s, c) + 1));
-	if (res == NULL)
-		return (NULL);
-	while (s[i] != '\0')
+	while (s[i] != '\0' && j < word_n)
 	{
 		if ((i == 0 && s[0] != c) || (i > 0 && s[i] != c && s[i - 1] == c))
 		{
@@ -96,6 +90,22 @@ char			**ft_split(char const *s, char c)
 		}
 		i++;
 	}
-	res[count_words(s, c)] = NULL;
+	if (res)
+		res[word_n] = 0;
+	return (res);
+}
+
+char			**ft_split(char const *s, char c)
+{
+	char	**res;
+	size_t	word_n;
+
+	if (s == NULL)
+		return (NULL);
+	word_n = count_words(s, c);
+	res = (char**)malloc(sizeof(char*) * (word_n + 1));
+	if (res == NULL)
+		return (NULL);
+	res = split_array(s, c, res, word_n);
 	return (res);
 }

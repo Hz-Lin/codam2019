@@ -19,7 +19,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*res;
 
 	i = 0;
-	if (!s)
+	if (!s || !f)
 	{
 		// printf("%s\n", "failed here");
 		return (NULL);
