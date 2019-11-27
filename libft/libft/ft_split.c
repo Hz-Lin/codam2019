@@ -12,18 +12,14 @@
 
 #include "libft.h"
 
-static void		*free_str(char **str)
+static void		free_str(char **str, int len)
 {
-	size_t	i;
-
-	i = 0;
-	while (str[i] != NULL)
+	while (len >= 0)
 	{
-		free(str[i]);
-		i++;
+		free(str[len]);
+		len--;
 	}
 	free(str);
-	return (NULL);
 }
 
 static size_t	count_words(char const *s, char c)
@@ -84,8 +80,11 @@ static char		**split_array(char const *s, char c, char **res, size_t word_n)
 		if ((i == 0 && s[0] != c) || (i > 0 && s[i] != c && s[i - 1] == c))
 		{
 			res[j] = copy_word(&s[i], c);
-			if (res[j] == NULL)
-				return (free_str(res));
+			if (!res[j])
+			{
+				free_str(res, j);
+				return (NULL);
+			}
 			j++;
 		}
 		i++;

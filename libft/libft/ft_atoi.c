@@ -12,19 +12,10 @@
 
 #include "libft.h"
 
-static int	res_verylong(int neg)
-{
-	if (neg == 1)
-	{
-		return (-1);
-	}
-	return (0);
-}
-
 int			ft_atoi(const char *str)
 {
-	unsigned long long	res;
-	int					neg;
+	long long	res;
+	int			neg;
 
 	res = 0;
 	neg = 1;
@@ -36,10 +27,10 @@ int			ft_atoi(const char *str)
 		str++;
 	while (*str >= '0' && *str <= '9')
 	{
+		if ((res * 10 + (*str - '0')) < res)
+			return (((-1 * neg) - 1) / 2);
 		res = res * 10 + (*str - '0');
 		str++;
 	}
-	if (res > 9223372036854775807)
-		res = res_verylong(neg);
-	return (res * neg);
+	return ((int)(res * neg));
 }
