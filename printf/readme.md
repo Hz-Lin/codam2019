@@ -98,7 +98,7 @@ The format string is composed of zero or more directives:
 - conversion specifications, each of which results in fetching zero or more subsequent arguments. Each conversion specification is introduced by the % character.
 
 ### synopsis
-\#include \<stdio.h\>
+\#include \<stdio.h\>  
 int	printf(const char *restrict_format, ...);
 
 ### conversions flags and minimum field width
