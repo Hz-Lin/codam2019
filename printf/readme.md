@@ -54,7 +54,9 @@ Calling **va_end()** signals that there are no further arguments, and causes ap 
 ### example
 
 ```C
-// The function foo takes a string of format characters and prints out the argument associated with each format character based on the type.
+/* The function foo takes a string of format characters and 
+   prints out the argument associated with each format character based on the type.
+*/
 
 void foo(char *fmt, ...)
 {
@@ -88,3 +90,22 @@ void foo(char *fmt, ...)
         va_end(ap2);
 }
 ```
+## libc's printf funtion
+
+The printf() function write output to stdout, the standard output stream; It write the output under the control of a **format** string that specifies how subsequent arguments (or arguments accessed via the variable-length argument facilities of stdarg(3)) are converted for output.  
+The format string is composed of zero or more directives:  
+- ordinary characters (not %), which are copied unchanged to the output stream;
+- conversion specifications, each of which results in fetching zero or more subsequent arguments. Each conversion specification is introduced by the % character.
+
+### synopsis
+\#include \<stdio.h\>
+int	printf(const char *restrict_format, ...);
+
+### conversions flags and minimum field width
+
+The arguments must correspond properly (after type promotion) with the conversion specifier. After the %, the following appear in sequence:
+
+1. An optional field, consisting of a decimal digit string followed by a $, specifying the next argument to access.  If this field is not provided, the argument following the last argument accessed will be used.  Arguments are numbered starting at 1.  If unaccessed arguments in the format string are interspersed with ones that are accessed the results will be indeterminate.
+
+2. Zero or more of the following flags:
+- **#**  
