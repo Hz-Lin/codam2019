@@ -107,17 +107,18 @@ Upon successful return, these functions return the number of characters printed 
 
 ### format of the format string
 
-The format string is composed of zero or more directives:  
+The format string is composed of zero or more directives:
+
 - ordinary characters (not %), which are copied unchanged to the output stream;
 - conversion specifications, each of which results in fetching zero or more subsequent arguments. Each conversion specification is introduced by the character **%**, and ends with a **conversion specifier**. In between there may be (in this order) zero or more **flags**, an optional **minimum field width**, an optional **precision** and an optional **length modifier**.  
 
 The arguments must correspond properly (after type promotion) with the conversion specifier. By default, the arguments are used in the order given, where each **\*** and each conversion specifier asks for the next argument (and it is an error if insufficiently many arguments are given). One can also specify explicitly which argument is taken, at each place where an argument is required, by writing %m$ instead of % and \*m$ instead of \*, where the decimal integer *m* denotes the position in the argument list of the desired argument, indexed starting from 1. Thus,  
-    printf("%*d", width, num);  
+     printf("%*d", width, num);  
 and  
-    printf("%2$*1$d", width, num);  
+     printf("%2$*1$d", width, num);  
 are equivalent. The second style allows repeated references to the same argument. The C99 standard does not include the style using '$', which comes from the Single UNIX Specification. If the style using '$' is used, it must be used throughout for all conversions taking an argument and all width and precision arguments, but it may be mixed with "%%" formats which do not consume an argument. There may be no gaps in the numbers of arguments specified using '$'; for example, if arguments 1 and 3 are specified, argument 2 must also be specified somewhere in the format string.  
 For some numeric conversions a radix character ("decimal point") or thousands' grouping character is used. The actual character used depends on the LC_NUMERIC part of the locale. The POSIX locale uses '.' as radix character, and does not have a grouping character. Thus,  
-    printf("%'.2f", 1234567.89);  
+     printf("%'.2f", 1234567.89);  
 results in "1234567.89" in the POSIX locale, in "1234567,89" in the nl_NL locale, and in "1.234.567,89" in the da_DK locale.
 
 ### the flag characters
@@ -202,7 +203,3 @@ The double argument is converted in style f or e (or F or E for G conversions). 
 
 **e, E**  
 The double argument is rounded and converted in the style [-]d.dddeÂ±dd where there is one digit before the decimal-point character and the number of digits after it is equal to the precision; if the precision is missing, it is taken as 6; if the precision is zero, no decimal-point character appears. An E conversion uses the letter E (rather than e) to introduce the exponent. The exponent always contains at least two digits; if the value is zero, the exponent is 00.
-
-
-
-

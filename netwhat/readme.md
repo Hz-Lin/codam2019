@@ -48,16 +48,20 @@ The *Internet Protocol(IP)* is an Internet-layer (aka a network-layer ot layer 2
 
 **IPv4**  
 IPv4 uses 32-bit addresses, and they are usually expressed as 4 base-10 numbers (0-255) separated by periods.  
-This address is broken into two components:  
-- a network address: identifies a block of Ip addresses that are used by one physical network
-- a computer address: identifies one computer within that network  
+This address is broken into two components:
+
+- a network address: identifies a block of IP addresses that are used by one physical network
+- a computer address: identifies one computer within that network
+
 The 4-byte IPv4 address and 6-byte Ethernet address are mathematically unrelated. 
 
 **IPv6**  
 IPv6 uses 128-bit addresses. They consist of 8 groups of 4-digit hexadecimal numbers separated by colons. (If one ot more groups of four digits is 0000, that group or those groups may be omitted, leaving two colons).  
-IPv6 uses 2 types of network addresses:  
+IPv6 uses 2 types of network addresses:
+
 - link-local: to communicate on the local networks, it's nonroutable, and can only be used for local network connectivity. 
-- global: utilizes a network address advertised by a router on the local network.  
+- global: utilizes a network address advertised by a router on the local network.
+
 Note:  System creates a link-local IPv6 network address using the network address along with a combination of the MAC address of the network interface.
 
 ## Netmask
@@ -126,7 +130,8 @@ IPv6 has its equivalent to private addresses. Besides link-local address, IPv6 a
 
 ### ICMP
 
-The *Internet Control Message Protocol (ICMP)* is a simple protocol for communicating data. ICMP is most often used to send error messages between computers. This is often done by modifying an IP packet and returning it to its sender, which means that ICMP is technically an Internet-layer protocol, although it relies upon IP.
+The *Internet Control Message Protocol (ICMP)* is a simple protocol for communicating data. ICMP is most often used to send error messages between computers. This is often done by modifying an IP packet and returning it to its sender, which means that ICMP is technically an Internet-layer protocol, although it relies upon IP.  
+Used by *ping*
 
 ### UCP
 
