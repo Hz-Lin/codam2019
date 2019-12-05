@@ -47,28 +47,72 @@ To find the hardware address, type **ifconfig eth***n*, where *n* is the number 
 The *Internet Protocol(IP)* is an Internet-layer (aka a network-layer ot layer 2) protocol.
 
 **IPv4**  
-IPv4 uses 32-bit addresses, but IPv6 uses 128-bit addresses.   
-
-**IPv6**  
-IPv6 (IP version 6) is the update to the original IP stack. It includes a new feature known as *stateless address auto-configuration(SLAAC)*.
+IPv4 uses 32-bit addresses, and they are usually expressed as 4 base-10 numbers (0-255) separated by periods.  
+This address is broken into two components:  
+- a network address: identifies a block of Ip addresses that are used by one physical network
+- a computer address: identifies one computer within that network  
 The 4-byte IPv4 address and 6-byte Ethernet address are mathematically unrelated. 
 
+**IPv6**  
+IPv6 uses 128-bit addresses. They consist of 8 groups of 4-digit hexadecimal numbers separated by colons. (If one ot more groups of four digits is 0000, that group or those groups may be omitted, leaving two colons).  
+IPv6 uses 2 types of network addresses:  
+- link-local: to communicate on the local networks, it's nonroutable, and can only be used for local network connectivity. 
+- global: utilizes a network address advertised by a router on the local network.  
+Note:  System creates a link-local IPv6 network address using the network address along with a combination of the MAC address of the network interface.
 
 ## Netmask
 
-A **netmask** is a 32-bit "mask" used to divide an IP address into subnets and specify the networks available hosts.   
+A **netmask** (also known as the *network mask* or *subnet mask*) is a 32-bit "mask" used to divide an IP address into subnets and specify the networks available hosts.  
 
 ## subnet of an IP with Netmask
 
-## broadcast address of a subnet
+When using binary: the netmask uses binary 1 values to represent the network portion of an address and binary 0 values to represent the computer address.  
+The network portion ordinarily leads the computer portion.
 
 ## different way to represent an IP address with the Netmask
 
-## difference between public and private IPs
+### Dotted quad notation
+
+Use all 4 bytes of the netmask.  
+For example, IP address of 172.30.9.102 with netmask of 255.255.0.0, then network address is 172.30.0.0
+
+### CIDR (Classless Inter-Domain Routing) form
+
+use a sigle number representing the nember of network bits in the address. This number usuallu follows the IP address and a slash. For example, 172.30.9.102/16 is equivalent to 172.30.9.102 with a netmask of 255.255.0.0.
+
+## broadcast address of a subnet
+
+A *broadcast* is a type of network transmission that's sent to all the computers on a local network, or occasionally all of the computers on a remote network.  
+Under TCP/IP,  a broadcast is done by specifying binary 1 values in all of the machine bits of the IP address.  
+The ultimate broadcast address is 255.255.255.255, which sends data to all computers on a network segment.  
+Convert between the broadcast address and netmask:  
+- Netmask consist of whole-byte valuse: replace the IP address components that have 0 values in the dotted quad netmask with 255 values.  
+e.g. IP address of 172.30.9.102 & netmask of 255.255.0.0 ==> broadcast address of 172.30.255.255  
+- CIDR address: resort to binary numbers, set the network address values to 1 when the netmask value to 0, then convert back into base 10 notation  
+e.g. IP address of 172.30.9.102 & netmask of 255.255.128.0 (equal to 172.30.0.0/17)  
+     172.30.9.102   --->  10101100 00011110 00001001 01100110  
+	 255.255.128.0  --->  11111111 11111111 10000000 00000000  
+    ==> 10101100 00011110 01111111 11111111  --->  172.30.127.255
 
 ## class of IP address
 
-**TABLE** IPv4 network classes and private net work ranges  
+IPv4 networks have been broken into one of several classes:  
+- Classes A, B and C are for general networking use
+- Class D addresses are reserved for *multicasting*: sending data to multiple computers simultaneously
+- Class E addresses are reserved for future use  
+
+There are also a few special cases:  
+- 127.x.y.z addresses are reserved for use as *loopback* (aka *localhost*) devices
+- addresses in which all of the machine bits are set to 1 refer to the network block itself -- they're used for broadcasts
+- addresses in which all of the machine bits are set to 0 refer to the network address
+
+## difference between public and private IPs
+
+Within each of the three general-use network classes is a range of addresses reserved for private use.
+
+IPv6 has its equivalent to private addresses. Besides link-local address, IPv6 also uses *site-local addresses*, which may be routed whithin a site but not off site. They begin with the hexadecimal number fec, fed, fee, or fef.
+
+**TABLE** IPv4 network classes and private net work ranges
 
 | Class | Address range                 | Reserved private addresses       |
 |-------|:-----------------------------:|:--------------------------------:|
@@ -97,9 +141,13 @@ The *Transmission Control Protocol (TCP)* creates full connections with error ch
 
 ## DHCP server and the DHCP protocol
 
-The *Dynamic Host Configuration Protocol (DHCP)* is a means of automating the configuration of specific computers. It has an option that uses the hardware address to assign the same IP address consistently to a given computer.
+The *Dynamic Host Configuration Protocol (DHCP)* is a means of automating the configuration of specific computers. It has an option that uses the hardware address to assign the same IP address consistently to a given computer.  
+It enables one computer on a network to manage the settings for many other computers.
 
 ## DNS server and the DNS protocol
+
+The *Domain Names System (DNS)* is a distributed database of computers that converts between IP address and hostnames.  
+Every domain must maintain at least 2 DNS servers that can either provide the names for every computer within the domain or redirect a DNS query to another DNS server that can better handle the request.
 
 ## rules to make 2 devices communicate using IP addresses
 
@@ -108,3 +156,26 @@ The *Dynamic Host Configuration Protocol (DHCP)* is a means of automating the co
 ## default gateway for routing
 
 ## what is a port from an IP point of view and what is it used for when connecting to an other device
+
+A network port numbers enables you to direct traffic to a specific program.  
+When they start up, servers tie themselves to specific ports, which by convention are associated with specific server programs.  
+A client can direct its request to a specific port and expect to contact an appropriate server. The client's own prot number isn't fixed, it's assigned by the OS.  
+**privileged ports** have numbers less than 1024. Unix and Linux systems restrict access to privileged ports to *root*.  **The unprivileged ports** -- port numbers greater than 1024 may to accessed by ordinary users.  
+
+*NOTE: a client is a program that initiates a network connection to exchange data. A server listens for such connections and responds to them.*
+
+**TABLE** pot numbers, TCP/UDP and their purposes
+
+| port | TCP or UDP | Purpose                                    |
+|------|------------|--------------------------------------------|
+| 20   | TCP        | FTP (File Transfer Protocol) data          |
+| 21   | TCP        | FTP                                        |
+| 22   | TCP        | SSH (Secure Shell)                         |
+| 25   | TCP        | SMTP (Simple Mail Transfer Protocol)       |
+| 53   | TCP & UDP  | DNS (Domain Name System)                   |
+| 67   | UDP        | DHCP (Dynamic Host Configuration Protocol) |
+| 80   | TCP        | HTTP (Hypertext Transfer Protocol)         |
+| 110  | TCP        | POP3 (Post Office Protocol version 3)      |
+| 123  | UDP        | NTP (Network Time Protocol)                |
+| 142  | TCP        | IMAP (Interactive Mail Access Protocol)    |
+| 443  | TCP        | HTTPS (HTTP over SSL)                      |
