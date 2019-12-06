@@ -67,6 +67,7 @@ Note:  System creates a link-local IPv6 network address using the network addres
 ## Netmask
 
 A **netmask** (also known as the *network mask* or *subnet mask*) is a 32-bit "mask" used to divide an IP address into subnets and specify the networks available hosts.  
+In a netmask, two bits are always automatically assigned. For example, in 255.255.225.0, "0" is the assigned network address. In 255.255.255.255, "255" is the assigned broadcast address. The 0 and 255 are always assigned and cannot be used.
 
 ## subnet of an IP with Netmask
 
@@ -133,21 +134,33 @@ IPv6 has its equivalent to private addresses. Besides link-local address, IPv6 a
 The *Internet Control Message Protocol (ICMP)* is a simple protocol for communicating data. ICMP is most often used to send error messages between computers. This is often done by modifying an IP packet and returning it to its sender, which means that ICMP is technically an Internet-layer protocol, although it relies upon IP.  
 Used by *ping*
 
-### UCP
+### UDP
 
-The *User DAtagram Protocol (UDP)* is the simplest of the common transport-layer (aka layer 3) TCP/IP protocols. It doesn't provide sophisticated procedures to correct for out-of-order packets, guarantee delivery, or otherwise improve the limitations of IP. It also means that UDP can be faster than more sophisticated tools that provide such improvements to IP. Common application-layer protocols that are built atop UDP include the Domain Name System (DSN), the Network File System (NFS), and many streaming-media protocols.
+The *User Datagram Protocol (UDP)* is the simplest of the common transport-layer (aka layer 3) TCP/IP protocols. It doesn't provide sophisticated procedures to correct for out-of-order packets, guarantee delivery, or otherwise improve the limitations of IP. It also means that UDP can be faster than more sophisticated tools that provide such improvements to IP. Common application-layer protocols that are built atop UDP include the Domain Name System (DSN), the Network File System (NFS), and many streaming-media protocols.
 
 ### TCP
 The *Transmission Control Protocol (TCP)* creates full connections with error checking and correction as well as other features. These features simplify the creations of network protocols that must exchange large amounts of data. However TCP imposes a samall performance penalty. Most application-layer protocols are built atop TCP, for example: Simple Mail Transfer Protocol (SMAP), the Hypertext Transfer PRotocol (HTTP), and the File Transfer Protocol (FTP).
 
 ## network layers
 
+
+
 ## OSI model
+
+*The Open Systems Interconnection (OSI) model* is a conceptual model created by the International Organization for Standardization which enables diverse communication systems to communicate using standard protocols.  
+OSI provides a standard for different computer systems to be able to communicate with each other.  
+The OSI model can be seen as a universal language for computer networking. It’s based on the concept of splitting up a communication system into seven abstract layers, each one stacked upon the last.
+
+![Network layers](./image/network_layers.svg)
+
+Each layer of the OSI model handles a specific job and communicates with the layers above and below itself. *DDoS* attacks target specific layers of a network connection; application layer attacks target layer 7 and protocol layer attacks target layers 3 and 4.
+
 
 ## DHCP server and the DHCP protocol
 
 The *Dynamic Host Configuration Protocol (DHCP)* is a means of automating the configuration of specific computers. It has an option that uses the hardware address to assign the same IP address consistently to a given computer.  
-It enables one computer on a network to manage the settings for many other computers.
+A DHCP Server is a network server that automatically provides and assigns IP addresses, default gateways and other network parameters to client devices. It relies on the standard protocol known as Dynamic Host Configuration Protocol or DHCP to respond to broadcast queries by clients.  
+DHCP servers usually assign each client with a unique dynamic IP address, which changes when the client’s lease for that IP address has expired.
 
 ## DNS server and the DNS protocol
 
@@ -158,14 +171,21 @@ Every domain must maintain at least 2 DNS servers that can either provide the na
 
 ## how routing is working with IP
 
+
+
 ## default gateway for routing
+
+Default route which is also known as the gateway of last resort, is used in forwarding packets whose destination address does not match any route in the routing table. In IPv4 the CIDR notation for a default route is 0.0.0.0/0 and ::/0 in IPv6. Now since the both the host/network portion and the prefix length is zero a default route is the shortest possible match.  
+router when performing a route lookup will select a route with longest possible match based on CIDR specifications, however if packet does not match any route in the routing table it will match a default route, the shortest possible route, if it exists in the routing table.  
+
+The default gateway is a device such as a router that serves as the edge devices providing an access point to other networks and is used to forward IP packets which does not match any routes in the routing table. 
 
 ## what is a port from an IP point of view and what is it used for when connecting to an other device
 
 A network port numbers enables you to direct traffic to a specific program.  
 When they start up, servers tie themselves to specific ports, which by convention are associated with specific server programs.  
 A client can direct its request to a specific port and expect to contact an appropriate server. The client's own prot number isn't fixed, it's assigned by the OS.  
-**privileged ports** have numbers less than 1024. Unix and Linux systems restrict access to privileged ports to *root*.  **The unprivileged ports** -- port numbers greater than 1024 may to accessed by ordinary users.  
+**privileged ports** have numbers less than 1024. Unix and Linux systems restrict access to privileged ports to *root*.  **The **unprivileged ports** -- port numbers greater than 1024 may to accessed by ordinary users.  
 
 *NOTE: a client is a program that initiates a network connection to exchange data. A server listens for such connections and responds to them.*
 
