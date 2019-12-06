@@ -46,6 +46,11 @@ To find the hardware address, type **ifconfig eth***n*, where *n* is the number 
 **IP**  
 The *Internet Protocol(IP)* is an Internet-layer (aka a network-layer ot layer 2) protocol.
 
+**IP address**  
+An IP address (Internet Protocol address) is a numeric label assigned to a device that is connected to a computer network that uses Internet. It has two main functions:
+- host/network identification
+- location addressing
+
 **IPv4**  
 IPv4 uses 32-bit addresses, and they are usually expressed as 4 base-10 numbers (0-255) separated by periods.  
 This address is broken into two components:
@@ -71,6 +76,7 @@ In a netmask, two bits are always automatically assigned. For example, in 255.25
 
 ## subnet of an IP with Netmask
 
+A subnetwork is a part of a network. The subnet mask is used by the network owner to decide which part of the IP address is the network-ID and the host-ID. Subnetting an IP network is to separate a big network into smaller multiple networks for reorganization and security purposes.  
 When using binary: the netmask uses binary 1 values to represent the network portion of an address and binary 0 values to represent the computer address.  
 The network portion ordinarily leads the computer portion.
 
@@ -87,9 +93,18 @@ use a sigle number representing the nember of network bits in the address. This 
 
 ## broadcast address of a subnet
 
-A *broadcast* is a type of network transmission that's sent to all the computers on a local network, or occasionally all of the computers on a remote network.  
-Under TCP/IP,  a broadcast is done by specifying binary 1 values in all of the machine bits of the IP address.  
+A *broadcast* is a type of network transmission that's sent to all the computers on a local network, or occasionally all of the computers on a remote network.
+
+### limited broadcast
+
 The ultimate broadcast address is 255.255.255.255, which sends data to all computers on a network segment.  
+With limited broadcast, an IP address is given as a destination. This IP address is always 255.255.255.255. Technically, this broadcast should be sent to all the IP addresses that exist. However, it actually serves as an address for the broadcast within the network. This destination is always in its own network and can therefore be implemented in an Ethernet broadcast. A router does not forward such a packet.
+
+### directed broadcast
+
+With directed broadcast, all recipients are always addressed within the target network. A combination of the number of the target network and the setting of all host bits to 1 produces the broadcast address in this case. If the destination is not located in its own (sub-) network, a router forwards the data packet.  
+Host bits are the part of an IP address identifying a specific host in a subnet. The subnet mask determines what proportion of the address is used for network bits and for host bits.  
+
 Convert between the broadcast address and netmask:  
 - Netmask consist of whole-byte valuse: replace the IP address components that have 0 values in the dotted quad netmask with 255 values.  
 e.g. IP address of 172.30.9.102 & netmask of 255.255.0.0 ==> broadcast address of 172.30.255.255  
@@ -113,19 +128,25 @@ There are also a few special cases:
 
 ## difference between public and private IPs
 
-Within each of the three general-use network classes is a range of addresses reserved for private use.
+A public IP address is an IP address that can be accessed over the Internet. It is assigned to a computing device to allow direct access over the Internet. A web server, email server and any server device directly accessible from the Internet are candidate for a public IP address. A public IP address is globally unique, and can only be assigned to a unique device.  
+A private IP address is the address space allocated by InterNIC to allow organizations to create their own private network. There are three IP blocks (1 class A, 1 class B and 1 class C) reserved for a private use.  
+When a computer is assigned a private IP address, the local devices see this computer via it's private IP address. However, the devices residing outside of your local network cannot directly communicate via the private IP address, but uses your router's public IP address to communicate. To allow direct access to a local device which is assigned a private IP address, a Network Address Translator (NAT) should be used.
 
-IPv6 has its equivalent to private addresses. Besides link-local address, IPv6 also uses *site-local addresses*, which may be routed whithin a site but not off site. They begin with the hexadecimal number fec, fed, fee, or fef.
+IPv6 has its equivalent to private addresses. Besides link-local address, IPv6 also uses *site-local addresses*, which may be routed within a site but not off site. They begin with the hexadecimal number fec, fed, fee, or fef.
 
 **TABLE** IPv4 network classes and private net work ranges
 
-| Class | Address range                 | Reserved private addresses       |
-|-------|:-----------------------------:|:--------------------------------:|
-| A     | 1.0.0.0    -  127.255.255.255 | 10.0.0.0      -  10.255.255.255  |
-| B     | 128.0.0.0  -  191.255.255.255 | 172.16.0.0    -  172.31.255.255  |
-| C     | 192.0.0.0  -  233.255.255.255 | 192.168.0.0   -  192.168.255.255 |
-| D     | 224.0.0.0  -  239.255.255.255 | none                             |
-| E     | 240.0.0.0  -  255.255.255.255 | none                             |
+| Class | Address range                 | Reserved private addresses       | Supports                                                      |
+|-------|:-----------------------------:|:--------------------------------:|:-------------------------------------------------------------:|
+| A     | 1.0.0.0    -  127.255.255.255 | 10.0.0.0      -  10.255.255.255  | supports 16 million hosts on each of 127 networks             |
+| B     | 128.0.0.0  -  191.255.255.255 | 172.16.0.0    -  172.31.255.255  | supports 65,000 hosts on each of 16,000 networks              |
+| C     | 192.0.0.0  -  233.255.255.255 | 192.168.0.0   -  192.168.255.255 | supports 254 hosts on each of 2 million networks              |
+| D     | 224.0.0.0  -  239.255.255.255 | none                             | reserved for multicast groups                                 |
+| E     | 240.0.0.0  -  255.255.255.255 | none                             | reserved for future use, or research and development purposes |
+
+- Calss A: first 8 bits represent the network part, remaining 24 bits represent the host part. (First = most host addresses available by default.)
+- Class B: first 16 bits represent the network part, remaining 16 bits represent the host part.
+- Class C (default IP address class): first 24 bits represent the network part, remaining 8 bits represent the host part.
 
 ## TCP && UDP
 
@@ -136,14 +157,31 @@ Used by *ping*
 
 ### UDP
 
-The *User Datagram Protocol (UDP)* is the simplest of the common transport-layer (aka layer 3) TCP/IP protocols. It doesn't provide sophisticated procedures to correct for out-of-order packets, guarantee delivery, or otherwise improve the limitations of IP. It also means that UDP can be faster than more sophisticated tools that provide such improvements to IP. Common application-layer protocols that are built atop UDP include the Domain Name System (DSN), the Network File System (NFS), and many streaming-media protocols.
+The *User Datagram Protocol (UDP)* is the simplest of the common transport-layer (aka layer 3) TCP/IP protocols.  
+It doesn't provide sophisticated procedures to correct for out-of-order packets, guarantee delivery, or otherwise improve the limitations of IP. It also means that UDP can be faster than more sophisticated tools that provide such improvements to IP. Common application-layer protocols that are built atop UDP include the Domain Name System (DSN), the Network File System (NFS), and many streaming-media protocols.  
+It DOES support broadcasting!
 
 ### TCP
 The *Transmission Control Protocol (TCP)* creates full connections with error checking and correction as well as other features. These features simplify the creations of network protocols that must exchange large amounts of data. However TCP imposes a samall performance penalty. Most application-layer protocols are built atop TCP, for example: Simple Mail Transfer Protocol (SMAP), the Hypertext Transfer PRotocol (HTTP), and the File Transfer Protocol (FTP).
 
 ## network layers
 
+While TCP/IP is the newer model, the OSI model is still referenced a lot to describe network layers. There are 7 layers:
 
+1. Physical (e.g. cable, RJ45)
+2. Data Link (e.g. MAC, switches)
+3. Network (e.g. IP, routers)
+4. Transport (e.g. TCP, UDP, port numbers)
+5. Session (e.g. Syn/Ack)
+6. Presentation (e.g. encryption, ASCII, PNG, MIDI)
+7. Application (e.g. SNMP, HTTP, FTP)
+
+The TCP/IP model is a more concise framework, with only 4 layers:
+
+1. Network Access (or Link): combines the OSI model’s L1 and L2
+2. Internet: This layer is similar to the OSI model’s L3
+3. Transport (or Host-to-Host): This layer is similar to the OSI model’s L4
+4. Application (or Process): this layer combines the OSI model’s L5, L6, and L7
 
 ## OSI model
 
@@ -158,29 +196,40 @@ Each layer of the OSI model handles a specific job and communicates with the lay
 
 ## DHCP server and the DHCP protocol
 
-The *Dynamic Host Configuration Protocol (DHCP)* is a means of automating the configuration of specific computers. It has an option that uses the hardware address to assign the same IP address consistently to a given computer.  
+The *Dynamic Host Configuration Protocol (DHCP)* is a network management protocol used on UDP/IP networks.  
 A DHCP Server is a network server that automatically provides and assigns IP addresses, default gateways and other network parameters to client devices. It relies on the standard protocol known as Dynamic Host Configuration Protocol or DHCP to respond to broadcast queries by clients.  
-DHCP servers usually assign each client with a unique dynamic IP address, which changes when the client’s lease for that IP address has expired.
+DHCP servers usually assign each client with a unique dynamic IP address, which changes when the client’s lease for that IP address has expired.  
+Both IPv4 and IPv6 are supported!
 
 ## DNS server and the DNS protocol
 
-The *Domain Names System (DNS)* is a distributed database of computers that converts between IP address and hostnames.  
-Every domain must maintain at least 2 DNS servers that can either provide the names for every computer within the domain or redirect a DNS query to another DNS server that can better handle the request.
+The *Domain Names System (DNS)* is a hierarchical system that names computers, services or other resources connected to the internet. The system associates various information with the domain names which helps with locating and identifying computer services. It also specifies the technical functions of the database service.
 
 ## rules to make 2 devices communicate using IP addresses
 
+- They have to have the same network ID.
+- They have to be the same type of address.
+
 ## how routing is working with IP
 
+IP sends and delivers packets from one computer or server using a web of routers, this process is called IP routing. Once they arrive at the destination it is the job of TCP to reform them into their original state.  
 
+![IP routing](./image/routing0.png)
+
+In order for a packet to be sent to the right location, the router needs to know the location of both destination and source through their IP address. IP routing determines the path for the packet to follow in order to navigate from one computer/server to another. The packet travels through a web of router using a routing algorithm. This algorithm looks at the packet’s size and header to determine the best route and once it has arrived at the next router it uses both IP addresses and a routing table (list with all possible routes to a certain network) to determine the next hop address. This process is repeated until the destination is reached. Data if often divided into different packets which travel independently and can have different routes.
+
+![IP routing](./image/routing1.png)
 
 ## default gateway for routing
 
-Default route which is also known as the gateway of last resort, is used in forwarding packets whose destination address does not match any route in the routing table. In IPv4 the CIDR notation for a default route is 0.0.0.0/0 and ::/0 in IPv6. Now since the both the host/network portion and the prefix length is zero a default route is the shortest possible match.  
-router when performing a route lookup will select a route with longest possible match based on CIDR specifications, however if packet does not match any route in the routing table it will match a default route, the shortest possible route, if it exists in the routing table.  
-
-The default gateway is a device such as a router that serves as the edge devices providing an access point to other networks and is used to forward IP packets which does not match any routes in the routing table. 
+A gateway is the entrance port to another network.  
+A ​Default​ gateway is the address to which packets are sent if there is no specific gateway for a certain destination in the routing table.  (providing an access point to other networks and is used to forward IP packets which does not match any routes in the routing table.)  
+It is important because it is generally not achievable for all hosts to maintain knowledge of the routes to all networks. Hosts can set a particular route as their default gateway and only that one router must maintain the routes to remote networks. However, if a network is heavily used, you can manually add routes to the routing table which will optimize the process.
 
 ## what is a port from an IP point of view and what is it used for when connecting to an other device
+
+A port is like a bay with various private boats docked. These boats want to dock there and request landing services but they all
+have to use the same port/gateway. Real (sea)ports work with berth numbers and port names which are used for identification of boats. So, berth numbers on the internet are Internet Protocol or IP addresses, a user’s identification on the Internet, and the seaport names are used the same as Internet port names. A computer port is an electronic, software- or programming- related docking point through which information flows from a program on your computer or to your computer from the Internet. Computers or programs connect to somewhere on the Internet via a port. Port numbers and the IP address combine into information kept by every Internet Service Provider.
 
 A network port numbers enables you to direct traffic to a specific program.  
 When they start up, servers tie themselves to specific ports, which by convention are associated with specific server programs.  
