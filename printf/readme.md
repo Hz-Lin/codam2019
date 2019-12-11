@@ -1,5 +1,7 @@
 # printf project notes
 
+[Variadic Functions explain](https://www.thegeekstuff.com/2017/05/c-variadic-functions/)
+
 ## Project Introduction
 
 This project is to write a lib with ft_printf function that will mimic the real printf.  

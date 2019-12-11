@@ -14,11 +14,11 @@ NAME = libftprintf.a
 
 FLAGS = -Wall -Werror -Wextra
 
-SRC = main.c
+SRC = main.c src/ft_printf.c
 
 OBJ = $(SRC:.c=.o)
 
-INCLUDE = ft_printf.h libft/libft.h
+INCLUDE = includes/ft_printf.h libft/libft.h
 
 .PHONY: clean fclean all re
 

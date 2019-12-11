@@ -11,8 +11,13 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "includes/ft_printf.h"
 
 int		main(void)
 {
-
+	char	c = 'x';
+	
+	printf("or: %c", c);
+	//ft_printf("my: %c", c);
+	return (0);
 }
