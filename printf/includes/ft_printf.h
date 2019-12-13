@@ -20,11 +20,22 @@ typedef	struct s_pf	t_pf;
 
 struct	s_pf
 {
-	va_list		var_list;
-	va_list		var_list_cp;
-	int			count;
+	int	index;
+	int	len;
+	int	fd;
+
+	int	minus;
+	int	plus;
+	int	space;
+	int	zero;
+	int	hashtag;
+
+	int	width;
+	int	precision_sp;
+	int	precision;
+	int	length;
 };
 
-int		ft_printf(const char *format, ...);
-
+//int		ft_printf(const char *format, ...);
+int		arg_parser(const char *format, ...);
 #endif

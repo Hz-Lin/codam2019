@@ -11,9 +11,10 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+#include "../libft/libft.h"
 #include <stdio.h>
 
-int		ft_printf(const char *format, ...)
+int		arg_parser(const char *format, ...)
 {
 	va_list	arg;
 	va_list	arg_cp;
@@ -50,6 +51,6 @@ int		main(void)
 {
 	int		count;
 
-	count = ft_printf("4 arg: %s %s %s", "This", "is", "Test");
+	count = arg_parser("4 arg: %s %s %s", "This", "is", "Test");
 	printf("return value: %d\n", count);
 }

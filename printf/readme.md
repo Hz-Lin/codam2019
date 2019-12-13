@@ -94,6 +94,8 @@ void foo(char *fmt, ...)
 ```
 ## libc's printf funtion
 
+[printf() function format explain](https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html)
+
 The printf() function write output to stdout, the standard output stream; It write the output under the control of a **format** string that specifies how subsequent arguments (or arguments accessed via the variable-length argument facilities of stdarg(3)) are converted for output.  
 
 ### synopsis
