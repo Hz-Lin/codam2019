@@ -14,22 +14,23 @@ NAME = libftprintf.a
 
 FLAGS = -Wall -Werror -Wextra
 
-SRC = main.c src/ft_printf.c
+SRC = src/ft_printf.c src/format_parser.c
 
 OBJ = $(SRC:.c=.o)
 
 INCLUDE = includes/ft_printf.h libft/libft.h
+
+LIBFT = libft
 
 .PHONY: clean fclean all re
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	make -C $(LIBFT)
+	make bonus -C $(LIBFT)
+	cp	libft/libft.a ./$(NAME)
 	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
-
-bonus: $(NAME) $(OBJBONUS)
-	ar rcs $(NAME) $(OBJBONUS)
 	ranlib $(NAME)
 
 %.o: %.c
@@ -37,9 +38,10 @@ bonus: $(NAME) $(OBJBONUS)
 
 clean:
 	/bin/rm -f $(OBJ)
-	/bin/rm -f $(OBJBONUS)
+	make clean -C $(LIBFT)
 
 fclean: clean
 	/bin/rm -f $(NAME)
+	make fclean -C $(LIBFT)
 
 re: fclean all

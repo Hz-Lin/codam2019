@@ -16,26 +16,28 @@
 
 int		format_parser(const char *format)
 {
-	int		count;
+	int		re_val;
+	int		i;
 
-	count = 0;
+	re_val = 0;
+	i = 0;
 	while (*format != '\0' && *format != '%')
 	{
 		ft_putchar_fd((char)(*format), 1);
 		format++;
-		count++;
+		re_val++;
 	}
 	if (*format == '%')
 	{
 		format++;
 		if (ft_strchr("#0 +-", (char)(*format)))
 		{
-			printf
+			printf("This is a flag");
 		}
 	}
-		
-	printf("%d\n", count);
-	return (count);
+
+	printf("%d\n", re_val);
+	return (re_val);
 }
 
 int		main()
