@@ -53,7 +53,12 @@ int		format_parser(const char *format, struct s_pf t_pf, va_list pf_arg)
 }
 
 void	ft_print_arg(const char *format, struct s_pf t_pf, va_list pf_arg)
-
+{
+	if (format[t_pf.conv] == 'd' || format[t_pf.conv] == 'i')
+		printf("integer");
+	if (format[t_pf.conv] == 'd' || format[t_pf.conv] == 'i')
+		printf("integer");
+}
 
 int		main(void)
 {
