@@ -14,33 +14,48 @@
 #include "../libft/libft.h"
 #include <stdio.h>
 
-int		format_parser(const char *format)
+void	ft_reset_spf(struct s_pf t_pf)
 {
-	int		re_val;
-	int		i;
-
-	re_val = 0;
-	i = 0;
-	while (*format != '\0' && *format != '%')
-	{
-		ft_putchar_fd((char)(*format), 1);
-		format++;
-		re_val++;
-	}
-	if (*format == '%')
-	{
-		format++;
-		if (ft_strchr("#0 +-", (char)(*format)))
-		{
-			printf("This is a flag");
-		}
-	}
-
-	printf("%d\n", re_val);
-	return (re_val);
+	t_pf.minus = 0;
+	t_pf.plus = 0;
+	t_pf.space = 0;
+	t_pf.zero = 0;
+	t_pf.hashtag = 0;
+	t_pf.width = 0;
+	t_pf.precision_sp = 0;
+	t_pf.precision = 0;
+	t_pf.length = 0;
 }
 
-int		main()
+int		format_parser(const char *format, struct s_pf t_pf, va_list pf_arg)
+{
+	while (format[t_pf.conv] != '\0')
+	{
+		if (format[t_pf.conv] != '%')
+		{
+			t_pf.conv++;
+			if (ft_strchr("#-+ .*0123456789hljz", format[t_pf.conv]))
+				printf("parse modifiers");
+			if (ft_strchr("cspdiuxX%nfge", format[t_pf.conv]))
+			{
+				printf("call ft_printf to print format with the struct");
+				if (t_pf.len == -1)
+					return ;
+				ft_reset_spf(t_pf);
+			}
+		}
+		else
+		{
+			t_pf.len = write(t_pf.fd, &format[t_pf.conv], 1);
+		}
+		t_pf.conv++;
+	}
+}
+
+void	ft_print_arg(const char *format, struct s_pf t_pf, va_list pf_arg)
+
+
+int		main(void)
 {
 	format_parser("Hello %d world %c");
 	return (0);

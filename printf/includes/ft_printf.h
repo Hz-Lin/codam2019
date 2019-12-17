@@ -20,7 +20,7 @@ typedef	struct s_pf	t_pf;
 
 struct	s_pf
 {
-	int	index;
+	int	conv;
 	int	len;
 	int	fd;
 
