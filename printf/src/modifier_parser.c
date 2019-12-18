@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   modifier_parser.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/09 15:18:46 by hlin          #+#    #+#                 */
-/*   Updated: 2019/12/09 15:18:48 by hlin          ########   odam.nl         */
+/*   Created: 2019/12/18 15:11:18 by hlin          #+#    #+#                 */
+/*   Updated: 2019/12/18 15:11:19 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "includes/ft_printf.h"
+#include "../includes/ft_printf.h"
+#include "../libft/libft.h"
 
-int		main(void)
+void	parse_length(const char *format, struct s_pf t_pf)
 {
-	printf("or: %c\n", 22);
-	printf("or: %c\n", 'x');
-	printf("String: %s\n", "This is a test!");
-	printf("String: %d\n", 1024);
-	printf("String: %i\n", 1024);
-	return (0);
+	if 
 }

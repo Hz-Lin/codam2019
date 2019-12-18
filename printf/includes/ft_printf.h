@@ -15,27 +15,32 @@
 
 # include "../libft/libft.h"
 # include <stdarg.h>
+# include <stdio.h>
 
 typedef	struct s_pf	t_pf;
 
 struct	s_pf
 {
-	int	conv;
-	int	len;
-	int	fd;
-
 	int	minus;
-	int	plus;
-	int	space;
 	int	zero;
+	int	apostrophe;
 	int	hashtag;
+	int	space;
+	int	plus;
 
 	int	width;
-	int	precision_sp;
+	int	dot;
 	int	precision;
-	int	length;
+
+	int	h;
+	int	hh;
+	int	l;
+	int	ll;
+
+	int	len;
 };
 
 //int		ft_printf(const char *format, ...);
 int		arg_parser(const char *format, ...);
+void	ft_reset_spf(struct s_pf t_pf);
 #endif
