@@ -17,9 +17,9 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-typedef	struct s_pf	t_pf;
+typedef	struct s_struct	t_struct;
 
-struct	s_pf
+struct	s_struct
 {
 	int	minus;
 	int	zero;
@@ -41,6 +41,9 @@ struct	s_pf
 };
 
 //int		ft_printf(const char *format, ...);
-int		arg_parser(const char *format, ...);
-void	ft_reset_spf(struct s_pf t_pf);
+t_struct	*ft_struct_init(t_struct *f);
+void		ft_struct_reset(t_struct *f);
+void		ft_struct_print(t_struct *f); //to print the struct
+
+
 #endif
