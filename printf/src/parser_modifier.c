@@ -13,7 +13,14 @@
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
-void	parse_length(const char *format, struct s_pf t_pf)
+void	parse_length(const char *format, t_struct *f)
 {
-	if 
+	int	i;
+
+	i = 0;
+	while (format[i] != '\0')
+	{
+		if (format[i] == )
+		i++;
+	}
 }

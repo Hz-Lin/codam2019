@@ -26,7 +26,7 @@ int		format_parser(const char *format) //t_struct *f, va_list pf_arg
 		if (format[i] == '%')
 		{
 			i++;
-			while (!ft_strchr("cspdiuxX%nfge", format[i]))
+			while (!ft_strchr("cspdiuxX%", format[i]))
 			{
 				printf("modifier: %c\n", format[i]);
 				i++;
