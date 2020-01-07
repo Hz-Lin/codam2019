@@ -23,19 +23,14 @@ struct	s_struct
 {
 	int	minus;
 	int	zero;
-	int	apostrophe;
-	int	hashtag;
-	int	space;
-	int	plus;
+	// int	apostrophe;
+	// int	hashtag;
+	// int	space;
+	// int	plus;
 
 	int	width;
 	int	dot;
 	int	precision;
-
-	int	h;
-	int	hh;
-	int	l;
-	int	ll;
 
 	int	len;
 };
