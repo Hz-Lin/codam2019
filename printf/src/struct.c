@@ -26,10 +26,6 @@ void		ft_struct_reset(t_struct *f)
 {
 	f->minus = 0;
 	f->zero = 0;
-	// f->apostrophe = 0;
-	// f->hashtag = 0;
-	// f->space = 0;
-	// f->plus = 0;
 	f->width = 0;
 	f->dot = 0;
 	f->precision = 0;
@@ -40,10 +36,6 @@ void		ft_struct_print(t_struct *f)
 {
 	printf("minus:      %d\n", f->minus);
 	printf("zero:       %d\n", f->zero);
-	// printf("apostrophe: %d\n", f->apostrophe);
-	// printf("hashtag:    %d\n", f->hashtag);
-	// printf("space:      %d\n", f->space);
-	// printf("plus:       %d\n", f->plus);
 	printf("width:      %d\n", f->width);
 	printf("dot:        %d\n", f->dot);
 	printf("precision:  %d\n", f->precision);

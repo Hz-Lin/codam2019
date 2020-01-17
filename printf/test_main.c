@@ -15,7 +15,7 @@
 
 int		main(void)
 {
-	printf("or: %c\n", 22);
+	printf("or: %-0.3c\n", 22);
 	printf("or: %c\n", 'x');
 	printf("String: %s\n", "This is a test!");
 	printf("String: %d\n", 1024);
