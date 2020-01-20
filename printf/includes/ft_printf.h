@@ -23,17 +23,18 @@ struct	s_struct
 {
 	int	printed;
 	int	type;
+	int	width;
 	int	minus;
 	int	zero;
-	int	width;
 	int	dot;
+	int	star;
 	int	precision;
 };
 
-//int		ft_printf(const char *format, ...);
-t_struct	*ft_struct_init(t_struct *f);
-void		ft_struct_reset(t_struct *f);
-void		ft_struct_print(t_struct *f); //to print the struct
+t_struct	ft_struct_init(void);
+void		ft_struct_print(t_struct *f);
 
+int		format_parser(const char *format, va_list args);
+int		flag_parser(const char *format, int i, t_struct *flags, va_list args);
 
 #endif

@@ -13,34 +13,30 @@
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
-t_struct	*ft_struct_init(t_struct *f)
+t_struct	ft_struct_init(void)
 {
-	f = (t_struct*)malloc(sizeof(t_struct));
-	if (f == NULL)
-		return (NULL);
-	ft_struct_reset(f);
-	return (f);
-}
+	t_struct	flags;
 
-void		ft_struct_reset(t_struct *f)
-{
-	f->printed = 0;
-	f->type = 0;
-	f->minus = 0;
-	f->zero = 0;
-	f->width = 0;
-	f->dot = 0;
-	f->precision = 0;
+	flags.printed = 0;
+	flags.type = 0;
+	flags.width = 0;
+	flags.minus = 0;
+	flags.zero = 0;
+	flags.dot = 0;
+	flags.star =
+	flags.precision = 0;
+	return (flags);
 }
 
 void		ft_struct_print(t_struct *f)
 {
 	printf("printed:    %d\n", f->printed);
 	printf("type:       %d\n", f->type);
+	printf("width:      %d\n", f->width);
 	printf("minus:      %d\n", f->minus);
 	printf("zero:       %d\n", f->zero);
-	printf("width:      %d\n", f->width);
 	printf("dot:        %d\n", f->dot);
+	printf("width:      %d\n", f->star);
 	printf("precision:  %d\n", f->precision);
 }
 
