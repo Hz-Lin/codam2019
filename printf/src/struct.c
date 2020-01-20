@@ -24,22 +24,24 @@ t_struct	*ft_struct_init(t_struct *f)
 
 void		ft_struct_reset(t_struct *f)
 {
+	f->printed = 0;
+	f->type = 0;
 	f->minus = 0;
 	f->zero = 0;
 	f->width = 0;
 	f->dot = 0;
 	f->precision = 0;
-	f->len = 0;
 }
 
 void		ft_struct_print(t_struct *f)
 {
+	printf("printed:    %d\n", f->printed);
+	printf("type:       %d\n", f->type);
 	printf("minus:      %d\n", f->minus);
 	printf("zero:       %d\n", f->zero);
 	printf("width:      %d\n", f->width);
 	printf("dot:        %d\n", f->dot);
 	printf("precision:  %d\n", f->precision);
-	printf("len:        %d\n", f->len);
 }
 
 // int			main(void)

@@ -21,13 +21,13 @@ typedef	struct s_struct	t_struct;
 
 struct	s_struct
 {
+	int	printed;
+	int	type;
 	int	minus;
 	int	zero;
 	int	width;
 	int	dot;
 	int	precision;
-
-	int	len;
 };
 
 //int		ft_printf(const char *format, ...);
