@@ -28,14 +28,14 @@ int		format_parser(const char *format, va_list args)
 		{
 			i++;
 			i = flag_parser(format, i, &flags, args);
-			if (is_type(format[i])) //ft_is_in_type_list
-				count += ft_print_format((char)flags.type, flags, args); //ft_treatment
+			if (is_type(format[i]))
+				count += ft_print_format((char)flags.type, flags, args);
 			else if (format[i])
-				count += ft_print_char(format[i]); //ft_putchar
+				count += ft_putchar(format[i]);
 		}
 		else if (format[i] != '%')
 		{
-			count += ft_print_char(format[i]); //ft_putchar;
+			count += ft_putchar(format[i]);
 			i++;
 		}
 	}
@@ -48,16 +48,16 @@ int		flag_parser(const char *format, int i, t_struct *flags, va_list args)
 	{
 		if (!ft_isdigit(format[i]) && !is_type(format[i]) && !is_flag(format[i]))
 			break ;
-		if (format[i] == '0'&& flags->width == 0 && flags->minus == 0)
+		if (format[i] == '0' && flags->width == 0 && flags->minus == 0)
 			flags->zero = 1;
 		if (format[i] == '.')
-			i = parse_dot(format, i, flags, args); //ft_flag_dot
+			i = parse_dot(format, i, flags, args);
 		if (format[i] == '-')
-			*flags = parse_minus(*flags); // ft_flag_minus
+			*flags = parse_minus(*flags);
 		if (format[i] == '*')
-			*flags = parse_star_width(*flags, args); //ft_flag_width(args, *flags)
+			*flags = parse_star_width(*flags, args);
 		if (ft_isdigit(format[i]))
-			*flags = parse_flag_digit(*flags, format[i]); //ft_flag_digit(save[i], *flags)
+			*flags = parse_flag_digit(*flags, format[i]);
 		if (is_type(format[i]))
 		{
 			flags->type = format[i];
@@ -77,7 +77,7 @@ int		ft_printf(const char *format, ...)
 	format_cp = ft_strdup(format);
 	count = 0;
 	va_start(args, format);
-	count += ft_treat_save(format_cp, args);
+	count += format_parser(format_cp, args);
 	va_end(args);
 	free((char*)format_cp);
 	return (count);
