@@ -40,6 +40,11 @@ int			is_type(int c);
 int			is_flag(int c);
 int			ft_print_format(int c, t_struct flags, va_list args);
 
+t_struct	parse_minus(t_struct flags);
+t_struct	parse_digit(t_struct flags, char c);
+t_struct	parse_width(t_struct flags, va_list args);
+int			parse_dot(const char *format, int i, t_struct *flags, va_list args);
+
 int			format_parser(const char *format, va_list args);
 int			flag_parser(const char *format, int i, t_struct *flags, va_list args);
 

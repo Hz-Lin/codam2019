@@ -55,9 +55,9 @@ int		flag_parser(const char *format, int i, t_struct *flags, va_list args)
 		if (format[i] == '-')
 			*flags = parse_minus(*flags);
 		if (format[i] == '*')
-			*flags = parse_star_width(*flags, args);
+			*flags = parse_width(*flags, args);
 		if (ft_isdigit(format[i]))
-			*flags = parse_flag_digit(*flags, format[i]);
+			*flags = parse_digit(*flags, format[i]);
 		if (is_type(format[i]))
 		{
 			flags->type = format[i];
