@@ -49,16 +49,3 @@ int		ft_put_part_int(char *str, t_struct flags)
 	}
 	return (count);
 }
-
-int		ft_putstrprec(char *str, int len)
-{
-	int	count;
-
-	count = 0;
-	while (str[count] && count < len)
-	{
-		ft_putchar(str[count]);
-		count++;
-	}
-	return (count);
-}

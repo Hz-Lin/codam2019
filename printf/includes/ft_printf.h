@@ -47,11 +47,15 @@ int			format_parser(const char *format, va_list args);
 int			flag_parser(const char *format, int i, t_struct *flags, va_list args);
 
 int			ft_putchar(int c);
-int			ft_print_char(char c, t_struct flags);
+int			ft_putstrprec(char *str, int len);
 int			cal_width(int width, int minus, int zero);
+char		*ft_str_tolower(char *str);
 
+int			ft_print_char(char c, t_struct flags);
 int			ft_print_str(char *str, t_struct flags);
 int			ft_put_part_int(char *str, t_struct flags);
-int			ft_putstrprec(char *str, int len);
+
+
+int			ft_print_percent(t_struct flags);
 
 #endif

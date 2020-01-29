@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_print_char.c                                    :+:    :+:            */
+/*   ft_print_percent.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/22 16:04:17 by hlin          #+#    #+#                 */
-/*   Updated: 2020/01/22 16:04:18 by hlin          ########   odam.nl         */
+/*   Created: 2020/01/29 10:36:27 by hlin          #+#    #+#                 */
+/*   Updated: 2020/01/29 10:36:31 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
-int		ft_print_char(char c, t_struct flags)
+int		ft_print_percent(t_struct flags)
 {
-	int		count;
+	int	count;
 
 	count = 0;
 	if (flags.minus == 1)
 	{
-		ft_putchar(c);
-		count = cal_width(flags.width, 1, 0);
+		count += ft_putstrprec("%", 1);
 	}
+	count += cal_width(flags.width, 1, flags.zero);
 	if (flags.minus == 0)
 	{
-		ft_putchar(c);
+		count += ft_putstrprec("%", 1);
 	}
-	return (count + 1);
+	return (count);
 }
