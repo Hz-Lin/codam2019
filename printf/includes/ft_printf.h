@@ -58,4 +58,5 @@ int			ft_put_part_int(char *str, t_struct flags);
 
 int			ft_print_percent(t_struct flags);
 
+int			ft_print_int(int i, t_struct flags);
 #endif

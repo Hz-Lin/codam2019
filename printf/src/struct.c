@@ -22,7 +22,7 @@ t_struct	ft_struct_init(void)
 	flags.width = 0;
 	flags.minus = 0;
 	flags.zero = 0;
-	flags.dot = 0;
+	flags.dot = -1;
 	flags.star =
 	flags.precision = 0;
 	return (flags);
