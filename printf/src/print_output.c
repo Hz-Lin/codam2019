@@ -18,12 +18,12 @@ int		ft_putchar(int c)
 	return (1);
 }
 
-int		ft_putstrprec(char *str, int len)
+int		ft_putstr_prec(char *str, int prec)
 {
 	int	count;
 
 	count = 0;
-	while (str[count] && count < len)
+	while (str[count] && count < prec)
 	{
 		ft_putchar(str[count]);
 		count++;
@@ -31,12 +31,12 @@ int		ft_putstrprec(char *str, int len)
 	return (count);
 }
 
-int		cal_width(int width, int minus, int zero)
+int		ft_put_spacezero(int width, int str_len, int zero)
 {
 	int		count;
 
 	count = 0;
-	while (width > minus)
+	while (width > str_len)
 	{
 		if (zero)
 			ft_putchar('0');

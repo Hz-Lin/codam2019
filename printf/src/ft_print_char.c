@@ -19,13 +19,9 @@ int		ft_print_char(char c, t_struct flags)
 
 	count = 0;
 	if (flags.minus == 1)
-	{
 		ft_putchar(c);
-		count = cal_width(flags.width, 1, 0);
-	}
+	count = ft_put_spacezero(flags.width, 1, 0);
 	if (flags.minus == 0)
-	{
 		ft_putchar(c);
-	}
 	return (count + 1);
 }

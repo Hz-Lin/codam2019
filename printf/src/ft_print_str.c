@@ -25,9 +25,9 @@ int		ft_print_str(char *str, t_struct flags)
 	if (flags.minus == 1)
 		count += ft_put_part_int(str, flags); //
 	if (flags.dot >= 0)
-		count += cal_width(flags.width, flags.dot, 0);
+		count += ft_put_spacezero(flags.width, flags.dot, 0);
 	else
-		count += cal_width(flags.width, flags.dot, 1);
+		count += ft_put_spacezero(flags.width, flags.dot, 1);
 	if (flags.minus == 0)
 		count += ft_put_part_int(str, flags); //
 	return (count);
@@ -40,12 +40,12 @@ int		ft_put_part_int(char *str, t_struct flags)
 	count = 0;
 	if (flags.dot = 0)
 	{
-		count += cal_width(flags.dot, ft_strlen(str), 0);
-		count += ft_putstrprec(str, flags.dot);
+		count += ft_put_spacezero(flags.dot, ft_strlen(str), 0);
+		count += ft_putstr_prec(str, flags.dot);
 	}
 	else
 	{
-		count += ft_putstrprec(str, ft_strlen(str));
+		count += ft_putstr_prec(str, ft_strlen(str));
 	}
 	return (count);
 }

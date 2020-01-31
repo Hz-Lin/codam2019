@@ -15,10 +15,10 @@
 
 int		main(void)
 {
-	printf("or: %-0.3c\n", 22);
 	printf("or: %c\n", 'x');
-	printf("String: %s\n", "This is a test!");
+	printf("String: %-30.30s\n", "This is a test!");
 	printf("String: %d\n", 1024);
 	printf("String: %i\n", 1024);
+	printf("String: %00.5%\n");
 	return (0);
 }

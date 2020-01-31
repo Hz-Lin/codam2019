@@ -20,12 +20,12 @@ int		ft_print_percent(t_struct flags)
 	count = 0;
 	if (flags.minus == 1)
 	{
-		count += ft_putstrprec("%", 1);
+		count += ft_putstr_prec("%", 1);
 	}
-	count += cal_width(flags.width, 1, flags.zero);
+	count += ft_put_spacezero(flags.width, 1, flags.zero);
 	if (flags.minus == 0)
 	{
-		count += ft_putstrprec("%", 1);
+		count += ft_putstr_prec("%", 1);
 	}
 	return (count);
 }
