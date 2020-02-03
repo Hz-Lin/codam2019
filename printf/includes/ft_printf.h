@@ -48,7 +48,7 @@ int			flag_parser(const char *format, int i, t_struct *flags, va_list args);
 
 int			ft_putchar(int c);
 int			ft_putstr_prec(char *str, int len);
-int			ft_put_spacezero(int width, int str_len, int zero);
+int			ft_spaceholder(int width, int str_len, int zero);
 char		*ft_str_tolower(char *str);
 
 int			ft_print_char(char c, t_struct flags);
@@ -58,4 +58,6 @@ int			ft_put_part_int(char *str, t_struct flags);
 int			ft_print_percent(t_struct flags);
 
 int			ft_print_int(int i, t_struct flags);
+int			ft_print_uint(unsigned int n, t_struct flags);
+
 #endif

@@ -15,10 +15,13 @@
 
 int		main(void)
 {
-	printf("or: %c\n", 'x');
-	printf("String: %-30.30s\n", "This is a test!");
-	printf("String: %d\n", 1024);
-	printf("String: %i\n", 1024);
-	printf("String: %00.5%\n");
+	unsigned int num = 0x80000000;
+
+	// printf("or: %c\n", 'x');
+	// printf("String: %-30.30s\n", "This is a test!");
+	// printf("String: %d\n", 1024);
+	// printf("String: %i\n", 1024);
+	// printf("String: %00.5%\n");
+	printf("%%d shows: %d, %%u shows: %u\n", num, num);
 	return (0);
 }

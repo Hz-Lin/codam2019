@@ -22,7 +22,7 @@ int		ft_print_percent(t_struct flags)
 	{
 		count += ft_putstr_prec("%", 1);
 	}
-	count += ft_put_spacezero(flags.width, 1, flags.zero);
+	count += ft_spaceholder(flags.width, 1, flags.zero);
 	if (flags.minus == 0)
 	{
 		count += ft_putstr_prec("%", 1);

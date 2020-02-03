@@ -20,7 +20,7 @@ static int	print_intstr(char *str, int n, t_struct flags)
 	if (n < 0 && flags.dot >= 0)
 		ft_putchar('-');
 	if (flags.dot >= 0)
-		count += cal_width((flags.dot - 1), ((int)ft_strlen(str) - 1), 1);
+		count += ft_spaceholder((flags.dot - 1), ((int)ft_strlen(str) - 1), 1);
 	count += ft_putstrprec(str, (int)ft_strlen(str));
 	return (count);
 }
@@ -37,11 +37,11 @@ static int	print_intstr_struct(char *str, int n, t_struct flags)
 	if (flags.dot >= 0)
 	{
 		flags.width -= flags.dot;
-		count += cal_width(flags.width, 0, 0);
+		count += ft_spaceholder(flags.width, 0, 0);
 	}
 	else
 	{
-		count += cal_width(flags.width, (int)ft_strlen(str), flags.zero);
+		count += ft_spaceholder(flags.width, (int)ft_strlen(str), flags.zero);
 	}
 	if (flags.minus == 0)
 		count += print_intstr(str, n, flags);
@@ -58,7 +58,7 @@ int			ft_print_int(int n_int, t_struct flags)
 	count = 0;
 	if (flags.dot == 0 && n_int == 0)
 	{
-		count += cal_width(flags.width, 0, 0);
+		count += ft_spaceholder(flags.width, 0, 0);
 		return (count);
 	}
 	if (n_int < 0 && (flags.dot >= 0 || flags.zero == 1))
