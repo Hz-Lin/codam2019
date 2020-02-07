@@ -79,7 +79,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (res);
 }
 
-int		is_returned(char *str)
+int		ft_is_eol(char *str)
 {
 	int	i;
 
@@ -95,4 +95,25 @@ int		is_returned(char *str)
 		i++;
 	}
 	return (0);
+}
+
+char	ft_setline(char *s)
+{
+	int		i;
+	char	*res;
+
+	i = 0;
+	while (s[i] && s[i] != '\n')
+		i++;
+	res = malloc(sizeof(char) * (i + 1));
+	if (!res)
+		return (0);
+	i = 0;
+	while (s[i] && s[i] != '\n')
+	{
+		res[i] = s[i];
+		i++;
+	}
+	res[i] = '\n';
+	return (res);
 }
