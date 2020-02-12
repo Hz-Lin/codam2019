@@ -12,11 +12,13 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+int		ft_strlen(const char *s)
 {
-	size_t len;
+	int len;
 
 	len = 0;
+	if (!s)
+		return (0);
 	while (s[len] != '\0')
 	{
 		len++;
@@ -24,9 +26,9 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dst, const void *src, int len)
 {
-	size_t				i;
+	int					i;
 	unsigned char		*ptr_dst;
 	const unsigned char	*ptr_src;
 
@@ -54,7 +56,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
+	int		i;
 	char	*res;
 
 	if (!s1 || !s2)
@@ -97,7 +99,7 @@ int		ft_is_eol(char *str)
 	return (0);
 }
 
-char	ft_setline(char *s)
+char	*ft_setline(char *s)
 {
 	int		i;
 	char	*res;
