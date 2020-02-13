@@ -17,8 +17,6 @@ int		ft_strlen(const char *s)
 	int len;
 
 	len = 0;
-	if (!s)
-		return (0);
 	while (s[len] != '\0')
 	{
 		len++;
@@ -26,32 +24,65 @@ int		ft_strlen(const char *s)
 	return (len);
 }
 
-void	*ft_memmove(void *dst, const void *src, int len)
+char	*ft_strchr(const char *s, int c)
 {
-	int					i;
-	unsigned char		*ptr_dst;
-	const unsigned char	*ptr_src;
+	if (s == NULL)
+		return (NULL);
+	while (*s != c)
+	{
+		if (*s == '\0')
+		{
+			return (NULL);
+		}
+		s++;
+	}
+	return ((char*)s);
+}
 
-	ptr_dst = (unsigned char*)dst;
-	ptr_src = (unsigned char*)src;
+char	*ft_strdup(const char *s)
+{
+	int		len;
+	int		i;
+	char	*dup;
+
+	len = ft_strlen(s);
 	i = 0;
-	if (ptr_src == NULL && ptr_src == ptr_dst)
-		return (dst);
-	if (ptr_src < ptr_dst)
-		while (i < len)
-		{
-			i++;
-			ptr_dst[len - i] = ptr_src[len - i];
-		}
-	else
-		while (len > 0)
-		{
-			*(ptr_dst) = *(ptr_src);
-			ptr_dst++;
-			ptr_src++;
-			len--;
-		}
-	return (dst);
+	dup = (char*)malloc(sizeof(*dup) * (len + 1));
+	if (dup == NULL)
+		return (NULL);
+	while (i < len)
+	{
+		dup[i] = s[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
+}
+
+char	*ft_substr(char const *s, int start, int len)
+{
+	int		i;
+	int		s_len;
+	char	*res;
+
+	i = 0;
+	if (s == NULL)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (start > s_len)
+		return (ft_strdup(""));
+	if (len > s_len - start)
+		len = s_len - start;
+	res = (char*)malloc(sizeof(*res) * (len + 1));
+	if (res == NULL)
+		return (NULL);
+	while (s[i] != '\0' && i < len && s_len > start)
+	{
+		res[i] = s[start + i];
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -78,44 +109,5 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 	}
 	res[i] = '\0';
-	return (res);
-}
-
-int		ft_is_eol(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-	{
-		if (str[i] == '\n')
-		{
-			return (1);
-		}
-		i++;
-	}
-	return (0);
-}
-
-char	*ft_setline(char *s)
-{
-	int		i;
-	char	*res;
-
-	i = 0;
-	while (s[i] && s[i] != '\n')
-		i++;
-	res = malloc(sizeof(char) * (i + 1));
-	if (!res)
-		return (0);
-	i = 0;
-	while (s[i] && s[i] != '\n')
-	{
-		res[i] = s[i];
-		i++;
-	}
-	res[i] = '\n';
 	return (res);
 }

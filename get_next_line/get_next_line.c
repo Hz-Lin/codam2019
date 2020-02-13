@@ -12,60 +12,83 @@
 
 #include "get_next_line.h"
 
-char	*ft_begin_nxtline(char *s)
+static int	read_buffer(int fd, char **remain)
 {
-	int		i;
-	int		j;
-	char	*res;
+	static char	buf[BUFFER_SIZE + 1];
+	int			read_return;
 
-	i = 0;
-	j = 0;
-	while (s[i] && s[i] != '\n')
-		i++;
-	if (!s[i])
+	read_return = 1;
+	while (read_return)
 	{
-		free(s);
-		return (0);
+		read_return = read(fd, buf, BUFFER_SIZE);
+		if (read_return < 0)
+			return (-1);
+		buf[read_return] = '\0';
+		*remain = ft_strjoin(*remain, buf);
+		if (*remain == NULL)
+			return (-1);
+		if (ft_strchr(*remain, '\n'))
+			break ;
 	}
-	res = malloc(sizeof(char) * (ft_strlen(s) - i + 1));
-	if (!res)
+	if (read_return > 0)
+		return (1);
+	else
 		return (0);
-	i++;
-	while (s[i])
-	{
-		res[j] = s[i];
-		i++;
-		j++;
-	}
-	res[j] = '\0';
-	free(s);
+}
+
+static int	find_end_index(char *remain)
+{
+	int	end;
+
+	end = 0;
+	while (remain[end] != '\n' && remain[end] != '\0')
+		end++;
+	return (end);
+}
+
+static int	extract_line(char **remain, char **line)
+{
+	int		end;
+	int		res;
+	char	*temp;
+
+	end = find_end_index(*remain);
+	*line = ft_substr(*remain, 0, end);
+	temp = *remain;
+	*remain = ft_substr(temp, end + 1, ft_strlen(temp));
+	if (temp[end] == '\0')
+		res = 0;
+	else
+		res = 1;
+	free(temp);
 	return (res);
 }
 
-int		get_next_line(int fd, char **line)
+int			get_next_line(int fd, char **line)
 {
-	char		*buf;
-	static char	*save;
-	int			rtn;
+	static char	*rest;
+	int			ret;
 
-	rtn = 1;
-	if (!line || BUFFER_SIZE <= 0)
+	if (fd < 0 || line == NULL || read(fd, 0, 0) == -1)
 		return (-1);
-	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buf)
+	if (rest == NULL)
+		rest = ft_strdup("");
+	if (rest == NULL)
 		return (-1);
-	while (!ft_is_eol(save) && rtn != 0)
+	ret = read_buffer(fd, &rest);
+	if (ret < 0)
 	{
-		rtn = read(fd, buf, BUFFER_SIZE);
-		if (rtn == -1)
-			return (-1);
-		buf[rtn] = '\0';
-		save = ft_strjoin(save, buf);
+		free(rest);
+		rest = NULL;
 	}
-	free(buf);
-	*line = ft_setline(save);
-	save = ft_begin_nxtline(save);
-	if (rtn == 0)
-		return (0);
-	return (1);
+	else
+	{
+		ret = extract_line(&rest, line);
+		if (ret == 0)
+		{
+			free(rest);
+			rest = NULL;
+		}
+	}
+	return (ret);
 }

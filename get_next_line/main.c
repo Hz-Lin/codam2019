@@ -16,9 +16,8 @@
 
 int		main(int argc, char **argv)
 {
-	int		i;
 	int		fd;
-	int		gnl_re;
+	int		ret;
 	char	*line;
 
 	if (argc != 2)
@@ -29,27 +28,23 @@ int		main(int argc, char **argv)
 	else
 	{
 		printf("BUFFER_SIZE: %d\n", BUFFER_SIZE);
+		ret = 1;
 		fd = open(argv[1], O_RDONLY);
-		i = 0;
-		if (fd < 0)
+		while (ret > 0)
 		{
-			printf("open failed");
-			return (-1);
-		}
-		while ((gnl_re = get_next_line(fd, &line)) == 1)
-		{
+			ret = get_next_line(0, &line);
+			printf("%d, %d\n", ret, fd);
 			printf("%s\n", line);
-			printf("gnl_re: %d\n\n", gnl_re);
-			free(line);
+			printf("ret: %d\n\n", ret);
 		}
-		if (gnl_re == -1)
+		if (ret == -1)
 			printf("error\n");
-		else if (gnl_re == 0)
+		else if (ret == 0)
 		{
-			printf("gnl_re: %d\n EOF\n", gnl_re);
-			free(line);
+			printf("gnl_re: %d\n EOF\n", ret);
 		}
+		free(line);
 		close(fd);
 	}
-	return (0);
+	return (1);
 }
