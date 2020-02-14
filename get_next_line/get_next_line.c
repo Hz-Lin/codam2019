@@ -66,28 +66,28 @@ static int	extract_line(char **remain, char **line)
 
 int			get_next_line(int fd, char **line)
 {
-	static char	*rest;
+	static char	*remain;
 	int			ret;
 
 	if (fd < 0 || line == NULL || read(fd, 0, 0) == -1)
 		return (-1);
-	if (rest == NULL)
-		rest = ft_strdup("");
-	if (rest == NULL)
+	if (remain == NULL)
+		remain = ft_strdup("");
+	if (remain == NULL)
 		return (-1);
-	ret = read_buffer(fd, &rest);
+	ret = read_buffer(fd, &remain);
 	if (ret < 0)
 	{
-		free(rest);
-		rest = NULL;
+		free(remain);
+		remain = NULL;
 	}
 	else
 	{
-		ret = extract_line(&rest, line);
+		ret = extract_line(&remain, line);
 		if (ret == 0)
 		{
-			free(rest);
-			rest = NULL;
+			free(remain);
+			remain = NULL;
 		}
 	}
 	return (ret);

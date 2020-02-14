@@ -28,20 +28,19 @@ int		main(int argc, char **argv)
 	else
 	{
 		printf("BUFFER_SIZE: %d\n", BUFFER_SIZE);
-		ret = 1;
 		fd = open(argv[1], O_RDONLY);
-		while (ret > 0)
-		{
-			ret = get_next_line(0, &line);
-			printf("%d, %d\n", ret, fd);
-			printf("%s\n", line);
-			printf("ret: %d\n\n", ret);
-		}
+		ret = get_next_line(fd, &line);
 		if (ret == -1)
 			printf("error\n");
 		else if (ret == 0)
 		{
-			printf("gnl_re: %d\n EOF\n", ret);
+			printf("EOF\n");
+		}
+		while (ret > 0)
+		{
+			ret = get_next_line(fd, &line);
+			printf("%s\n", line);
+			printf("ret: %d\n", ret);
 		}
 		free(line);
 		close(fd);
