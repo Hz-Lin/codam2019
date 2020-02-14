@@ -29,18 +29,18 @@ int		main(int argc, char **argv)
 	{
 		printf("BUFFER_SIZE: %d\n", BUFFER_SIZE);
 		fd = open(argv[1], O_RDONLY);
-		ret = get_next_line(fd, &line);
-		if (ret == -1)
-			printf("error\n");
-		else if (ret == 0)
-		{
-			printf("EOF\n");
-		}
+		ret = 1;
 		while (ret > 0)
 		{
 			ret = get_next_line(fd, &line);
 			printf("%s\n", line);
 			printf("ret: %d\n", ret);
+		}
+		if (ret == -1)
+			printf("error\n");
+		else if (ret == 0)
+		{
+			printf("EOF\n");
 		}
 		free(line);
 		close(fd);
