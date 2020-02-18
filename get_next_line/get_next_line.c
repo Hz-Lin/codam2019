@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-static int	read_buffer(int fd, char **remain)
+static int	read_buffer(int fd, char **file)
 {
 	static char	buf[BUFFER_SIZE + 1];
 	int			read_return;
@@ -24,10 +24,10 @@ static int	read_buffer(int fd, char **remain)
 		if (read_return < 0)
 			return (-1);
 		buf[read_return] = '\0';
-		*remain = ft_strjoin(*remain, buf);
-		if (*remain == NULL)
+		*file = ft_strjoin(*file, buf);
+		if (*file == NULL)
 			return (-1);
-		if (ft_strchr(*remain, '\n'))
+		if (ft_strchr(*file, '\n'))
 			break ;
 	}
 	if (read_return > 0)
@@ -36,26 +36,26 @@ static int	read_buffer(int fd, char **remain)
 		return (0);
 }
 
-static int	find_end_index(char *remain)
+static int	find_end_index(char *file)
 {
 	int	end;
 
 	end = 0;
-	while (remain[end] != '\n' && remain[end] != '\0')
+	while (file[end] != '\n' && file[end] != '\0')
 		end++;
 	return (end);
 }
 
-static int	extract_line(char **remain, char **line)
+static int	extract_line(char **file, char **line)
 {
 	int		end;
 	int		res;
 	char	*temp;
 
-	end = find_end_index(*remain);
-	*line = ft_substr(*remain, 0, end);
-	temp = *remain;
-	*remain = ft_substr(temp, end + 1, ft_strlen(temp));
+	end = find_end_index(*file);
+	*line = ft_substr(*file, 0, end);
+	temp = *file;
+	*file = ft_substr(temp, end + 1, ft_strlen(temp));
 	if (temp[end] == '\0')
 		res = 0;
 	else
@@ -66,28 +66,29 @@ static int	extract_line(char **remain, char **line)
 
 int			get_next_line(int fd, char **line)
 {
-	static char	*remain;
+	static char	*buffer[BUFFER_SIZE + 1];
+	int			read_res;
 	int			ret;
 
 	if (fd < 0 || line == NULL || read(fd, 0, 0) == -1)
 		return (-1);
-	if (remain == NULL)
-		remain = ft_strdup("");
-	if (remain == NULL)
+	if (file == NULL)
+		file = ft_strdup("");
+	if (file == NULL)
 		return (-1);
-	ret = read_buffer(fd, &remain);
+	ret = read_buffer(fd, &file);
 	if (ret < 0)
 	{
-		free(remain);
-		remain = NULL;
+		free(file);
+		file = NULL;
 	}
 	else
 	{
-		ret = extract_line(&remain, line);
+		ret = extract_line(&file, line);
 		if (ret == 0)
 		{
-			free(remain);
-			remain = NULL;
+			free(file);
+			file = NULL;
 		}
 	}
 	return (ret);
