@@ -26,90 +26,91 @@ int		ft_strlen(const char *s)
 	return (len);
 }
 
-char	*ft_strchr(const char *s, int c)
+int		parse(int result, char **line, char **s)
 {
-	if (s == NULL)
-		return (NULL);
-	while (*s != c)
+	if (result == 0 || result == 1)
 	{
-		if (*s == '\0')
+		*line = *s;
+	}
+	else
+	{
+		free(*s);
+	}
+	return (result);
+}
+
+int		free_buffer(char *buffer, int read_bytes, int full)
+{
+	int	i;
+
+	i = 0;
+	if (full == 0)
+	{
+		while (i < read_bytes && buffer[i] = '\n')
 		{
-			return (NULL);
+			buffer[i] = 0;
+			i++;
 		}
-		s++;
 	}
-	return ((char*)s);
-}
-
-char	*ft_strdup(const char *s)
-{
-	int		len;
-	int		i;
-	char	*dup;
-
-	len = ft_strlen(s);
-	i = 0;
-	dup = (char*)malloc(sizeof(*dup) * (len + 1));
-	if (dup == NULL)
-		return (NULL);
-	while (i < len)
+	else
 	{
-		dup[i] = s[i];
-		i++;
+		while (i < read_bytes)
+		{
+			buffer[i] = 0;
+			i++;
+		}
 	}
-	dup[i] = '\0';
-	return (dup);
+	
 }
 
-char	*ft_substr(char const *s, int start, int len)
-{
-	int		i;
-	int		s_len;
-	char	*res;
-
-	i = 0;
-	if (s == NULL)
-		return (NULL);
-	s_len = ft_strlen(s);
-	if (start > s_len)
-		return (ft_strdup(""));
-	if (len > s_len - start)
-		len = s_len - start;
-	res = (char*)malloc(sizeof(*res) * (len + 1));
-	if (res == NULL)
-		return (NULL);
-	while (s[i] != '\0' && i < len && s_len > start)
-	{
-		res[i] = s[start + i];
-		i++;
-	}
-	res[i] = '\0';
-	return (res);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*join_strbuff(char *s, char *buffer, int read_bytes)
 {
 	int		i;
 	char	*res;
 
-	if (!s1 || !s2)
-	{
-		return (NULL);
-	}
-	res = (char*)malloc((sizeof(*res)) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	res = (char*)malloc((sizeof(*res)) * (ft_strlen(s) + read_bytes + 1));
 	if (res == NULL)
 	{
 		return (NULL);
 	}
 	i = 0;
-	while (i < ft_strlen(s1) + ft_strlen(s2))
+	if (s)
 	{
-		if (i < ft_strlen(s1))
-			res[i] = s1[i];
-		else
-			res[i] = s2[i - ft_strlen(s1)];
+		while (s[i])
+		{
+			res[i] = s[i];
+			i++;
+		}
+	}
+	while (i < ft_strlen(s) + read_bytes)
+	{
+		res[i] = *buffer;
 		i++;
+		buffer++;
 	}
 	res[i] = '\0';
 	return (res);
+}
+
+void	move_buffer(char *buffer, int read_bytes)
+{
+	int	start;
+	int	i;
+
+	start = 0;
+	i = 0;
+	while (start < read_bytes && buffer[start] != '\n')
+		start++;
+	if (buffer[start] == '\n')
+		i++;
+	while (i < (read_bytes - start))
+	{
+		buffer[i] = buffer[start + 1];
+		i++;
+	}
+	while (i < read_bytes)
+	{
+		buffer[i] = 0;
+		i++;
+	}
 }

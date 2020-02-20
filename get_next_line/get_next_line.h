@@ -20,10 +20,13 @@
 # include <stdio.h>
 
 int		ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strdup(const char *s);
-char	*ft_substr(char const *s, int start, int len);
-char	*ft_strjoin(char const *s1, char const *s2);
+int		parse(int result, char **line, char **s);
+int		free_buffer(char *buffer, int read_bytes, int full);
+char	*join_strbuff(char *s, char *buffer, int read_bytes);
+void	move_buffer(char *buffer, int read_bytes);
+
+char	ft_realloc(char *s, char *buffer, int read_bytes);
+int		is_newline(char *buffer, char **line, int read_bytes);
 int		get_next_line(int fd, char **line);
 
 #endif

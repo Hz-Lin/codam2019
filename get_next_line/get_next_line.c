@@ -12,84 +12,59 @@
 
 #include "get_next_line.h"
 
-static int	read_buffer(int fd, char **file)
+char	ft_realloc(char *s, char *buffer, int read_bytes)
 {
-	static char	buf[BUFFER_SIZE + 1];
-	int			read_return;
+	char	*res;
 
-	read_return = 1;
-	while (read_return)
+	if (read_bytes == -1)
 	{
-		read_return = read(fd, buf, BUFFER_SIZE);
-		if (read_return < 0)
-			return (-1);
-		buf[read_return] = '\0';
-		*file = ft_strjoin(*file, buf);
-		if (*file == NULL)
-			return (-1);
-		if (ft_strchr(*file, '\n'))
-			break ;
+		free(s);
+		return (NULL);
 	}
-	if (read_return > 0)
-		return (1);
-	else
-		return (0);
-}
-
-static int	find_end_index(char *file)
-{
-	int	end;
-
-	end = 0;
-	while (file[end] != '\n' && file[end] != '\0')
-		end++;
-	return (end);
-}
-
-static int	extract_line(char **file, char **line)
-{
-	int		end;
-	int		res;
-	char	*temp;
-
-	end = find_end_index(*file);
-	*line = ft_substr(*file, 0, end);
-	temp = *file;
-	*file = ft_substr(temp, end + 1, ft_strlen(temp));
-	if (temp[end] == '\0')
-		res = 0;
-	else
-		res = 1;
-	free(temp);
+	if (read_bytes > ft_strlen(buffer))
+		read_bytes = ft_strlen(buffer);
+	res = join_strbuff(s, buffer, read_bytes);
+	free(s);
+	free_buffer(buffer, read_bytes, 0);
 	return (res);
 }
 
-int			get_next_line(int fd, char **line)
+int		is_newline(char *buffer, char **line, int read_bytes)
+{
+	int	i;
+
+	i = 0;
+	while (buffer[i] && i < read_bytes)
+	{
+		if (buffer[i] == '\n')
+		{
+			*line = ft_realloc(*line, buffer, read_bytes);
+			if (line == NULL)
+				return (-1);
+			move_buffer(buffer, read_bytes);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+int		get_next_line(int fd, char **line)
 {
 	static char	*buffer[BUFFER_SIZE + 1];
-	int			read_res;
+	int			read_bytes;
 	int			ret;
 
-	if (fd < 0 || line == NULL || read(fd, 0, 0) == -1)
-		return (-1);
-	if (file == NULL)
-		file = ft_strdup("");
-	if (file == NULL)
-		return (-1);
-	ret = read_buffer(fd, &file);
-	if (ret < 0)
+	read_bytes = BUFFER_SIZE;
+	*line = NULL;
+	while (read_bytes > 0)
 	{
-		free(file);
-		file = NULL;
+		ret = is_newline(buffer, line, read_bytes);
+		if (ret != 0)
+			return (ret);
+		*line = ft_realloc(*line, buffer, read_bytes);
+		read_bytes = read(fd, buffer, BUFFER_SIZE);
 	}
-	else
-	{
-		ret = extract_line(&file, line);
-		if (ret == 0)
-		{
-			free(file);
-			file = NULL;
-		}
-	}
-	return (ret);
+	*line = ft_realloc(*line, buffer, read_bytes);
+	return (read_bytes);
 }
