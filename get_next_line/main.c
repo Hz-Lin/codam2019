@@ -32,7 +32,7 @@ int		main(int argc, char **argv)
 		ret = 1;
 		while (ret > 0)
 		{
-			ret = get_next_line(0, &line);
+			ret = get_next_line(fd, &line);
 			printf("%s\n", line);
 			printf("ret: %d\n", ret);
 			free(line);
