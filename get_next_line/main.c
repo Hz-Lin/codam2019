@@ -32,18 +32,33 @@ int		main(int argc, char **argv)
 		ret = 1;
 		while (ret > 0)
 		{
-			ret = get_next_line(fd, &line);
+			ret = get_next_line(0, &line);
 			printf("%s\n", line);
 			printf("ret: %d\n", ret);
+			free(line);
 		}
 		if (ret == -1)
 			printf("error\n");
-		else if (ret == 0)
-		{
-			printf("EOF\n");
-		}
-		free(line);
 		close(fd);
 	}
 	return (1);
 }
+
+// int		main()
+// {
+// 	int		ret;
+// 	char	*line;
+
+// 	printf("BUFFER_SIZE: %d\n", BUFFER_SIZE);
+// 	ret = 1;
+// 	while (ret > 0)
+// 	{
+// 		ret = get_next_line(0, &line);
+// 		printf("%s\n", line);
+// 		printf("ret: %d\n", ret);
+// 		free(line);
+// 	}
+// 	if (ret == -1)
+// 		printf("error\n");
+// 	return (1);
+// }

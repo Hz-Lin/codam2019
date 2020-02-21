@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	ft_realloc(char *s, char *buffer, int read_bytes)
+char	*get_line(char *s, char *buffer, int read_bytes)
 {
 	char	*res;
 
@@ -25,11 +25,11 @@ char	ft_realloc(char *s, char *buffer, int read_bytes)
 		read_bytes = ft_strlen(buffer);
 	res = join_strbuff(s, buffer, read_bytes);
 	free(s);
-	free_buffer(buffer, read_bytes, 0);
+	free_buffer(buffer, read_bytes);
 	return (res);
 }
 
-int		is_newline(char *buffer, char **line, int read_bytes)
+int		get_newline(char *buffer, char **line, int read_bytes)
 {
 	int	i;
 
@@ -38,10 +38,10 @@ int		is_newline(char *buffer, char **line, int read_bytes)
 	{
 		if (buffer[i] == '\n')
 		{
-			*line = ft_realloc(*line, buffer, read_bytes);
+			*line = get_line(*line, buffer, read_bytes);
 			if (line == NULL)
 				return (-1);
-			move_buffer(buffer, read_bytes);
+			renew_buffer(buffer, read_bytes);
 			return (1);
 		}
 		i++;
@@ -51,20 +51,20 @@ int		is_newline(char *buffer, char **line, int read_bytes)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	*buffer[BUFFER_SIZE + 1];
+	static char	buffer[BUFFER_SIZE + 1];
 	int			read_bytes;
-	int			ret;
+	int			res;
 
 	read_bytes = BUFFER_SIZE;
 	*line = NULL;
 	while (read_bytes > 0)
 	{
-		ret = is_newline(buffer, line, read_bytes);
-		if (ret != 0)
-			return (ret);
-		*line = ft_realloc(*line, buffer, read_bytes);
+		res = get_newline(buffer, line, read_bytes);
+		if (res != 0)
+			return (res);
+		*line = get_line(*line, buffer, read_bytes);
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 	}
-	*line = ft_realloc(*line, buffer, read_bytes);
+	*line = get_line(*line, buffer, read_bytes);
 	return (read_bytes);
 }

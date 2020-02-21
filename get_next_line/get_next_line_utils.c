@@ -12,55 +12,28 @@
 
 #include "get_next_line.h"
 
-int		ft_strlen(const char *s)
+int		ft_strlen(char *s)
 {
 	int len;
 
 	len = 0;
 	if (s == NULL)
 		return (0);
-	while (s[len] != '\0')
-	{
+	while (s[len] && s[len] != '\n')
 		len++;
-	}
 	return (len);
 }
 
-int		parse(int result, char **line, char **s)
-{
-	if (result == 0 || result == 1)
-	{
-		*line = *s;
-	}
-	else
-	{
-		free(*s);
-	}
-	return (result);
-}
-
-int		free_buffer(char *buffer, int read_bytes, int full)
+void	free_buffer(char *buffer, int read_bytes)
 {
 	int	i;
 
 	i = 0;
-	if (full == 0)
+	while (i < read_bytes && buffer[i] != '\n')
 	{
-		while (i < read_bytes && buffer[i] = '\n')
-		{
-			buffer[i] = 0;
-			i++;
-		}
+		buffer[i] = 0;
+		i++;
 	}
-	else
-	{
-		while (i < read_bytes)
-		{
-			buffer[i] = 0;
-			i++;
-		}
-	}
-	
 }
 
 char	*join_strbuff(char *s, char *buffer, int read_bytes)
@@ -68,12 +41,10 @@ char	*join_strbuff(char *s, char *buffer, int read_bytes)
 	int		i;
 	char	*res;
 
-	res = (char*)malloc((sizeof(*res)) * (ft_strlen(s) + read_bytes + 1));
-	if (res == NULL)
-	{
-		return (NULL);
-	}
 	i = 0;
+	res = (char*)malloc((sizeof(*res)) * (ft_strlen(s) + read_bytes + 1));
+	if (!res)
+		return (NULL);
 	if (s)
 	{
 		while (s[i])
@@ -82,7 +53,7 @@ char	*join_strbuff(char *s, char *buffer, int read_bytes)
 			i++;
 		}
 	}
-	while (i < ft_strlen(s) + read_bytes)
+	while (i < (ft_strlen(s) + read_bytes))
 	{
 		res[i] = *buffer;
 		i++;
@@ -92,7 +63,7 @@ char	*join_strbuff(char *s, char *buffer, int read_bytes)
 	return (res);
 }
 
-void	move_buffer(char *buffer, int read_bytes)
+void	renew_buffer(char *buffer, int read_bytes)
 {
 	int	start;
 	int	i;
@@ -102,10 +73,10 @@ void	move_buffer(char *buffer, int read_bytes)
 	while (start < read_bytes && buffer[start] != '\n')
 		start++;
 	if (buffer[start] == '\n')
-		i++;
+		start++;
 	while (i < (read_bytes - start))
 	{
-		buffer[i] = buffer[start + 1];
+		buffer[i] = buffer[start + i];
 		i++;
 	}
 	while (i < read_bytes)

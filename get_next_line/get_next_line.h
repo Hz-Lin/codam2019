@@ -19,14 +19,13 @@
 # include <unistd.h>
 # include <stdio.h>
 
-int		ft_strlen(const char *s);
-int		parse(int result, char **line, char **s);
-int		free_buffer(char *buffer, int read_bytes, int full);
+int		ft_strlen(char *s);
+void	free_buffer(char *buffer, int read_bytes);
 char	*join_strbuff(char *s, char *buffer, int read_bytes);
-void	move_buffer(char *buffer, int read_bytes);
+void	renew_buffer(char *buffer, int read_bytes);
 
-char	ft_realloc(char *s, char *buffer, int read_bytes);
-int		is_newline(char *buffer, char **line, int read_bytes);
+char	*get_line(char *s, char *buffer, int read_bytes);
+int		get_newline(char *buffer, char **line, int read_bytes);
 int		get_next_line(int fd, char **line);
 
 #endif
