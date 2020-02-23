@@ -46,19 +46,17 @@ int		main(int argc, char **argv)
 
 // int		main()
 // {
+// 	int		fd;
 // 	int		ret;
 // 	char	*line;
 
 // 	printf("BUFFER_SIZE: %d\n", BUFFER_SIZE);
-// 	ret = 1;
-// 	while (ret > 0)
+// 	fd = 0;
+// 	printf("What is your username?\n");
+// 	while ((ret = get_next_line(STDIN_FILENO, &line)) != 0)
 // 	{
-// 		ret = get_next_line(0, &line);
-// 		printf("%s\n", line);
-// 		printf("ret: %d\n", ret);
+// 		printf("LINE: %s: RET: %d\n", line, ret);
 // 		free(line);
 // 	}
-// 	if (ret == -1)
-// 		printf("error\n");
 // 	return (1);
 // }
