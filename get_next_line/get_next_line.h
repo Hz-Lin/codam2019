@@ -23,9 +23,6 @@ int		ft_strlen(char *s);
 void	free_buffer(char *buffer, int read_bytes);
 char	*join_strbuff(char *s, char *buffer, int read_bytes);
 void	renew_buffer(char *buffer, int read_bytes);
-
-char	*get_line(char *s, char *buffer, int read_bytes);
-int		get_newline(char *buffer, char **line, int read_bytes);
 int		get_next_line(int fd, char **line);
 
 #endif

@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*get_line(char *s, char *buffer, int read_bytes)
+static char	*cat_line(char *s, char *buffer, int read_bytes)
 {
 	char	*res;
 
@@ -29,7 +29,7 @@ char	*get_line(char *s, char *buffer, int read_bytes)
 	return (res);
 }
 
-int		get_newline(char *buffer, char **line, int read_bytes)
+static int	is_whole_line(char *buffer, char **line, int read_bytes)
 {
 	int	i;
 
@@ -38,7 +38,7 @@ int		get_newline(char *buffer, char **line, int read_bytes)
 	{
 		if (buffer[i] == '\n')
 		{
-			*line = get_line(*line, buffer, read_bytes);
+			*line = cat_line(*line, buffer, read_bytes);
 			if (line == NULL)
 				return (-1);
 			renew_buffer(buffer, read_bytes);
@@ -49,22 +49,24 @@ int		get_newline(char *buffer, char **line, int read_bytes)
 	return (0);
 }
 
-int		get_next_line(int fd, char **line)
+int			get_next_line(int fd, char **line)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	int			read_bytes;
 	int			res;
 
+	if (fd < 0 || read(fd, 0, 0) == -1 || line == NULL)
+		return (-1);
 	read_bytes = BUFFER_SIZE;
 	*line = NULL;
 	while (read_bytes > 0)
 	{
-		res = get_newline(buffer, line, read_bytes);
+		res = is_whole_line(buffer, line, read_bytes);
 		if (res != 0)
 			return (res);
-		*line = get_line(*line, buffer, read_bytes);
+		*line = cat_line(*line, buffer, read_bytes);
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
 	}
-	*line = get_line(*line, buffer, read_bytes);
+	*line = cat_line(*line, buffer, read_bytes);
 	return (read_bytes);
 }
