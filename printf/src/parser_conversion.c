@@ -15,7 +15,7 @@
 
 int		is_type(int c)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u')
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' |  c == 'u')
 		return (1);
 	else if (c == 'x' || c == 'X' || c == '%')
 		return (1);
@@ -25,7 +25,7 @@ int		is_type(int c)
 
 int		is_flag(int c)
 {
-	if (c == '-' || c == ' ' || c == '0' || c == '.' || c == '*')
+	if (c == '-' || c == '0' || c == '.' || c == '*')
 		return (1);
 	else
 		return (0);
