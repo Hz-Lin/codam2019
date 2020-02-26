@@ -11,35 +11,20 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../libft/libft.h"
 
-int		format_parser(const char *format, va_list args)
+int		format_parser(const char *str, va_list args, t_flags *flags, int counts)
 {
 	int			i;
-	t_struct	flags;
-	int			count;
 
-	i = 0;
-	count = 0;
-	flags = ft_struct_init();
-	while (format[i])
+	i = 1;
+	while (is_type(str[i]) == 0 && str[i])
 	{
-		if (format[i] == '%' && format[i + 1])
-		{
-			i++;
-			i = flag_parser(format, i, &flags, args);
-			if (is_type(format[i]))
-				count += ft_print_format((char)flags.type, flags, args);
-			else if (format[i])
-				count += ft_putchar(format[i]);
-		}
-		else if (format[i] != '%')
-		{
-			count += ft_putchar(format[i]);
-			i++;
-		}
+		if (is_flag(str[i]) == 1 || ft_isdigit(str[i]) == 1)
+			i += flags_parser((str + i), flags, args);
+		else
+			break ;	
 	}
-	return (count);
+	return (i);
 }
 
 int		flag_parser(const char *format, int i, t_struct *flags, va_list args)

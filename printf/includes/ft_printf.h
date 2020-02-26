@@ -32,6 +32,9 @@ struct	s_flags
 int			ft_printf(const char *str, ...);
 int			ft_putchar(int c);
 
+t_flags		*ft_struct_init(t_flags *flags);
+void		ft_struct_print(t_flags *f); //for testing
+
 // t_args		ft_struct_init(void);
 // void		ft_struct_print(t_struct *f);
 

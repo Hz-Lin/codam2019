@@ -18,7 +18,7 @@ int		ft_putchar(int c)
 	return (1);
 }
 
-int	ft_printf(const char *str, ...)
+int		ft_printf(const char *str, ...)
 {
 	va_list	args;
 	t_flags	flags;

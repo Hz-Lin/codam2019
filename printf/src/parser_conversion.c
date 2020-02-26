@@ -11,11 +11,10 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../libft/libft.h"
 
 int		is_type(int c)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' |  c == 'u')
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' | c == 'u')
 		return (1);
 	else if (c == 'x' || c == 'X' || c == '%')
 		return (1);

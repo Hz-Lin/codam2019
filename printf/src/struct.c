@@ -11,36 +11,31 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include "../libft/libft.h"
 
-t_struct	ft_struct_init(void)
+t_flags	*ft_struct_init(t_flags *flags)
 {
-	t_struct	flags;
+	t_flags	flags;
 
-	flags.printed = 0;
-	flags.type = 0;
-	flags.width = 0;
-	flags.minus = 0;
-	flags.zero = 0;
-	flags.dot = -1;
-	flags.star =
-	flags.precision = 0;
+	flags->type = 0;
+	flags->min_width = 0;
+	flags->max_width = 0;
+	flags->precision = 0;
+	flags->left_align = 0;
+	flags->padding = ' ';
 	return (flags);
 }
 
-void		ft_struct_print(t_struct *f)
+void	ft_struct_print(t_flags *flags)
 {
-	printf("printed:    %d\n", f->printed);
-	printf("type:       %d\n", f->type);
-	printf("width:      %d\n", f->width);
-	printf("minus:      %d\n", f->minus);
-	printf("zero:       %d\n", f->zero);
-	printf("dot:        %d\n", f->dot);
-	printf("width:      %d\n", f->star);
-	printf("precision:  %d\n", f->precision);
+	printf("type:        %c\n", flags->type);
+	printf("min_width:   %d\n", flags->min_width);
+	printf("max_width:   %d\n", flags->max_width);
+	printf("precision:   %d\n", flags->precision);
+	printf("left_align:  %d\n", flags->left_align);
+	printf("padding:     %c\n", flags->padding);
 }
 
-// int			main(void)
+// int	main(void)
 // {
 // 	t_struct	*pf;
 
