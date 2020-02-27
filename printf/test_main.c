@@ -15,13 +15,20 @@
 
 int		main(void)
 {
-	unsigned int num = 0x80000000;
+	unsigned int num = 0x25a58;
+	char 			*ptr;
+	unsigned int	n;
 
-	// printf("or: %c\n", 'x');
-	// printf("String: %-30.30s\n", "This is a test!");
-	// printf("String: %d\n", 1024);
-	// printf("String: %i\n", 1024);
-	// printf("String: %00.5%\n");
-	printf("%%d shows: %d, %%u shows: %u\n", num, num);
+	ptr = "This is a test";
+	n = 56;
+	printf("%4c\n", 'x');
+	printf("%-2.3s\n", "123456789");
+	printf("%-10.7d\n", 123456);
+	printf("%10.7d\n", 123456);
+	printf("%-20p\n", ptr);
+	printf("%-10.7u\n", n);
+	printf("%-10.5x\n", num);
+	printf("%-10.7X\n", num);
+	// printf("%%d shows: %d, %%u shows: %u\n", num, num);
 	return (0);
 }

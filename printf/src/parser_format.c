@@ -12,9 +12,9 @@
 
 #include "../includes/ft_printf.h"
 
-int		format_parser(const char *str, va_list args, t_flags *flags, int counts)
+int		format_parser(const char *str, va_list args, t_flags *flags, int count)
 {
-	int			i;
+	int		i;
 
 	i = 1;
 	while (is_type(str[i]) == 0 && str[i])
@@ -22,13 +22,21 @@ int		format_parser(const char *str, va_list args, t_flags *flags, int counts)
 		if (is_flag(str[i]) == 1 || ft_isdigit(str[i]) == 1)
 			i += flags_parser((str + i), flags, args);
 		else
-			break ;	
+			break ;
 	}
+	if (is_type(str[i]) == 1)
+		flags->type = str[i];
+	if (str[i] == 0)
+		i--;
+	check_struc(flags, count);
 	return (i);
 }
 
-int		flag_parser(const char *format, int i, t_struct *flags, va_list args)
+int		flag_parser(const char *str, t_flags *flags, va_list args)
 {
+	int		i;
+
+	i = 1;
 	while (format[i])
 	{
 		if (!ft_isdigit(format[i]) && !is_type(format[i]) && !is_flag(format[i]))

@@ -33,6 +33,7 @@ int			ft_printf(const char *str, ...);
 int			ft_putchar(int c);
 
 t_flags		*ft_struct_init(t_flags *flags);
+void		check_struct(t_flags *flags, int count);
 void		ft_struct_print(t_flags *f); //for testing
 
 // t_args		ft_struct_init(void);

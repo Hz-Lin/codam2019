@@ -25,6 +25,22 @@ t_flags	*ft_struct_init(t_flags *flags)
 	return (flags);
 }
 
+void	check_struct(t_flags *flags, int count)
+{
+	if (flags->type == 0)
+		count = -1;
+	if (flags->max_width < 0)
+	{
+		flags->precision = 0;
+		flags->max_width = 0;
+	}
+	if (flags->min_width < 0)
+	{
+		flags->left_align = 1;
+		flags->min_width = flags->min_width * (-1);
+	}
+}
+
 void	ft_struct_print(t_flags *flags)
 {
 	printf("type:        %c\n", flags->type);
