@@ -37,41 +37,25 @@ int		flag_parser(const char *str, t_flags *flags, va_list args)
 	int		i;
 
 	i = 1;
-	while (format[i])
+	if (*str == '-')
 	{
-		if (!ft_isdigit(format[i]) && !is_type(format[i]) && !is_flag(format[i]))
-			break ;
-		if (format[i] == '0' && flags->width == 0 && flags->minus == 0)
-			flags->zero = 1;
-		if (format[i] == '.')
-			i = parse_dot(format, i, flags, args);
-		if (format[i] == '-')
-			*flags = parse_minus(*flags);
-		if (format[i] == '*')
-			*flags = parse_width(*flags, args);
-		if (ft_isdigit(format[i]))
-			*flags = parse_digit(*flags, format[i]);
-		if (is_type(format[i]))
-		{
-			flags->type = format[i];
-			break ;
-		}
-		i++;
+		flags->left_align = 1;
+		flags->padding = ' ';
 	}
+	else if (*str == '0' && flags->left_align == 0 && flags->precision == 0)
+		flags->padding == '0';
+	else if (*str == '.' && flags->precision == 0)
+	{
+		flags->precision = 1;
+		flags->padding = ' ';
+	}
+	else if (flags->precision == 1 && ft_isdigit(*str) == 1 && flags->max_width == 0)
+		flags->max_width = ft_atol(str, i);//
+	else if (flags->precision == 0 && ft_isdigit(*str) == 1 && flags->min_width == 0)
+		flags->min_width = ft_atol(str, i);//
+	else if (flags->precision == 1 && *str == '*' && flags->max_width == 0)
+		flags->max_width = va_arg(args, int);
+	else if (flags->precision == 0 && *str == '*' == 1 && flags->min_width == 0)
+		flags->min_width = va_arg(args, int);
 	return (i);
-}
-
-int		ft_printf(const char *format, ...)
-{
-	const char	*format_cp;
-	va_list		args;
-	int			count;
-
-	format_cp = ft_strdup(format);
-	count = 0;
-	va_start(args, format);
-	count += format_parser(format_cp, args);
-	va_end(args);
-	free((char*)format_cp);
-	return (count);
 }
