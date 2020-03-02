@@ -30,7 +30,7 @@ int		is_flag(int c)
 		return (0);
 }
 
-int		ft_print_format(int c, t_struct flags, va_list args)
+int		ft_print_format(int c, t_flags flags, va_list args)
 {
 	int		count;
 

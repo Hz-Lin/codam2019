@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-int		format_parser(const char *str, va_list args, t_flags *flags, int count)
+int		format_parser(const char *str, va_list args, t_flags *flags, int *count)
 {
 	int		i;
 
@@ -34,9 +34,9 @@ int		format_parser(const char *str, va_list args, t_flags *flags, int count)
 
 int		flag_parser(const char *str, t_flags *flags, va_list args)
 {
-	int		i;
+	int		size;
 
-	i = 1;
+	size = 1;
 	if (*str == '-')
 	{
 		flags->left_align = 1;
@@ -50,12 +50,12 @@ int		flag_parser(const char *str, t_flags *flags, va_list args)
 		flags->padding = ' ';
 	}
 	else if (flags->precision == 1 && ft_isdigit(*str) == 1 && flags->max_width == 0)
-		flags->max_width = ft_atol(str, i);//
+		flags->max_width = ft_atoi_long(str, &size);//
 	else if (flags->precision == 0 && ft_isdigit(*str) == 1 && flags->min_width == 0)
-		flags->min_width = ft_atol(str, i);//
+		flags->min_width = ft_atoi_long(str, &size);//
 	else if (flags->precision == 1 && *str == '*' && flags->max_width == 0)
 		flags->max_width = va_arg(args, int);
 	else if (flags->precision == 0 && *str == '*' == 1 && flags->min_width == 0)
 		flags->min_width = va_arg(args, int);
-	return (i);
+	return (size);
 }

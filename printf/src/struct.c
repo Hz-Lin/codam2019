@@ -25,7 +25,7 @@ t_flags	*ft_struct_init(t_flags *flags)
 	return (flags);
 }
 
-void	check_struct(t_flags *flags, int count)
+void	check_struct(t_flags *flags, int *count)
 {
 	if (flags->type == 0)
 		count = -1;

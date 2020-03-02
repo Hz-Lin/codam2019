@@ -29,15 +29,16 @@ struct	s_flags
 	char	padding;
 };
 
-int		ft_printf(const char *str, ...);
-int		ft_putchar(int c);
+int			ft_printf(const char *str, ...);
+int			ft_putchar(int c);
+long long	ft_atoi_long(char *str, int len);
 
-t_flags	*ft_struct_init(t_flags *flags);
-void	check_struct(t_flags *flags, int count);
-void	ft_struct_print(t_flags *f); //for testing
+t_flags		*ft_struct_init(t_flags *flags);
+void		check_struct(t_flags *flags, int *count);
+void		ft_struct_print(t_flags *f); //for testing
 
-int		format_parser(const char *str, va_list args, t_flags *flags, int count);
-int		flag_parser(const char *str, t_flags *flags, va_list args);
+int			format_parser(const char *str, va_list args, t_flags *flags, int *count);
+int			flag_parser(const char *str, t_flags *flags, va_list args);
 
 // t_args		ft_struct_init(void);
 // void		ft_struct_print(t_struct *f);

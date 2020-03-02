@@ -30,8 +30,9 @@ int		ft_printf(const char *str, ...)
 	{
 		if (*str == '%' && *(str + 1) != 0)
 		{
-			printf("%s\n", str);
-			// parser
+			printf("%s\n", str); //testing
+			str += format_parser(str, args, &flags, &count);
+			// print str
 		}
 		else
 		{
