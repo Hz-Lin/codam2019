@@ -59,3 +59,20 @@ int		flag_parser(const char *str, t_flags *flags, va_list args)
 		flags->min_width = va_arg(args, int);
 	return (size);
 }
+
+void	make_string(t_flags *flags, va_list args, int *count)
+{
+	char	*str;
+
+	str = NULL;
+	if (flags->type == 0)
+		return ;
+	if (flags->type == 'c' || flags->type == '%')
+	{
+		str = (char *)ft_calloc(2);
+		str[0] = flags->type;
+		if (flags->type == 'c')
+			str[0] = va_arg(args, int);
+		str[1] = 0;
+	}
+}

@@ -32,6 +32,7 @@ int		ft_printf(const char *str, ...)
 		{
 			printf("%s\n", str); //testing
 			str += format_parser(str, args, &flags, &count);
+			ft_struct_print(&flags);
 			// print str
 		}
 		else
