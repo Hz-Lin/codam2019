@@ -69,10 +69,27 @@ void	make_string(t_flags *flags, va_list args, int *count)
 		return ;
 	if (flags->type == 'c' || flags->type == '%')
 	{
-		str = (char *)ft_calloc(2);
+		str = (char *)ft_malloc_str(2);
 		str[0] = flags->type;
 		if (flags->type == 'c')
 			str[0] = va_arg(args, int);
 		str[1] = 0;
 	}
+}
+
+char	*ft_malloc_str(int len)
+{
+	char	*res;
+	int		i;
+
+	i = 0;
+	res = (char*)malloc(sizeof(char) * len);
+	if (res == NULL)
+		return (NULL);
+	while (i < len)
+	{
+		res[i] = 0;
+		i++;
+	}
+	return (res);
 }
