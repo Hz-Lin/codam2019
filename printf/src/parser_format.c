@@ -75,21 +75,19 @@ void	make_string(t_flags *flags, va_list args, int *count)
 			str[0] = va_arg(args, int);
 		str[1] = 0;
 	}
+	if (flags->type == 's')
+		str = ft_strdup(flags, va_arg(args, char*));
+	if (flags->type == 'n')
+		str = ft_itoa(flags, *count); //
+	if (flags->type == 'd' || flags->type == 'i')
+		str = ft_itoa(flags, va_arg(args, int)); //
+	if (flags->type == 'x'|| flags->type == 'X')
+		str = ft_ultoa(flags, va_arg(flags, unsigned int));
+	if (flags->type == 'u'|| flags->type == 'o')
+		str = ft_ultoa(flags, va_arg(flags, unsigned int));
+	if (flags->type == 'p')
+		str = ft_ultoa(flags, va_arg(flags, unsigned long));
+	ft_output(str, flags, count);
 }
 
-char	*ft_malloc_str(int len)
-{
-	char	*res;
-	int		i;
 
-	i = 0;
-	res = (char*)malloc(sizeof(char) * len);
-	if (res == NULL)
-		return (NULL);
-	while (i < len)
-	{
-		res[i] = 0;
-		i++;
-	}
-	return (res);
-}

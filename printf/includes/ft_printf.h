@@ -32,6 +32,7 @@ struct	s_flags
 int			ft_printf(const char *str, ...);
 int			ft_putchar(int c);
 long long	ft_atoi_long(char *str, int *size);
+char		*ft_malloc_str(int len);
 
 int			is_type(int c);
 int			is_flag(int c);
