@@ -22,6 +22,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+    - name: sonar build
+      run: build-wrapper-linux-x86-64 --out-dir build_wrapper_output_directory make clean all
+      working-directory: libft/libft
+    - name: test
+      run: ls libft/libft
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
