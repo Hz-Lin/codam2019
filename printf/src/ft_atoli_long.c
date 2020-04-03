@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_atol.c                                          :+:    :+:            */
+/*   ft_atoli_long.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/28 17:13:29 by hlin          #+#    #+#                 */
-/*   Updated: 2020/02/28 17:13:31 by hlin          ########   odam.nl         */
+/*   Created: 2020/02/28 17:13:29 by hlin           #+#    #+#                */
+/*   Updated: 2020/03/24 15:05:57 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 long long	ft_atoi_long(char *str, int *size)
 {
-	long long			negtive;
+	long long			negative;
 	unsigned long long	res;
 	int					i;
 
 	i = 0;
-	negtive = 1;
+	negative = 1;
 	res = 0;
 	while (str[i] && ((str[i] >= 9 && str[i] <= 13) || str[i] == ' '))
 		i++;
 	if (str[i] && (str[i] == '-' || str[i] == '+'))
 	{
 		if (str[i] == '-')
-			negtive = -1;
+			negative = -1;
 		i++;
 	}
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
@@ -35,5 +35,5 @@ long long	ft_atoi_long(char *str, int *size)
 		i++;
 	}
 	size += (i - 1);
-	return (res * negtive);
+	return (res * negative);
 }

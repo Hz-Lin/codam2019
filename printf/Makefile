@@ -5,8 +5,8 @@
 #                                                      +:+                     #
 #    By: hlin <marvin@codam.nl>                       +#+                      #
 #                                                    +#+                       #
-#    Created: 2019/12/10 11:22:31 by hlin          #+#    #+#                  #
-#    Updated: 2019/12/10 11:22:32 by hlin          ########   odam.nl          #
+#    Created: 2019/12/10 11:22:31 by hlin           #+#    #+#                 #
+#    Updated: 2020/03/24 14:41:57 by hlin          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libftprintf.a
 
 FLAGS = -Wall -Werror -Wextra
 
-SRC = src/ft_printf.c src/format_parser.c
+SRC = src/*.c
 
 OBJ = $(SRC:.c=.o)
 
