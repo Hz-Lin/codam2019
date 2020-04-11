@@ -482,3 +482,5 @@ docker run --cpu=.5 ubuntu
 docker run --memory=100m ubuntu
 # limits the amount of memory the container can use to 100 megabytes
 ```
+
+## Docker storage
