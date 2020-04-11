@@ -99,6 +99,8 @@ docker run -p <port-num-in-container> <port-num-on-Docker-host>/<protocol>
 docker run -p 8080:80/tcp -p 8080:80/udp
 ```
 
+![port mapping](image/PortMapping.png)
+
 ### Volume mapping
 
 ```bash
@@ -106,6 +108,8 @@ docker run -v <name-of-volume>:<path-of-file/>dir-mounted-on-container>:<options
 docker run -v /opt/datadir:/var/lib/mysql
 # options are optional, eg: ro, etc
 ```
+
+![volume mapping](image/VolumeMapping.png)
 
 ### Inspect container
 
@@ -245,6 +249,8 @@ If specify a parameter in console, the specified parameter will overwrite the de
 Create a configuration file in yml format. Then run a **docker-compose up** command the bring up the entire application stack.
 
 As all changes are always stored in the docker compose configuration file however this is all only applicable to running containers on a single Docker host.
+
+![Docker compose example](image/DockerCompose.png)
 
 ### Link
 
@@ -436,9 +442,13 @@ Docker engine refers to a host with Docker installed on it. When you install Doc
 - REST API server
 - Docker Deamon
 
+![Image of Docker Engine](DockerEngine0.png)
+
 **Docker Deamon** is a background process that manages Docker objects such as the images containers volumes and networks. The **Docker REST API** server is the SPI interface that programs can use to talk to the deamon and provide instructions. You could create your own tools using this REST API. And the **Docker CLI** is nothing but the command line interface that we've been using to perform actions such as running a container, stopping containers etc. It uses the REST API to interact with the Docker deamon.
 
-Note: the Docker CLI need not necessarily be on the same host. It could be on another system like a laptop and can still work with a remote Docker engine. 
+Note: the Docker CLI need not necessarily be on the same host. It could be on another system like a laptop and can still work with a remote Docker engine.
+
+![Image of Docker Engine](DockerEngine1.png)
 
 ```bash
 docker -H=<remote-docker-engine-address>:<port> <command>
@@ -450,6 +460,8 @@ docker -H=10.123.2.1:2375 run nginx
 
 Docker uses **namespace** to isolate workspace process. **Process ID**, **Network**, **InterProcess**, **Mount** and **Unix Timesharing systems** are created in their own namespace. Thereby providing isolation between containers.
 
+![Image of Containerization](image/containerization.png)
+
 #### Namespace - PID
 
 Whenever a Linux system boots up it starts with just one process with a process id of 1. This is the root process and kicks off all the other processes in the system. By the time the system boots up completely, we have a handful of processes running. This can be seen by running the **ps** command to list all the running processes.  
@@ -457,3 +469,16 @@ The process ids are unique and two processes cannot have the same PID. Now if we
 With PID namespaces each process can have multiple process ids associated with it. For example when the processes start int the container, it's actually just another set of processes on the base Linux system and it gets the next available PID. In this case 5 and 6. And they also get another PID starting with PID 1 in the container namespace which is only visible inside the container. So the container thinks that it has its own root process tree and so it is an independent system.  
 
 ![Image of Namespace - PID](image/PIDNamespaces.png)
+
+### cgroups
+
+The underlying Docker host as well as the containers share the same system resources such as CPU and memory. There is not restriction as to how much of a resource a container can use and hence a container may end up utilizing all of the resources on the underlying host. But there is a way to restrict the amount of CPU or memory a container can use.
+
+Docker uses **cgroups** or control groups to restrict the amount of hardware resources allocated to each container.
+
+```bash
+docker run --cpu=.5 ubuntu
+# the container does not take up more than 50 percent of the host CPU at any given time
+docker run --memory=100m ubuntu
+# limits the amount of memory the container can use to 100 megabytes
+```
