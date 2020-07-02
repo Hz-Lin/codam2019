@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   string_functions.c                                 :+:    :+:            */
+/*   test.c                                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: hlin <marvin@codam.nl>                       +#+                     */
+/*   By: evelina <evelina@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/03/13 11:00:35 by hlin           #+#    #+#                */
-/*   Updated: 2020/03/13 11:00:38 by hlin          ########   odam.nl         */
+/*   Created: 2020/06/19 00:18:24 by evelina       #+#    #+#                 */
+/*   Updated: 2020/06/19 00:22:13 by evelina       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+# include <stdio.h>
 
-
-#include "../includes/ft_printf.h"
-
-char	*ft_malloc_str(int len)
+int		main(void)
 {
-	char	*res;
-	int		i;
-
-	i = 0;
-	res = (char*)malloc(sizeof(char) * len);
-	if (res == NULL)
-		return (NULL);
-	while (i < len)
-	{
-		res[i] = 0;
-		i++;
-	}
-	return (res);
+	printf("%-7c\n", 'x');
+	printf("%7c\n", 'x');
+	return (0);
 }

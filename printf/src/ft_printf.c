@@ -3,20 +3,14 @@
 /*                                                        ::::::::            */
 /*   ft_printf.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: hlin <marvin@codam.nl>                       +#+                     */
+/*   By: evelina <evelina@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/02/25 13:41:21 by hlin          #+#    #+#                 */
-/*   Updated: 2020/02/25 13:41:23 by hlin          ########   odam.nl         */
+/*   Created: 2020/05/28 23:37:13 by evelina       #+#    #+#                 */
+/*   Updated: 2020/06/24 15:56:55 by evelina       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-int		ft_putchar(int c)
-{
-	ft_putchar_fd(c, 1);
-	return (1);
-}
 
 int		ft_printf(const char *str, ...)
 {
@@ -30,14 +24,13 @@ int		ft_printf(const char *str, ...)
 	{
 		if (*str == '%' && *(str + 1) != 0)
 		{
-			printf("%s\n", str); //testing
-			str += format_parser(str, args, &flags, &count);
-			ft_struct_print(&flags);
-			// print str
+			printf("%s\n", str);//testing
+			str += get_flags(str, args, &flags, &count);
+			struct_print(&flags);
 		}
 		else
 		{
-			count += ft_putchar(*str);
+			count += putchar(*str);
 		}
 		if (count == -1)
 			break ;

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   format_parser.c                                    :+:    :+:            */
+/*   struct.c                                           :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: hlin <marvin@codam.nl>                       +#+                     */
+/*   By: evelina <evelina@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/13 11:49:26 by hlin          #+#    #+#                 */
-/*   Updated: 2019/12/13 11:49:28 by hlin          ########   odam.nl         */
+/*   Created: 2020/05/28 23:39:06 by evelina       #+#    #+#                 */
+/*   Updated: 2020/06/24 14:02:14 by evelina       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-t_flags	*ft_struct_init(t_flags *flags)
+t_flags	*struct_init(t_flags *flags)
 {
 	t_flags	flags;
 
@@ -41,7 +41,7 @@ void	check_struct(t_flags *flags, int *count)
 	}
 }
 
-void	ft_struct_print(t_flags *flags)
+void	struct_print(t_flags *flags)
 {
 	printf("type:        %c\n", flags->type);
 	printf("min_width:   %d\n", flags->min_width);
@@ -50,13 +50,3 @@ void	ft_struct_print(t_flags *flags)
 	printf("left_align:  %d\n", flags->left_align);
 	printf("padding:     %c\n", flags->padding);
 }
-
-// int	main(void)
-// {
-// 	t_struct	*pf;
-
-// 	pf = NULL;
-// 	pf = ft_struct_init(pf);
-// 	ft_struct_print(pf);
-// 	return (0);
-// }
