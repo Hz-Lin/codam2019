@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_printf.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: evelina <evelina@student.codam.nl>           +#+                     */
+/*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/28 23:37:13 by evelina       #+#    #+#                 */
-/*   Updated: 2020/06/24 15:56:55 by evelina       ########   odam.nl         */
+/*   Updated: 2020/07/03 15:57:07 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int		ft_printf(const char *str, ...)
 		{
 			printf("%s\n", str);//testing
 			str += get_flags(str, args, &flags, &count);
-			struct_print(&flags);
+			struct_print(&flags); //testing
+			print_format(flags, args, &count);
 		}
 		else
 		{
