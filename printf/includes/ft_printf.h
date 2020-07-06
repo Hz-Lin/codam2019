@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/28 17:50:57 by evelina       #+#    #+#                 */
-/*   Updated: 2020/07/06 00:34:59 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/06 23:27:05 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ struct	s_flags
 
 int			ft_printf(const char *str, ...);
 
-t_flags		*struct_init(t_flags *flags);
+// void		struct_init(t_flags *flags);
 void		check_struct(t_flags *flags, int *count);
 void		struct_print(t_flags *flags);
 
@@ -53,9 +53,14 @@ char		*convert_s(const char *str, t_flags flags);
 
 int			get_base(char type);
 int			number_size(long long nb, int base, t_flags flags);
+void		padding_zero(char *str, int len);
 char		get_addchar(char type, int num);
-char		*number_to_str(t_flags flags, long long nb, int len, char *str);
+char		*assign_int(t_flags flags, long long nb, int len, char *str);
 char		*convert_int(t_flags flags, int nb);
-char		*convert_unsigned(t_flags flags, unsigned long nb);
+char		*convert_unsigned(t_flags flags, unsigned int nb);
+
+int			ul_size(unsigned long nb, int base, t_flags flags);
+char		*assign_ulong(t_flags flags, unsigned long nb, int len, char *str);
+char		*convert_ulong(t_flags flags, unsigned long nb);
 
 #endif

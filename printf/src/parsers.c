@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/01 23:25:28 by evelina       #+#    #+#                 */
-/*   Updated: 2020/07/06 00:00:22 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/06 23:26:41 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,17 @@ long long	ft_atol(const char *str, int *size)
 	return (res * neg);
 }
 
-int		get_flags(const char *str, va_list args, t_flags *flags, int *count)
+int			get_flags(const char *str, va_list args, t_flags *flags, int *count)
 {
 	int		i;
 
 	i = 1;
-	flags = struct_init(&flags);
+	flags->type = 0;
+	flags->min_width = 0;
+	flags->max_width = 0;
+	flags->precision = 0;
+	flags->left_align = 0;
+	flags->padding = ' ';
 	while (str[i] && is_type(str[i]) == 0)
 	{
 		if (is_flag(str[i]) == 1)
@@ -79,7 +84,7 @@ int		get_flags(const char *str, va_list args, t_flags *flags, int *count)
 	return (i);
 }
 
-int		flags_parser(t_flags *flags, const char *str, va_list args)
+int			flags_parser(t_flags *flags, const char *str, va_list args)
 {
 	int		size;
 

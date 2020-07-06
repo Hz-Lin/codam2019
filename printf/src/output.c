@@ -6,19 +6,19 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 15:57:44 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/06 00:35:07 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/06 23:22:49 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int			putchar(int c)
+int		putchar(int c)
 {
 	ft_putchar_fd(c, 1);
 	return (1);
 }
 
-int			putstr(const char *str, t_flags flags)
+int		putstr(const char *str, t_flags flags)
 {
 	int	count;
 	int	i;
@@ -94,11 +94,11 @@ void	print_format(t_flags flags, va_list args, int *count)
 	if (flags.type == 's')
 		str = convert_s(va_arg(args, char *), flags);
 	if (flags.type == 'd' || flags.type == 'i')
-		str = convert_d(flags, va_arg(args, int));
+		str = convert_int(flags, va_arg(args, int));
 	if (flags.type == 'x' || flags.type == 'X' || flags.type == 'u')
 		str = convert_unsigned(flags, va_arg(args, unsigned int));
 	if (flags.type == 'p')
-		str = convert_unsigned(flags, va_arg(args, unsigned long));
+		str = convert_ulong(flags, va_arg(args, unsigned long));
 	if (str == NULL || flags.type == 0)
 	{
 		*count = -1;

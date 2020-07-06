@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/28 23:37:13 by evelina       #+#    #+#                 */
-/*   Updated: 2020/07/03 15:57:07 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/06 23:28:24 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int		ft_printf(const char *str, ...)
 	{
 		if (*str == '%' && *(str + 1) != 0)
 		{
-			printf("%s\n", str);//testing
 			str += get_flags(str, args, &flags, &count);
 			struct_print(&flags); //testing
 			print_format(flags, args, &count);

@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 16:28:04 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/06 00:24:35 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/06 22:49:48 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	get_addchar(char type, int num)
 	return ('0');
 }
 
-char	*number_to_str(t_flags flags, long long nb, int len, char *str)
+char	*assign_int(t_flags flags, long long nb, int len, char *str)
 {
 	unsigned long long		n;
 	int						base;
@@ -80,8 +80,8 @@ char	*number_to_str(t_flags flags, long long nb, int len, char *str)
 	base = get_base(flags.type);
 	n = nb;
 	padding_zero(str, len);
-	if (nb == 0 && flags.precision == 0 && flags.max_width >= 0) //check why
-		str[0] = '0';
+	if (nb == 0 && flags.precision == 0 && flags.max_width >= 0)
+		str[0] = '0';//check why
 	while (n > 0 && len > 0)
 	{
 		str[len - 1] = (n % base) + get_addchar(flags.type, n % base);
