@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 16:28:04 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/06 22:49:48 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/08 13:44:19 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	padding_zero(char *str, int len)
 
 char	get_addchar(char type, int num)
 {
-	if (num > 10 && num <= 16)
+	if (num >= 10 && num <= 16)
 	{
 		if (type == 'x' || type == 'p')
 			return ('a' - 10);
