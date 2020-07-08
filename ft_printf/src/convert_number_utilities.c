@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 16:28:04 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/08 18:25:25 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/09 00:36:05 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,12 @@ char	*assign_int(t_flags flags, long long nb, int len, char *str)
 	base = get_base(flags.type);
 	n = nb;
 	padding_zero(str, len);
+	str[len] = 0;
+	if (nb < 0)
+	{
+		str[0] = '-';
+		n = -1 * nb;
+	}
 	if (nb == 0 && flags.precision == 0 && flags.max_width >= 0)
 		str[0] = '0';//check why
 	while (n > 0 && len > 0)
