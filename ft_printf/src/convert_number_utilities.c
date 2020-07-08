@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 16:28:04 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/08 13:44:19 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/08 18:25:25 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	padding_zero(char *str, int len)
 	int	i;
 
 	i = 0;
-	while (i < (len - 1))
+	while (i < len)
 	{
 		str[i] = '0';
 		i++;
