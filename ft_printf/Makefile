@@ -5,8 +5,8 @@
 #                                                      +:+                     #
 #    By: hlin <marvin@codam.nl>                       +#+                      #
 #                                                    +#+                       #
-#    Created: 2019/12/10 11:22:31 by hlin           #+#    #+#                 #
-#    Updated: 2020/03/24 14:41:57 by hlin          ########   odam.nl          #
+#    Created: 2019/12/10 11:22:31 by hlin          #+#    #+#                  #
+#    Updated: 2020/07/08 13:27:31 by hlin          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = libftprintf.a
 
 FLAGS = -Wall -Werror -Wextra
 
-SRC = src/*.c
+SRC = src/ft_printf.c src/struct.c src/parsers.c src/output.c src/convert_cs.c \
+src/convert_number.c src/convert_number_utilities.c src/convert_pointer.c
 
 OBJ = $(SRC:.c=.o)
 

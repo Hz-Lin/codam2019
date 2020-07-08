@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 16:20:22 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/06 23:02:06 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/08 13:27:14 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*convert_s(const char *str, t_flags flags)
 
 	len = 0;
 	i = 0;
-	if (str = NULL)
+	if (str == NULL)
 		return (convert_s("(null)", flags));
 	while (str[len])
 		len++;
