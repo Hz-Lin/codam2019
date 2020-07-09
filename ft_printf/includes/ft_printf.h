@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/28 17:50:57 by evelina       #+#    #+#                 */
-/*   Updated: 2020/07/09 14:21:45 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/09 14:27:49 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef struct s_flags	t_flags;
 
-struct	s_flags
+struct		s_flags
 {
 	char	type;
 	int		min_width;
