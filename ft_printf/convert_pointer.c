@@ -6,11 +6,11 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/06 12:37:37 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/09 14:01:10 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/10 00:40:10 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 int		ul_size(unsigned long nb, int base, t_flags flags)
 {

@@ -6,7 +6,7 @@
 #    By: hlin <marvin@codam.nl>                       +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/12/10 11:22:31 by hlin          #+#    #+#                  #
-#    Updated: 2020/07/09 14:31:14 by hlin          ########   odam.nl          #
+#    Updated: 2020/07/10 00:39:19 by hlin          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,24 +14,18 @@ NAME = libftprintf.a
 
 FLAGS = -Wall -Werror -Wextra
 
-SRC = src/ft_printf.c src/parsers_utilites.c src/parsers.c src/output.c \
-src/convert_cs.c src/convert_number.c src/convert_number_utilities.c \
-src/convert_pointer.c
+SRC = ft_printf.c parsers_utilites.c parsers.c output.c convert_cs.c \
+convert_number.c convert_number_utilities.c convert_pointer.c
 
 OBJ = $(SRC:.c=.o)
 
-INCLUDE = includes/ft_printf.h libft/libft.h
-
-LIBFT = libft
+INCLUDE = ft_printf.h
 
 .PHONY: clean fclean all re
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C $(LIBFT)
-	make bonus -C $(LIBFT)
-	cp	libft/libft.a ./$(NAME)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
@@ -40,10 +34,8 @@ $(NAME): $(OBJ)
 
 clean:
 	/bin/rm -f $(OBJ)
-	make clean -C $(LIBFT)
 
 fclean: clean
 	/bin/rm -f $(NAME)
-	make fclean -C $(LIBFT)
 
 re: fclean all

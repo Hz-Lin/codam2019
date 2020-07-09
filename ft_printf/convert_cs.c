@@ -6,11 +6,11 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/08 18:10:45 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/08 18:10:48 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/10 00:40:01 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 char	*strloc(int len)
 {

@@ -6,11 +6,11 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/06/01 23:25:28 by evelina       #+#    #+#                 */
-/*   Updated: 2020/07/09 14:18:36 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/10 00:40:38 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 int			get_flags(const char *str, va_list args, t_flags *flags, int *count)
 {

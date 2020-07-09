@@ -6,11 +6,20 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/28 23:39:06 by evelina       #+#    #+#                 */
-/*   Updated: 2020/07/09 14:18:21 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/10 00:40:42 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+	{
+		return (1);
+	}
+	return (0);
+}
 
 int			is_type(int c)
 {

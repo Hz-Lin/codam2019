@@ -6,12 +6,12 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/09 14:49:37 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/09 15:22:15 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/10 00:40:47 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "includes/ft_printf.h"
+#include "ft_printf.h"
 
 #define YES "test %p %x %s %s %p %c %X %x %% --  -- %d - %u\n", "f", 0xFFFF,  NULL, "hoi", "abc", 'C', 0, 9, -42, 5
 int     main(void)

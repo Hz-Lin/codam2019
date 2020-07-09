@@ -6,11 +6,11 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 16:28:04 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/09 13:39:58 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/10 00:40:06 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 int		get_base(char type)
 {

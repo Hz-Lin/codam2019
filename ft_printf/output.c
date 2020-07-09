@@ -6,15 +6,15 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 15:57:44 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/09 14:21:47 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/10 00:40:34 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
-int		putchar(int c)
+int		ft_putchar(int c)
 {
-	ft_putchar_fd(c, 1);
+	write(1, &c, 1);
 	return (1);
 }
 
@@ -65,7 +65,7 @@ void	print_formatstr(char *str, t_flags flags, int *count)
 	if (flags.left_align == 0)
 		while (i < flags.min_width - len)
 		{
-			*count += putchar(flags.padding);
+			*count += ft_putchar(flags.padding);
 			i++;
 		}
 	if (flags.type == 'p')
@@ -74,7 +74,7 @@ void	print_formatstr(char *str, t_flags flags, int *count)
 	if (flags.left_align == 1)
 		while (i < flags.min_width - len)
 		{
-			*count += putchar(flags.padding);
+			*count += ft_putchar(flags.padding);
 			i++;
 		}
 	free(str);

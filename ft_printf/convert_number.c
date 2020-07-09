@@ -6,11 +6,11 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/08 18:11:13 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/09 13:27:18 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/10 00:39:58 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 char	*convert_int(t_flags flags, int nb)
 {

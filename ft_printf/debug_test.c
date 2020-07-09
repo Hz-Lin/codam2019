@@ -6,11 +6,11 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/09 15:32:28 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/09 15:35:27 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/10 00:40:19 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 #include <stdio.h>
 
 int	main(void)

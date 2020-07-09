@@ -6,14 +6,13 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/28 17:50:57 by evelina       #+#    #+#                 */
-/*   Updated: 2020/07/09 14:52:29 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/10 00:28:38 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "../libft/libft.h"
 # include <stdarg.h>
 
 typedef struct s_flags	t_flags;
@@ -30,6 +29,7 @@ struct		s_flags
 
 int			ft_printf(const char *str, ...);
 
+int			ft_isdigit(int;
 int			is_type(int c);
 int			is_flag(int c);
 long long	ft_atol(const char *str, int *size);
@@ -38,7 +38,7 @@ int *count);
 void		check_struct(t_flags *flags, int *count);
 int			flags_parser(t_flags *flags, const char *str, va_list args);
 
-int			putchar(int c);
+int			ft_putchar(int c);
 int			putstr(const char *str, t_flags flags);
 int			cal_formatlen(const char *str, t_flags flags);
 void		print_formatstr(char *str, t_flags flags, int *count);
