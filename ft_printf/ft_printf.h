@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/28 17:50:57 by evelina       #+#    #+#                 */
-/*   Updated: 2020/07/10 00:28:38 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/10 00:51:31 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ struct		s_flags
 
 int			ft_printf(const char *str, ...);
 
-int			ft_isdigit(int;
+int			ft_isdigit(int c);
 int			is_type(int c);
 int			is_flag(int c);
 long long	ft_atol(const char *str, int *size);
