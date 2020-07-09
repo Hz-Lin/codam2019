@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/06 12:37:37 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/09 13:41:42 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/09 13:44:07 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ char	*assign_ulong(t_flags flags, unsigned long nb, int len, char *str)
 	base = get_base(flags.type);
 	padding_zero(str, len);
 	str[len] = 0;
-	// if (nb == 0 && flags.precision == 0 && flags.max_width >= 0)
-	// 	str[0] = '0';
+	if (nb == 0 && flags.precision == 0 && flags.max_width >= 0)
+		str[0] = '0';
 	while (nb > 0 && len > 0)
 	{
 		str[len - 1] = (nb % base) + get_addchar(flags.type, nb % base);
