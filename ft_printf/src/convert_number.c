@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/08 18:11:13 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/09 00:32:44 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/09 13:22:42 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ char	*convert_unsigned(t_flags flags, unsigned int nb)
 	if (flags.precision == 1 && flags.max_width >= nb_size)
 	{
 		res_size = flags.max_width;
-		if (nb == 0)
-			res_size++;
+		// if (nb == 0)
+		// 	res_size++;
 	}
 	res = strloc(res_size + 1);
 	if (res == NULL)
