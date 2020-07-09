@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/06 12:37:37 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/09 13:23:20 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/09 13:41:42 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int		ul_size(unsigned long nb, int base, t_flags flags)
 	int		size;
 
 	size = 0;
-	if (nb == 0)
-		size = 1;
+	// if (nb == 0)
+	// 	size = 1;
 	while (nb > 0)
 	{
 		nb = nb / base;
@@ -35,8 +35,9 @@ char	*assign_ulong(t_flags flags, unsigned long nb, int len, char *str)
 
 	base = get_base(flags.type);
 	padding_zero(str, len);
-	if (nb == 0 && flags.precision == 0 && flags.max_width >= 0)
-		str[0] = '0';
+	str[len] = 0;
+	// if (nb == 0 && flags.precision == 0 && flags.max_width >= 0)
+	// 	str[0] = '0';
 	while (nb > 0 && len > 0)
 	{
 		str[len - 1] = (nb % base) + get_addchar(flags.type, nb % base);
@@ -57,12 +58,11 @@ char	*convert_ulong(t_flags flags, unsigned long nb)
 	if (flags.precision == 1 && flags.max_width >= nb_size)
 	{
 		res_size = flags.max_width;
-		// if (nb == 0)
-		// 	res_size++;
 	}
 	res = strloc(res_size + 1);
 	if (res == NULL)
 		return (NULL);
 	res = assign_ulong(flags, nb, res_size, res);
+	// printf("\n%s\n", res);
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/08 16:45:09 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/09 13:23:49 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/09 13:27:39 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int     main(void)
 	// printf("or:%d\n", 0);
 	// ft_printf("ft:%d\n", 0);
 
-	printf("or:%.3u\n", 0);
-	ft_printf("ft:%.3u\n", 0);
+	// printf("or:%.3u\n", 0);
+	// ft_printf("ft:%.3u\n", 0);
 	// printf("or:8.5u\n", 0);
 	// ft_printf("ft:8.5u\n",0);
 	// printf("or:-8.5u\n", 0);
@@ -38,9 +38,9 @@ int     main(void)
 	// // printf("or:%.5p\n", 0);
 	// // ft_printf("ft:%.5p\n", 0);
 
-	printf("or:%8.5x\n", 0);
-	ft_printf("ft:%8.5x\n", 0);
-	// printf("or:%.x\n", 0);
+	// printf("or:%8.5x\n", 0);
+	// ft_printf("ft:%8.5x\n", 0);
+	// // printf("or:%.x\n", 0);
 	// ft_printf("ft:%.x\n", 0);
 
 	return (0);
