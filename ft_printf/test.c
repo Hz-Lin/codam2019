@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/09 14:49:37 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/09 14:50:06 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/09 15:12:14 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #define YES "test %p %x %s %s %p %c %X %x %% --  -- %d - %u\n", "f", 0xFFFF,  NULL, "hoi", "abc", 'C', 0, 9, -42, 5
 int     main(void)
 {
-    ft_printf(YES);
-    printf(YES);
+    // ft_printf(YES);
+    // printf(YES);
     ft_printf("%%: %p %x %x %c, %s, %p, %d, %i, %u, %x, %X\n", "h", 23000, 17, '\0', NULL, NULL, 42, -42, 100000, 0xFFFF, 0xFFFF);
     printf("%%: %p %x %x %c, %s, %p, %d, %i, %u, %x, %X\n", "h", 23000, 17, '\0', NULL, NULL, 42, -42, 100000, 0xFFFF, 0xFFFF);
     ft_printf("%s%ihello%-17.14u%i%08d%s%17ssomestuff%s%i%.24u%u%u%.2s%i","abc",-8875, 100,-2147483648,3047,"wassup","nope","",0,2147483647,0u,878023,"notall",2147483647);
