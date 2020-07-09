@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/28 23:39:06 by evelina       #+#    #+#                 */
-/*   Updated: 2020/07/06 23:26:56 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/09 13:54:06 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	check_struct(t_flags *flags, int *count)
 	{
 		flags->left_align = 1;
 		flags->min_width = flags->min_width * (-1);
+		flags->padding = ' ';
 	}
 }
 

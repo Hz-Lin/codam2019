@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/08 16:45:09 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/09 13:27:39 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/09 13:51:58 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ int     main(void)
 	// ft_printf("ft:%8.5x\n", 0);
 	// // printf("or:%.x\n", 0);
 	// ft_printf("ft:%.x\n", 0);
+
+	printf("or:%0*i\n", -7, -54);
+	ft_printf("ft:%0*i\n", -7, -54);
 
 	return (0);
 }

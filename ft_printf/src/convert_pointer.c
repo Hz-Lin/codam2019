@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/06 12:37:37 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/09 13:44:07 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/09 13:51:11 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int		ul_size(unsigned long nb, int base, t_flags flags)
 	int		size;
 
 	size = 0;
-	// if (nb == 0)
-	// 	size = 1;
+	if (nb == 0)
+		size = 1;
 	while (nb > 0)
 	{
 		nb = nb / base;
@@ -63,6 +63,5 @@ char	*convert_ulong(t_flags flags, unsigned long nb)
 	if (res == NULL)
 		return (NULL);
 	res = assign_ulong(flags, nb, res_size, res);
-	// printf("\n%s\n", res);
 	return (res);
 }
