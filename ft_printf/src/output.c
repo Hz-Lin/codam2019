@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/03 15:57:44 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/08 19:07:56 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/09 14:21:47 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		cal_formatlen(const char *str, t_flags flags)
 	return (i);
 }
 
-void	print_output(char *str, t_flags flags, int *count)
+void	print_formatstr(char *str, t_flags flags, int *count)
 {
 	int	i;
 	int	len;
@@ -63,24 +63,20 @@ void	print_output(char *str, t_flags flags, int *count)
 	if (flags.type == 'p')
 		len += 2;
 	if (flags.left_align == 0)
-	{
 		while (i < flags.min_width - len)
 		{
 			*count += putchar(flags.padding);
 			i++;
 		}
-	}
 	if (flags.type == 'p')
 		*count += putstr("0x", flags);
 	*count += putstr(str, flags);
 	if (flags.left_align == 1)
-	{
 		while (i < flags.min_width - len)
 		{
 			*count += putchar(flags.padding);
 			i++;
 		}
-	}
 	free(str);
 }
 
@@ -104,5 +100,5 @@ void	print_format(t_flags flags, va_list args, int *count)
 		*count = -1;
 		return ;
 	}
-	print_output(str, flags, count);
+	print_formatstr(str, flags, count);
 }

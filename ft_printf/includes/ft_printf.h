@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/28 17:50:57 by evelina       #+#    #+#                 */
-/*   Updated: 2020/07/06 23:27:05 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/09 14:21:45 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../libft/libft.h"
 # include <stdarg.h>
-# include <stdio.h>
 
 typedef struct s_flags	t_flags;
 
@@ -31,23 +30,20 @@ struct	s_flags
 
 int			ft_printf(const char *str, ...);
 
-// void		struct_init(t_flags *flags);
-void		check_struct(t_flags *flags, int *count);
-void		struct_print(t_flags *flags);
-
 int			is_type(int c);
 int			is_flag(int c);
 long long	ft_atol(const char *str, int *size);
 int			get_flags(const char *str, va_list args, t_flags *flags, int *count);
+void		check_struct(t_flags *flags, int *count);
 int			flags_parser(t_flags *flags, const char *str, va_list args);
 
 int			putchar(int c);
 int			putstr(const char *str, t_flags flags);
 int			cal_formatlen(const char *str, t_flags flags);
-void		print_output(char *str, t_flags flags, int *count);
+void		print_formatstr(char *str, t_flags flags, int *count);
 void		print_format(t_flags flags, va_list args, int *count);
 
-char		*strloc(int len); //ft_calloc
+char		*strloc(int len);
 char		*convert_c(t_flags flags, va_list args);
 char		*convert_s(const char *str, t_flags flags);
 
