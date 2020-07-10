@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   debug_test.c                                       :+:    :+:            */
+/*   ft_putchar.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: hlin <marvin@codam.nl>                       +#+                     */
+/*   By: tbruinem <tbruinem@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/07/09 15:32:28 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/10 00:40:19 by hlin          ########   odam.nl         */
+/*   Created: 2019/11/30 13:00:38 by tbruinem       #+#    #+#                */
+/*   Updated: 2019/12/02 18:29:55 by tbruinem      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <stdio.h>
+#include "printf.h"
 
-int	main(void)
+int		ft_putchar(char c)
 {
-	printf("or:%s\n", "");
-	ft_printf("or:%s\n", "");
-	printf("or:%X\n", 0);
-	ft_printf("or:%X\n", 0);
-	return (0);
+	write(1, &c, 1);
+	return (1);
 }
