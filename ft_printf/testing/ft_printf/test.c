@@ -16,10 +16,10 @@
 #define YES "test %p %x %s %s %p %c %X %x %% --  -- %d - %u\n", "f", 0xFFFF,  NULL, "hoi", "abc", 'C', 0, 9, -42, 5
 int     main(void)
 {
-    ft_printf(YES);
-    printf(YES);
-	ft_printf("%u\n", -10);
-    printf("%u\n", -10);
+    // ft_printf(YES);
+    // printf(YES);
+	ft_printf("%x\n", -10);
+    printf("%x\n", -10);
 	//
     // ft_printf("%%: %p %x %x %c, %s, %p, %d, %i, %u, %x, %X\n", "h", 23000, 17, '\0', NULL, NULL, 42, -42, 100000, 0xFFFF, 0xFFFF);
     // printf("%%: %p %x %x %c, %s, %p, %d, %i, %u, %x, %X\n", "h", 23000, 17, '\0', NULL, NULL, 42, -42, 100000, 0xFFFF, 0xFFFF);
