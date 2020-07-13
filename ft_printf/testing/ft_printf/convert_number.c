@@ -37,7 +37,6 @@ char	*convert_unsigned(t_flags flags, unsigned int nb)
 	int		res_size;
 	char	*res;
 
-	printf("%u\n", nb);
 	nb_size = number_size(nb, get_base(flags.type), flags);
 	res_size = nb_size;
 	if (flags.precision == 1 && flags.max_width >= nb_size)
