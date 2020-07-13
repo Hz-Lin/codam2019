@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/07/09 14:49:37 by hlin          #+#    #+#                 */
-/*   Updated: 2020/07/10 00:40:47 by hlin          ########   odam.nl         */
+/*   Updated: 2020/07/13 11:23:18 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,17 @@
 #define YES "test %p %x %s %s %p %c %X %x %% --  -- %d - %u\n", "f", 0xFFFF,  NULL, "hoi", "abc", 'C', 0, 9, -42, 5
 int     main(void)
 {
+<<<<<<< Updated upstream
     // ft_printf(YES);
     // printf(YES);
 	ft_printf("%x\n", -10);
     printf("%x\n", -10);
+=======
+    ft_printf(YES);
+    printf(YES);
+	ft_printf("%x\n", -1);
+    printf("%x\n", -1);
+>>>>>>> Stashed changes
 	//
     // ft_printf("%%: %p %x %x %c, %s, %p, %d, %i, %u, %x, %X\n", "h", 23000, 17, '\0', NULL, NULL, 42, -42, 100000, 0xFFFF, 0xFFFF);
     // printf("%%: %p %x %x %c, %s, %p, %d, %i, %u, %x, %X\n", "h", 23000, 17, '\0', NULL, NULL, 42, -42, 100000, 0xFFFF, 0xFFFF);
