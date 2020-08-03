@@ -24,3 +24,7 @@ openssl req -x509 -new -nodes -key myCA.key -sha256 -days 1825 -out myCA.pem
 sudo lsof -i:80
 # kill all the programs using port 80
 sudo lsof -t -i tcp:80 -s tcp:listen | sudo xargs kill
+
+
+sudo docker build -t test .
+sudo docker run -it --rm --name test -p 80:80 -p 443:443 test

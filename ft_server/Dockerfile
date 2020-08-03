@@ -8,57 +8,58 @@ EXPOSE 80 443
 RUN apt-get update && apt-get upgrade -y
 # install pakages
 RUN apt-get install -y \
+	sudo openssl \
 	mariadb-server \
 	sendmail \
 	nginx \
 	php-fpm php-mysql php-cli php-mbstring
 
-# catanmap website
-WORKDIR /var/www/catanmap/
-COPY /srcs/catanmap/index.html .
-COPY /srcs/catanmap/style.css .
-COPY /srcs/catanmap/main.js .
-
-# nginx configure
-COPY /srcs/nginx.config /etc/nginx/sites-available/catanmap
-COPY /srcs/server.key /etc/nginx/ssl/server.key
-COPY /srcs/server.pem /etc/nginx/ssl/server.pem
-RUN ln -s -f /etc/nginx/sites-available/catanmap /etc/nginx/sites-enabled/catanmap && nginx -t
-# add autoindex script
-COPY /srcs/autoindex.sh .
-RUN chmod +x autoindex.sh
+WORKDIR /var/www/html/
 
 # phpmyadmin install and configure
+RUN mkdir -p /var/www/html/wordpress
+WORKDIR  /var/www/html/wordpress
 COPY /srcs/phpMyAdmin-5.0.2-english.tar.gz .
 RUN tar xf phpMyAdmin-5.0.2-english.tar.gz && rm phpMyAdmin-5.0.2-english.tar.gz
 RUN mv phpMyAdmin-5.0.2-english phpmyadmin
 COPY /srcs/config.inc.php phpmyadmin
-COPY /srcs/php.ini /etc/php/7.3/fpm/
-COPY srcs/phpMyAdmin.conf /etc/nginx/conf.d/
 
-# create the mysql database
+# create the mysql database for wordpress
 RUN	 service mysql start \
-&& echo "CREATE DATABASE catanmap_db;" | mysql -u root \
-&& echo "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'password';" | mysql -u root \
-&& echo "CREATE DATABASE phpmyadmin" | mysql -u root \
-&& echo "FLUSH PRIVILEGES" | mysql -u root \
-&& mysql phpmyadmin < /var/www/catanmap/phpmyadmin/sql/create_tables.sql
+&& mysql -e "CREATE DATABASE wordpress_db;" \
+&& mysql -e "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';" \
+&& mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' WITH GRANT OPTION;" \
+&& mysql -e "FLUSH PRIVILEGES;"
 
-# wordpress install and configure
-COPY /srcs/wordpress-5.4.2.tar.gz .
-RUN tar xf wordpress-5.4.2.tar.gz && rm wordpress-5.4.2.tar.gz
+# copy the wordpress-cli files and update it
 COPY /srcs/wp-cli.phar .
 RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 RUN wp cli update
-WORKDIR /var/www/catanmap/wordpress
-RUN	service mysql start \
-&& wp config create --allow-root --dbhost=localhost --dbname=catanmap_db --dbuser=admin --dbpass=password \
-&& wp core install --allow-root --url=https://localhost/wordpress --title="wordpress" --admin_name=admin --admin_password=password --admin_email=hlin@student.codam.nl
-RUN chmod 644 wp-config.php
 
-# change the user privileges
-RUN chown -R www-data:www-data /var/www/catanmap/*
-RUN chmod 755 -R /var/www/catanmap/*
+# add the super-user admin
+RUN adduser --disabled-password --gecos "" admin
+RUN sudo adduser admin sudo
+
+# configure wordpress cli
+# add all the data of the database to the phpmyadmin congfig
+RUN	service mysql start && sudo -u admin -i wp core download \
+&& mysql < /var/www/html/wordpress/phpmyadmin/sql/create_tables.sql \
+&& sudo -u admin -i wp config create --dbhost=localhost --dbname=wordpress_db --dbuser=admin --dbpass=password \
+&& sudo -u admin -i wp core install --allow-root --url=https://localhost/ --title="wordpress" --admin_name=admin --admin_password=password --admin_email=hlin@student.codam.nl
+RUN cp -r /home/admin/. /var/www/html/wordpress
+RUN chown -R www-data:www-data /var/www/html/*
+
+# nginx configure
+COPY /srcs/server.config /etc/nginx/sites-available/server.conf
+# add the certificate
+COPY /srcs/server.key /etc/nginx/ssl/server.key
+COPY /srcs/server.pem /etc/nginx/ssl/server.pem
+RUN ln -s -f /etc/nginx/sites-available/server.conf /etc/nginx/sites-enabled/server.conf && nginx -t
+RUN rm -rf /etc/nginx/sites-enabled/default
+# add autoindex script
+WORKDIR /var/www/html/
+COPY /srcs/autoindex.sh .
+RUN chmod +x autoindex.sh
 
 # increase the max upload and post size in the php.ini
 RUN sed -i '/upload_max_filesize/c upload_max_filesize = 20M' /etc/php/7.3/fpm/php.ini
