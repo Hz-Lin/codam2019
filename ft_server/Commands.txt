@@ -1,0 +1,26 @@
+# In case disk is full
+mkdir -p ~/goinfre/docker
+rm -rf ~/Library/Containers/com.docker.docker
+ln -s ~/goinfre/docker ~/Library/Containers/com.docker.docker
+
+# Build image
+docker build -t <image_name> .
+
+# Run container
+docker run -it --rm --name <container_name> -p 80:80 -p 443:443 <image_name>
+docker exec -it <container_name> bash
+
+# Stop container
+docker stop <container_name/id>
+
+# remove container
+docker rm <container_name/id>
+
+# generate certificates
+openssl genrsa -out myCA.key 2048
+openssl req -x509 -new -nodes -key myCA.key -sha256 -days 1825 -out myCA.pem
+
+# check which program is using port 80
+sudo lsof -i:80
+# kill all the programs using port 80
+sudo lsof -t -i tcp:80 -s tcp:listen | sudo xargs kill
