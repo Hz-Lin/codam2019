@@ -1,0 +1,968 @@
+2020/10/05 22:01:24
+
+
+./invalid_maps/invalid_RGB_000.cub
+Error
+invalid number of ceiling value
+
+
+./invalid_maps/invalid_RGB_001.cub
+Error
+invalid number of floor value
+
+
+./invalid_maps/invalid_RGB_002.cub
+Error
+invalid number of ceiling value
+
+
+./invalid_maps/invalid_RGB_003.cub
+Error
+floor colour has to be specified before map
+
+
+./invalid_maps/invalid_RGB_004.cub
+Error
+ceiling colour has to be specified before map
+
+
+./invalid_maps/invalid_RGB_005.cub
+Error
+invalid ceiling line
+
+
+./invalid_maps/invalid_RGB_006.cub
+Error
+invalid ceiling line
+
+
+./invalid_maps/invalid_RGB_007.cub
+Error
+invalid number of ceiling value
+
+
+./invalid_maps/invalid_RGB_008.cub
+Error
+invalid ceiling line
+
+
+./invalid_maps/invalid_RGB_009.cub
+Error
+invalid ceiling line
+
+
+./invalid_maps/invalid_RGB_010.cub
+Error
+invalid ceiling line
+
+
+./invalid_maps/invalid_RGB_011.cub
+Error
+invalid ceiling line
+
+
+./invalid_maps/invalid_RGB_012.cub
+Error
+invalid ceiling values
+
+
+./invalid_maps/invalid_RGB_013.cub
+Error
+invalid ceiling values
+
+
+./invalid_maps/invalid_RGB_014.cub
+Error
+invalid ceiling values
+
+
+./invalid_maps/invalid_RGB_015.cub
+Error
+invalid ceiling values
+
+
+./invalid_maps/invalid_RGB_016.cub
+Error
+invalid ceiling values
+
+
+./invalid_maps/invalid_RGB_017.cub
+Error
+invalid ceiling values
+
+
+./invalid_maps/invalid_RGB_018.cub
+Error
+invalid ceiling line
+
+
+./invalid_maps/invalid_RGB_019.cub
+Error
+invalid ceiling line
+
+
+./invalid_maps/invalid_RGB_020.cub
+Error
+invalid ceiling line
+
+
+./invalid_maps/invalid_RGB_021.cub
+Error
+invalid ceiling line
+
+
+./invalid_maps/invalid_RGB_022.cub
+Error
+invalid floor line
+
+
+./invalid_maps/invalid_RGB_023.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_RGB_024.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_RGB_025.cub
+Error
+invalid ceiling line
+
+
+./invalid_maps/invalid_RGB_026.cub
+Error
+duplicate information of ceiling
+
+
+./invalid_maps/invalid_RGB_027.cub
+Error
+invalid floor line
+
+
+./invalid_maps/invalid_RGB_028.cub
+Error
+invalid floor line
+
+
+./invalid_maps/invalid_RGB_029.cub
+Error
+invalid floor line
+
+
+./invalid_maps/invalid_RGB_030.cub
+Error
+invalid floor line
+
+
+./invalid_maps/invalid_RGB_031.cub
+Error
+invalid floor line
+
+
+./invalid_maps/invalid_RGB_032.cub
+Error
+invalid floor line
+
+
+./invalid_maps/invalid_RGB_033.cub
+Error
+invalid floor line
+
+
+./invalid_maps/invalid_RGB_034.cub
+Error
+invalid floor line
+
+
+./invalid_maps/invalid_RGB_035.cub
+Error
+invalid ceiling line
+
+
+./invalid_maps/invalid_RGB_036.cub
+Error
+invalid ceiling line
+
+
+./invalid_maps/invalid_RGB_037.cub
+Error
+floor colour has to be specified before map
+
+
+./invalid_maps/invalid_RGB_038.cub
+Error
+duplicate information of floor
+
+
+./invalid_maps/invalid_RGB_039.cub
+Error
+duplicate information of ceiling
+
+
+./invalid_maps/invalid_RGB_040.cub
+Error
+invalid ceiling line
+
+
+./invalid_maps/invalid_RGB_041.cub
+Error
+floor colour has to be specified before map
+
+
+./invalid_maps/invalid_RGB_042.cub
+Error
+ceiling colour has to be specified before map
+
+
+./invalid_maps/invalid_map_area_000.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_001.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_002.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_003.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_004.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_005.cub
+Error
+missing starting position
+
+
+./invalid_maps/invalid_map_area_006.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_007.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_008.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_009.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_010.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_011.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_012.cub
+Error
+missing starting position
+
+
+./invalid_maps/invalid_map_area_013.cub
+Error
+missing starting position
+
+
+./invalid_maps/invalid_map_area_014.cub
+Error
+missing starting position
+
+
+./invalid_maps/invalid_map_area_015.cub
+Error
+missing map
+
+
+./invalid_maps/invalid_map_area_016.cub
+Error
+missing starting position
+
+
+./invalid_maps/invalid_map_area_017.cub
+Error
+missing starting position
+
+
+./invalid_maps/invalid_map_area_018.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_map_area_019.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_020.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_021.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_022.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_023.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_024.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_025.cub
+Error
+invalid map
+
+
+./invalid_maps/invalid_map_area_026.cub
+Error
+multiple player starting positions
+
+
+./invalid_maps/invalid_map_area_027.cub
+Error
+multiple player starting positions
+
+
+./invalid_maps/invalid_res_000.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_001.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_002.cub
+Error
+invalid negative resolution
+
+
+./invalid_maps/invalid_res_003.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_004.cub
+Error
+invalid negative resolution
+
+
+./invalid_maps/invalid_res_005.cub
+Error
+invalid negative resolution
+
+
+./invalid_maps/invalid_res_006.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_007.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_008.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_009.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_010.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_res_011.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_012.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_013.cub
+Error
+resolution has to be specified before map
+
+
+./invalid_maps/invalid_res_014.cub
+Error
+invalid negative resolution
+
+
+./invalid_maps/invalid_res_015.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_016.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_res_017.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_018.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_019.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_020.cub
+Error
+invalid negative resolution
+
+
+./invalid_maps/invalid_res_021.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_022.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_023.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_024.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_025.cub
+Error
+exceed max resolution value (16384) for bitmap rendering
+
+
+./invalid_maps/invalid_res_026.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_027.cub
+Error
+exceed max resolution value (16384) for bitmap rendering
+
+
+./invalid_maps/invalid_res_028.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_res_029.cub
+Error
+invalid resolution line
+
+
+./invalid_maps/invalid_tex_EA_000.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_EA_001.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_EA_002.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_EA_003.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_EA_004.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_EA_005.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_EA_006.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_EA_007.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_EA_008.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_EA_009.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_EA_010.cub
+Error
+east wall texture has to be specified before map
+
+
+./invalid_maps/invalid_tex_EA_011.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_EA_012.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_EA_013.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_EA_014.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_EA_015.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_EA_016.cub
+Error
+east wall texture has to be specified before map
+
+
+./invalid_maps/invalid_tex_EA_017.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_EA_018.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_EA_019.cub
+Error
+duplicate texture info
+
+
+./invalid_maps/invalid_tex_EA_020.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_EA_021.cub
+Error
+duplicate texture info
+
+
+./invalid_maps/invalid_tex_EA_022.cub
+Error
+duplicate texture info
+
+
+./invalid_maps/invalid_tex_NO_000.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_NO_001.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_NO_002.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_NO_003.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_NO_004.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_NO_005.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_NO_006.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_NO_007.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_NO_008.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_NO_009.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_NO_010.cub
+Error
+north wall texture has to be specified before map
+
+
+./invalid_maps/invalid_tex_NO_011.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_NO_012.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_NO_013.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_NO_014.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_NO_015.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_NO_016.cub
+Error
+north wall texture has to be specified before map
+
+
+./invalid_maps/invalid_tex_NO_017.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_NO_018.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_NO_019.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_NO_020.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_NO_021.cub
+Error
+duplicate texture info
+
+
+./invalid_maps/invalid_tex_NO_022.cub
+Error
+duplicate texture info
+
+
+./invalid_maps/invalid_tex_SO_000.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_SO_001.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_SO_002.cub
+Error
+duplicate texture info
+
+
+./invalid_maps/invalid_tex_SO_003.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_SO_004.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_SO_005.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_SO_006.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_SO_007.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_SO_008.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_SO_009.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_SO_010.cub
+Error
+south wall texture has to be specified before map
+
+
+./invalid_maps/invalid_tex_SO_011.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_SO_012.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_SO_013.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_SO_014.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_SO_015.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_SO_016.cub
+Error
+south wall texture has to be specified before map
+
+
+./invalid_maps/invalid_tex_SO_017.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_SO_018.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_SO_019.cub
+Error
+duplicate texture info
+
+
+./invalid_maps/invalid_tex_SO_020.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_SO_021.cub
+Error
+duplicate texture info
+
+
+./invalid_maps/invalid_tex_SO_022.cub
+Error
+duplicate texture info
+
+
+./invalid_maps/invalid_tex_WE_000.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_WE_001.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_WE_002.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_WE_003.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_WE_004.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_WE_005.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_WE_006.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_WE_007.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_WE_008.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_WE_009.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_WE_010.cub
+Error
+west wall texture has to be specified before map
+
+
+./invalid_maps/invalid_tex_WE_011.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_WE_012.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_WE_013.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_WE_014.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_WE_015.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_WE_016.cub
+Error
+west wall texture has to be specified before map
+
+
+./invalid_maps/invalid_tex_WE_017.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_WE_018.cub
+Error
+invalid texture file format
+
+
+./invalid_maps/invalid_tex_WE_019.cub
+Error
+invalid line in map file
+
+
+./invalid_maps/invalid_tex_WE_020.cub
+Error
+fail to open texture file
+
+
+./invalid_maps/invalid_tex_WE_021.cub
+Error
+duplicate texture info
+
+
+./invalid_maps/invalid_tex_WE_022.cub
+Error
+duplicate texture info
+
+

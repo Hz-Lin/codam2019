@@ -3,75 +3,43 @@
 /*                                                        ::::::::            */
 /*   utils_one.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
+/*   By: hlin <hlin@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/09/09 16:00:45 by anonymous     #+#    #+#                 */
-/*   Updated: 2020/09/09 16:00:45 by anonymous     ########   odam.nl         */
+/*   Created: 2020/09/26 00:14:15 by hlin          #+#    #+#                 */
+/*   Updated: 2020/10/04 14:24:34 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../cub3d.h"
 
-int			skip_wp(char *line, int *i)
+void	set_pos(t_pos *pos, double x, double y)
 {
-	if (line[*i] != 32 && (line[*i] < 9 || line[*i] > 13))
+	pos->x = x;
+	pos->y = y;
+}
+
+int		skip_wp(char *line, int *i)
+{
+	if (line[*i] != '\t' && line[*i] != '\n' && line[*i] != '\r'
+		&& line[*i] != '\v' && line[*i] != '\f' && line[*i] != ' ')
 		return (0);
-	while (line[*i] == 32 || (line[*i] >= 9 && line[*i] <= 13))
+	while (line[*i] == '\t' || line[*i] == '\n' || line[*i] == '\r'
+		|| line[*i] == '\v' || line[*i] == '\f' || line[*i] == ' ')
 		(*i)++;
 	return (1);
 }
 
-int			ft_isnum(char *line, int i)
+int		is_num(char *line, int i)
 {
 	if (line[i] && line[i] >= '0' && line[i] <= '9')
 		return (1);
 	return (0);
 }
 
-intmax_t	ft_atoi(char *line, int *i)
+int		is_wp(char *line, int i)
 {
-	int			sign;
-	intmax_t	n;
-
-	sign = 1;
-	n = 0;
-	skip_wp(line, i);
-	if (line[*i] == '-' || line[*i] == '+')
-	{
-		if (line[*i] == '-')
-			sign = -1;
-		(*i)++;
-	}
-	while (ft_isnum(line, *i))
-	{
-		if (n >= 922337203685477580)
-		{
-			if (sign == 1)
-				return (-1);
-			return (0);
-		}
-		n = n * 10 + (line[*i] - '0');
-		(*i)++;
-	}
-	return (sign * n);
-}
-
-int			find_num(char *line, int *i, char id)
-{
-	while (line[*i] && !ft_isnum(line, *i) && line[*i] != '-')
-	{
-		if (line[*i] != exc && line[*i] != 32 &&
-			(line[*i] < 9 || line[*i] > 13))
-			return (-1);
-		(*i)++;
-	}
-	return (0);
-}
-
-int			is_texid(char *line, int i)
-{
-	if (line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W'
-		|| line[i] == 'F' || line[i] == 'C')
+	if (line[i] && (line[i] == '\t' || line[i] == '\n' || line[i] == '\r'
+		|| line[i] == '\v' || line[i] == '\f' || line[i] == ' '))
 		return (1);
 	return (0);
 }

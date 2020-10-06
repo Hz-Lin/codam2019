@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/07 11:55:15 by hlin          #+#    #+#                 */
-/*   Updated: 2020/02/07 11:55:17 by hlin          ########   odam.nl         */
+/*   Updated: 2020/10/01 16:27:53 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <stdio.h>
 
-int		ft_strlen(char *s);
+int		cal_strlen(char *s);
 void	free_buffer(char *buffer, int read_bytes);
 char	*join_strbuff(char *s, char *buffer, int read_bytes);
 void	renew_buffer(char *buffer, int read_bytes);

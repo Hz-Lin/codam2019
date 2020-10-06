@@ -4,7 +4,7 @@ SO textures/wall_2.png
 WE ./textures/wall_3.png
 EA textures/wall_4.png
 
-S   textures/sprite_1.xp
+S   textures/sprite_1.xpm
 
 F 184,113,39
 C 51,198,227

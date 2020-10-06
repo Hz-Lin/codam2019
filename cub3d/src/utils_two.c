@@ -3,16 +3,16 @@
 /*                                                        ::::::::            */
 /*   utils_two.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
+/*   By: hlin <hlin@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/09/09 17:27:58 by anonymous     #+#    #+#                 */
-/*   Updated: 2020/09/09 17:27:58 by anonymous     ########   odam.nl         */
+/*   Created: 2020/10/02 23:54:09 by hlin          #+#    #+#                 */
+/*   Updated: 2020/10/04 16:03:25 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../cub3d.h"
 
-size_t	ft_strlen(const char *s)
+size_t		ft_strlen(const char *s)
 {
 	size_t i;
 
@@ -22,8 +22,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-
-int		ft_strcmp(const char *s1, const char *s2)
+int			ft_strcmp(const char *s1, const char *s2)
 {
 	int				i;
 	unsigned char	*str1;
@@ -42,7 +41,7 @@ int		ft_strcmp(const char *s1, const char *s2)
 	return (str1[i] - str2[i]);
 }
 
-char	*ft_strdup(const char *s1)
+char		*ft_strdup(const char *s1)
 {
 	int		len;
 	int		i;
@@ -64,20 +63,30 @@ char	*ft_strdup(const char *s1)
 	return (s2);
 }
 
-void	pos_setter(t_pos *pos, double x, double y)
+intmax_t	ft_atoi(char *line, int *i)
 {
-	pos->x = x;
-	pos->y = y;
-}
+	int			sign;
+	intmax_t	n;
 
-void	print_error(t_game *game, char *str)
-{
-	if (write(2, "Error\n", 6) < 0)
-		print_error(game, "Write error failed\n");
-	if (str)
+	sign = 1;
+	n = 0;
+	skip_wp(line, i);
+	if (line[*i] == '-' || line[*i] == '+')
 	{
-		if (write(2, str, ft_strlen(str)) < 0)
-			print_error(game, "Write error failed\n");
+		if (line[*i] == '-')
+			sign = -1;
+		(*i)++;
 	}
-	exit_game(game, -1);
+	while (is_num(line, *i))
+	{
+		if (n >= 922337203685477580)
+		{
+			if (sign == 1)
+				return (-1);
+			return (0);
+		}
+		n = n * 10 + (line[*i] - '0');
+		(*i)++;
+	}
+	return (sign * n);
 }

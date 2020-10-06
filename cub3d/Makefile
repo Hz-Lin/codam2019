@@ -3,98 +3,64 @@
 #                                                         ::::::::             #
 #    Makefile                                           :+:    :+:             #
 #                                                      +:+                     #
-#    By: anonymous <anonymous@student.codam.nl>       +#+                      #
+#    By: hlin <hlin@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
-#    Created: 2020/08/27 21:28:48 by anonymous     #+#    #+#                  #
-#    Updated: 2020/08/27 21:28:48 by anonymous     ########   odam.nl          #
+#    Created: 2020/09/23 15:10:50 by hlin          #+#    #+#                  #
+#    Updated: 2020/10/04 16:39:21 by hlin          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-Name = cub3D
+NAME = cub3D
 
-SRCFILE = bmp.c check.c colour.c config.c cub3d.c exit.c init.c input.c \
-map.c parser.c raycaster.c render.c sort.c sprite.c \
-ui.c utils.c utils2.c
-
-GNL = gnl/get_next_line.c gnl/get_next_line_utils.c
-
-SRC = $(addprefix src/, $(SRCFILE))
-
-OBJ = $(SRC:.c=.o) $(GNL:.c=.o)
-
-HEADER = includes/cub3d.h includes/cub3d_stryct.h
+HEADER = cub3d.h
 
 CC = gcc
 
 FLAGS = -Wall -Wextra -Werror -O3
 
-# for MAc
-MLXDIR = minilibx
-DYLIB = libmlx.dylib
-LIB = -framework OpenGL -framework Appkit
-MLX = -L$(MLXDIR) -lmlx
+MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 
-# for Linux
-# MLXDIR = mlx_linux
-# DYLIB = libmlx.a
-# LIB = -Lmlx_linux -lmlx -lXext -lX11 -lm -lz -AppKit
-# MLX = -L$(MLXDIR) -lmlx
+MLX = mlx
 
-# colors
-BLUE = \033[38;5;27m
-CYAN = \033[38;5;51m
-PINK = \033[38;5;211m
-GREEN = \033[38;5;72m
-TURQ = \033[38;5;37m
-WHITE = \033[38;5;15m
-YELLOW = \033[38;5;220m
-C = \033[38;5;
-O = 72
-L = m
-SHIFT = $(eval O=$(shell echo $$((($(O)%15)+1))))
+LIBMLX = libmlx.dylib
 
-LBOR = "▌│█║▌║▌║ "
-RBOR = " ║▌║▌║█│▌"
+BMP = screenshot.bmp
+
+SRCFILE = action.c cub3d.c drawer.c exit.c init_game.c init_struct.c \
+		movements.c parse_floor_ceiling.c parse_map_check.c parse_map_sprite.c \
+		parse_map.c parse_mapfile.c parse_res.c parse_tex.c raycasting.c \
+		render_map.c render_sprites_sort.c render_sprites.c screensave.c \
+		utils_one.c utils_two.c
+
+SRC = $(addprefix src/, $(SRCFILE))
+
+GNL	=gnl/get_next_line.c gnl/get_next_line_utils.c
+
+OBJECTS = $(SRC:.c=.o) $(GNL:.c=.o)
 
 all: $(NAME)
 
-.PHONY: all clean fclean re
+$(LIBMLX):
+	@make -C $(MLX)
+	@cp $(MLX)/$(LIBMLX) .
+	@echo "mlx library has been created"
 
-$(NAME): $(OBJ) $(MLX)
-	@$(MAKE) subzero
-	@$(CC) $(FLAGS) $(OBJ) $(MLX) $(LIB) -o $(NAME)
-	@echo "\n\t   $(TURQ)$(LBOR)Game compiled$(RBOR)$(WHITE)\n"
+$(NAME): $(OBJECTS) $(LIBMLX)
+	@$(CC) $(FLAGS) $(MLX_FLAGS) -o $(NAME) $(OBJECTS)
+	@echo "cub3D has been created"
 
-%.o: %.c $(HEADER)
-	@$(CC) $(FLAGS) -c $< -o $@
+%.o: %.c $(HEADERS)
+	@$(CC) $(FLAGS) -Imlx -c $< -o $@
 
-$(MLX):
-	@make -C $(MLXDIR)
-	@cp -rf $(MLXDIR)/$(DYLIB) .
-	@echo "\n\t   $(TURQ)$(LBOR)minilibx compiled$(RBOR)$(WHITE)\n"
+bonus: $(ALL)
 
 clean:
-	@echo "\n\t   $(PINK)$(LBOR)Cleaning$(RBOR)$(WHITE)\n"
-	@rm -rf $(OBJ)
-	@make -C $(MLXDIR) clean
+	@rm -f $(OBJECTS) $(LIBMLX) $(BMP)
+	@make clean -C $(MLX)
 
 fclean: clean
-	@echo "\n\t   $(CYAN)$(LBOR)Clean af$(RBOR)$(WHITE)\n"
-	@rm -rf $(NAME)
-	@rm -rf libmlx.dylib
-	@rm -rf screenshot.bmp
+	@rm -f $(NAME)
 
-re:
-	@echo "\n\t   $(BLUE)$(LBOR)Aww here we go again$(RBOR)$(WHITE)\n"
-	@$(MAKE) fclean
-	@$(MAKE) all
+re: fclean all
 
-subzero:
-	@echo "$(C)$(O)$(L) ______     __  __     ______     ______     _____    ";
-	@echo "$(C)$(O)$(L)/\  ___\   /\ \/\ \   /\  == \   /\___  \   /\  __ \  ";
-	$(SHIFT)
-	@echo "$(C)$(O)$(L)\ \ \____  \ \ \_\ \  \ \  __<   \/_\___ \  \ \ \_\ \ ";
-	@echo "$(C)$(O)$(L) \ \_____\  \ \_____\  \ \_____\  /\______\  \ \____/ ";
-	$(SHIFT)
-	@echo "$(C)$(O)$(L)  \/_____/   \/_____/   \/_____/  \/______/   \/____/ ";
-	@echo "$(C)$(O)$(L)                                                      ";
+.PHONY: all clean fclean re

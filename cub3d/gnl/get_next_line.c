@@ -6,7 +6,7 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/07 11:54:56 by hlin          #+#    #+#                 */
-/*   Updated: 2020/02/07 11:55:00 by hlin          ########   odam.nl         */
+/*   Updated: 2020/10/01 16:28:15 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static char	*cat_line(char *s, char *buffer, int read_bytes)
 		free(s);
 		return (NULL);
 	}
-	if (read_bytes > ft_strlen(buffer))
-		read_bytes = ft_strlen(buffer);
+	if (read_bytes > cal_strlen(buffer))
+		read_bytes = cal_strlen(buffer);
 	res = join_strbuff(s, buffer, read_bytes);
 	free(s);
 	free_buffer(buffer, read_bytes);

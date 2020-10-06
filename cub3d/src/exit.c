@@ -5,14 +5,14 @@
 /*                                                     +:+                    */
 /*   By: hlin <hlin@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/09/16 00:22:35 by hlin          #+#    #+#                 */
-/*   Updated: 2020/09/16 00:22:35 by hlin          ########   odam.nl         */
+/*   Created: 2020/10/01 17:28:19 by hlin          #+#    #+#                 */
+/*   Updated: 2020/10/04 16:15:10 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../cub3d.h"
 
-void	clean_sprite(t_sprite **list)
+static void		clean_sprite(t_sprite **list)
 {
 	t_sprite	*tmp;
 
@@ -32,12 +32,12 @@ void	clean_sprite(t_sprite **list)
 	*list = NULL;
 }
 
-void	clean_tex(t_game *game, t_img *tex)
+static void		clean_texture(t_game *game, t_img *tex)
 {
 	int i;
 
 	i = 0;
-	while (tex[i].ptr != NULL && i < 6)
+	while (tex[i].ptr != NULL && i < 4)
 	{
 		if (tex[i].ptr)
 			mlx_destroy_image(game->mlx, tex[i].ptr);
@@ -45,7 +45,7 @@ void	clean_tex(t_game *game, t_img *tex)
 	}
 }
 
-void	clean_map(char **map)
+static void		clean_map(char **map)
 {
 	int i;
 
@@ -60,17 +60,18 @@ void	clean_map(char **map)
 }
 
 /*
-** exits on 0 if called normally, -1 if called in error processing
+** exit on 0 when called normally
+** exit on 1 if there is an error
 */
 
-int		exit_game(t_game *game, int c)
+int				exit_game(t_game *game, int c)
 {
-	if (c != -1 && game->map.data)
+	if (c != 1 && game->map.data)
 		clean_map(game->map.data);
 	if (game->map.perpdist)
 		free(game->map.perpdist);
 	if (game->config.tex[0].ptr)
-		clean_tex(game, game->config.tex);
+		clean_texture(game, game->config.tex);
 	if (game->mlx && game->config.sprite.ptr)
 		mlx_destroy_image(game->mlx, game->config.sprite.ptr);
 	if (game->mlx && game->map.sprites)
@@ -85,4 +86,16 @@ int		exit_game(t_game *game, int c)
 	}
 	free(game->mlx);
 	exit(c);
+}
+
+void			put_error(t_game *game, char *str)
+{
+	if (write(2, "Error\n", 6) < 0)
+		put_error(game, "fail to write Error\n");
+	if (str)
+	{
+		if (write(2, str, ft_strlen(str)) < 0)
+			put_error(game, "fail to write error message\n");
+	}
+	exit_game(game, 1);
 }

@@ -6,13 +6,13 @@
 /*   By: hlin <marvin@codam.nl>                       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/07 11:54:45 by hlin          #+#    #+#                 */
-/*   Updated: 2020/02/07 11:54:47 by hlin          ########   odam.nl         */
+/*   Updated: 2020/10/01 16:27:47 by hlin          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		ft_strlen(char *s)
+int		cal_strlen(char *s)
 {
 	int len;
 
@@ -42,7 +42,7 @@ char	*join_strbuff(char *s, char *buffer, int read_bytes)
 	char	*res;
 
 	i = 0;
-	res = (char*)malloc((sizeof(*res)) * (ft_strlen(s) + read_bytes + 1));
+	res = (char*)malloc((sizeof(*res)) * (cal_strlen(s) + read_bytes + 1));
 	if (!res)
 		return (NULL);
 	if (s)
@@ -53,7 +53,7 @@ char	*join_strbuff(char *s, char *buffer, int read_bytes)
 			i++;
 		}
 	}
-	while (i < (ft_strlen(s) + read_bytes))
+	while (i < (cal_strlen(s) + read_bytes))
 	{
 		res[i] = *buffer;
 		i++;
