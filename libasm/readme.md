@@ -109,3 +109,14 @@ You can convert values between different register sizes using different mov inst
 | jmp label    | Goto the instruction label:.  Skips anything else in the way.                                                                                                                                                                           | jmp post_mem mov [0],rax ; Write to NULL! post_mem:                                                                  |
 | cmp a,b      | Compare two values.  Sets flags that are used by the conditional jumps (below)                                                                                                                                                          | cmp rax,10                                                                                                           |
 |  jl label    | Goto label if previous comparison came out as less-than.  Other conditionals available are: jle (<=), je (==), jge (>=), jg (>), jne (!=), and many others. Also available in unsigned comparisons: jb (<), jbe (<=), ja (>), jae (>=). | jl loop_start  ; Jump if rax<10                                                                                      |
+
+
+## Structure of a NASM Program
+
+[NASM Tutorial](https://cs.lmu.edu/~ray/notes/nasmtutorial/)
+
+NASM is line-based. Most programs consist of directives followed by one or more sections. Lines can have an optional label. Most lines have an instruction followed by zero or more operands.
+
+![NASM Structure](NASM.png)
+
+Generally, you put code in a section called .text and your constant data in a section called .data.
