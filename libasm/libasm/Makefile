@@ -6,7 +6,7 @@
 #    By: hlin <hlin@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/10/27 23:36:29 by hlin          #+#    #+#                  #
-#    Updated: 2020/10/28 22:21:40 by hlin          ########   odam.nl          #
+#    Updated: 2020/11/02 22:53:40 by hlin          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,15 @@ NAME = libasm.a
 
 SRC = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 
-SRC_BONUS = ft_strlen.s
-
-ifdef WITH_BONUS
-OBJ = $(SRC:.s=.o) $(SRC_BONUS:.s=.o)
-else
 OBJ = $(SRC:.s=.o)
-endif
+
+TESTMAIN = test_str.c test_rw.c
 
 NASM = nasm -f macho64
+
+GCCFLAG = -Wall -Wextra -Werror
+
+TEST = test
 
 all: $(NAME)
 
@@ -32,18 +32,19 @@ $(NAME): $(OBJ)
 	ranlib $@
 
 %.o: %.s
-	@echo "\nCompiling:\n"
 	$(NASM) $<
 
-bonus: $(SRC_BONUS)
-	@echo "\nCompiling bonus\n"
-	$(MAKE) WITH_BONUS=1 all
+bonus: $(all)
+
+test: $(TESTMAIN) $(NAME)
+	@echo "\nCompiling tests\n"
+	gcc $(GCCFLAG) -L. -lasm -lc -o $(TEST) $(TESTMAIN)
 
 clean:
 	/bin/rm -rf $(OBJ)
 
 fclean: clean
-	/bin/rm -rf $(NAME)
+	/bin/rm -rf $(NAME) $(TEST) test_file.txt
 
 re: fclean all
 

@@ -120,3 +120,7 @@ NASM is line-based. Most programs consist of directives followed by one or more 
 ![NASM Structure](NASM.png)
 
 Generally, you put code in a section called .text and your constant data in a section called .data.
+
+## SystemCalls in Assembly
+
+[System Calls](https://en.wikibooks.org/wiki/X86_Assembly/Interfacing_with_Linux)
