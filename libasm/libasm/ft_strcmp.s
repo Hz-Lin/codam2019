@@ -6,7 +6,7 @@
 ;    By: hlin <hlin@student.codam.nl>                 +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2020/10/28 23:09:20 by hlin          #+#    #+#                  ;
-;    Updated: 2020/11/02 12:51:27 by hlin          ########   odam.nl          ;
+;    Updated: 2020/11/19 11:51:29 by hlin          ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -24,12 +24,18 @@ compare:
 	mov		r9b, byte [rsi + rdx]	; retrieve character s2[i]
 	inc		rdx						; i++
 	cmp		r8b, 0					; check if s1[i] is NULL
-	je		exit					; exit if s1[i] == 0
+	je		substrac				; exit if s1[i] == 0
 	cmp		r8b, r9b				; check if s1[i] == s2[i]
-	jne		exit					; exit if s1[i] != s2[i]
+	jne		substrac				; exit if s1[i] != s2[i]
 	je		compare					; if s1[i] == s2[i], loop
 
+substrac:
+    xor     rax, rax
+    mov     al, r8b
+    sub		al, r9b			    	; calculate s1[i] - s2[i]
+    jnc     exit                    ; return the result if on substraction overflow
+    neg     al                      ; negate all to cancle overflow
+    neg     eax                     ; negate the whole int so the function return the right type
+
 exit:
-	sub		r8b, r9b				; calculate s1[i] - s2[i]
-	movsx	rax, r8b				; store the result in rax
 	ret
