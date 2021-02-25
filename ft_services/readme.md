@@ -38,6 +38,8 @@
 
 ## Basic concepts
 
+![The components](images/components.png)
+
 ### Pot
 
 - **Pot** is the smallest units a user will configure and interact with
