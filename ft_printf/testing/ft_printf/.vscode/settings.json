@@ -1,9 +1,0 @@
-{
-	"files.associations": {
-		"stdio.h": "c",
-		"libft.h": "c"
-	},
-	"codamheader.CodamUsername": "hlin",
-	"codamheader.ChangeAuthor": true,
-	"codamheader.CodamEmail": "marvin@codam.nl"
-}

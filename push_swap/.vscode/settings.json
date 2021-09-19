@@ -1,0 +1,12 @@
+{
+	"files.associations": {
+		"__tuple": "c",
+		"array": "c",
+		"complex": "c",
+		"climits": "cpp",
+		"sstream": "cpp",
+		"streambuf": "cpp",
+		"stdio.h": "c",
+		"push_swap.h": "c"
+	}
+}
